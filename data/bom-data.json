@@ -1,6 +1,3541 @@
 {
-  "last_updated": "",
-  "bom_versions": {},
-  "library_releases": {},
+  "last_updated": "2026-05-15T10:04:48+00:00",
+  "bom_versions": {
+    "2022.10.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.3.0",
+        "androidx.compose.foundation": "1.3.0",
+        "androidx.compose.material": "1.3.0",
+        "androidx.compose.material3": "1.0.0",
+        "androidx.compose.runtime": "1.3.0",
+        "androidx.compose.ui": "1.3.0"
+      }
+    },
+    "2022.11.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.3.1",
+        "androidx.compose.foundation": "1.3.1",
+        "androidx.compose.material": "1.3.1",
+        "androidx.compose.material3": "1.0.1",
+        "androidx.compose.runtime": "1.3.1",
+        "androidx.compose.ui": "1.3.1"
+      }
+    },
+    "2022.12.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.3.2",
+        "androidx.compose.foundation": "1.3.1",
+        "androidx.compose.material": "1.3.1",
+        "androidx.compose.material3": "1.0.1",
+        "androidx.compose.runtime": "1.3.2",
+        "androidx.compose.ui": "1.3.2"
+      }
+    },
+    "2023.01.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.3.3",
+        "androidx.compose.foundation": "1.3.1",
+        "androidx.compose.material": "1.3.1",
+        "androidx.compose.material3": "1.0.1",
+        "androidx.compose.runtime": "1.3.3",
+        "androidx.compose.ui": "1.3.3"
+      }
+    },
+    "2023.03.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.0",
+        "androidx.compose.foundation": "1.4.0",
+        "androidx.compose.material": "1.4.0",
+        "androidx.compose.material3": "1.0.0",
+        "androidx.compose.runtime": "1.4.0",
+        "androidx.compose.ui": "1.4.0"
+      }
+    },
+    "2023.04.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.1",
+        "androidx.compose.foundation": "1.4.1",
+        "androidx.compose.material": "1.4.1",
+        "androidx.compose.material3": "1.0.1",
+        "androidx.compose.runtime": "1.4.1",
+        "androidx.compose.ui": "1.4.1"
+      }
+    },
+    "2023.04.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.2",
+        "androidx.compose.foundation": "1.4.2",
+        "androidx.compose.material": "1.4.2",
+        "androidx.compose.material3": "1.0.1",
+        "androidx.compose.runtime": "1.4.2",
+        "androidx.compose.ui": "1.4.2"
+      }
+    },
+    "2023.05.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.3",
+        "androidx.compose.foundation": "1.4.3",
+        "androidx.compose.material": "1.4.3",
+        "androidx.compose.material3": "1.0.1",
+        "androidx.compose.runtime": "1.4.3",
+        "androidx.compose.ui": "1.4.3"
+      }
+    },
+    "2023.05.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.3",
+        "androidx.compose.foundation": "1.4.3",
+        "androidx.compose.material": "1.4.3",
+        "androidx.compose.material3": "1.1.0",
+        "androidx.compose.runtime": "1.4.3",
+        "androidx.compose.ui": "1.4.3"
+      }
+    },
+    "2023.06.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.3",
+        "androidx.compose.foundation": "1.4.3",
+        "androidx.compose.material": "1.4.3",
+        "androidx.compose.material3": "1.1.0",
+        "androidx.compose.runtime": "1.4.3",
+        "androidx.compose.ui": "1.4.3"
+      }
+    },
+    "2023.06.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.4.3",
+        "androidx.compose.foundation": "1.4.3",
+        "androidx.compose.material": "1.4.3",
+        "androidx.compose.material3": "1.1.1",
+        "androidx.compose.runtime": "1.4.3",
+        "androidx.compose.ui": "1.4.3"
+      }
+    },
+    "2023.08.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.5.0",
+        "androidx.compose.foundation": "1.5.0",
+        "androidx.compose.material": "1.5.0",
+        "androidx.compose.material3": "1.1.1",
+        "androidx.compose.runtime": "1.5.0",
+        "androidx.compose.ui": "1.5.0"
+      }
+    },
+    "2023.09.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.5.1",
+        "androidx.compose.foundation": "1.5.1",
+        "androidx.compose.material": "1.5.1",
+        "androidx.compose.material3": "1.1.1",
+        "androidx.compose.runtime": "1.5.1",
+        "androidx.compose.ui": "1.5.1"
+      }
+    },
+    "2023.09.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.5.1",
+        "androidx.compose.foundation": "1.5.1",
+        "androidx.compose.material": "1.5.1",
+        "androidx.compose.material3": "1.1.2",
+        "androidx.compose.runtime": "1.5.1",
+        "androidx.compose.ui": "1.5.1"
+      }
+    },
+    "2023.09.02": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.5.2",
+        "androidx.compose.foundation": "1.5.2",
+        "androidx.compose.material": "1.5.2",
+        "androidx.compose.material3": "1.1.2",
+        "androidx.compose.runtime": "1.5.2",
+        "androidx.compose.ui": "1.5.2"
+      }
+    },
+    "2023.10.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.5.3",
+        "androidx.compose.foundation": "1.5.3",
+        "androidx.compose.material": "1.5.3",
+        "androidx.compose.material3": "1.1.2",
+        "androidx.compose.runtime": "1.5.3",
+        "androidx.compose.ui": "1.5.3"
+      }
+    },
+    "2023.10.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.5.4",
+        "androidx.compose.foundation": "1.5.4",
+        "androidx.compose.material": "1.5.4",
+        "androidx.compose.material3": "1.1.2",
+        "androidx.compose.runtime": "1.5.4",
+        "androidx.compose.ui": "1.5.4"
+      }
+    },
+    "2024.01.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.0",
+        "androidx.compose.foundation": "1.6.0",
+        "androidx.compose.material": "1.6.0",
+        "androidx.compose.material3": "1.1.2",
+        "androidx.compose.runtime": "1.6.0",
+        "androidx.compose.ui": "1.6.0"
+      }
+    },
+    "2024.02.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.1",
+        "androidx.compose.foundation": "1.6.1",
+        "androidx.compose.material": "1.6.1",
+        "androidx.compose.material3": "1.2.0",
+        "androidx.compose.runtime": "1.6.1",
+        "androidx.compose.ui": "1.6.1"
+      }
+    },
+    "2024.02.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.2",
+        "androidx.compose.foundation": "1.6.2",
+        "androidx.compose.material": "1.6.2",
+        "androidx.compose.material3": "1.2.0",
+        "androidx.compose.runtime": "1.6.2",
+        "androidx.compose.ui": "1.6.2"
+      }
+    },
+    "2024.02.02": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.3",
+        "androidx.compose.foundation": "1.6.3",
+        "androidx.compose.material": "1.6.3",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.3",
+        "androidx.compose.ui": "1.6.3"
+      }
+    },
+    "2024.03.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.4",
+        "androidx.compose.foundation": "1.6.4",
+        "androidx.compose.material": "1.6.4",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.4",
+        "androidx.compose.ui": "1.6.4"
+      }
+    },
+    "2024.04.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.5",
+        "androidx.compose.foundation": "1.6.5",
+        "androidx.compose.material": "1.6.5",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.5",
+        "androidx.compose.ui": "1.6.5"
+      }
+    },
+    "2024.04.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.6",
+        "androidx.compose.foundation": "1.6.6",
+        "androidx.compose.material": "1.6.6",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.6",
+        "androidx.compose.ui": "1.6.6"
+      }
+    },
+    "2024.05.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.7",
+        "androidx.compose.foundation": "1.6.7",
+        "androidx.compose.material": "1.6.7",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.7",
+        "androidx.compose.ui": "1.6.7"
+      }
+    },
+    "2024.06.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.8",
+        "androidx.compose.foundation": "1.6.8",
+        "androidx.compose.material": "1.6.8",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.8",
+        "androidx.compose.ui": "1.6.8"
+      }
+    },
+    "2024.08.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.6.8",
+        "androidx.compose.foundation": "1.6.8",
+        "androidx.compose.material": "1.6.8",
+        "androidx.compose.material3": "1.2.1",
+        "androidx.compose.runtime": "1.6.8",
+        "androidx.compose.ui": "1.6.8"
+      }
+    },
+    "2024.09.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.0",
+        "androidx.compose.foundation": "1.7.0",
+        "androidx.compose.material": "1.7.0",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.0",
+        "androidx.compose.ui": "1.7.0"
+      }
+    },
+    "2024.09.00-alpha": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose": "0.1.0-dev14",
+        "androidx.compose.animation": "1.8.0-alpha01",
+        "androidx.compose.foundation": "1.0.0-alpha07",
+        "androidx.compose.material": "1.8.0-alpha01",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.1.0-alpha02",
+        "androidx.compose.runtime": "1.0.0-beta01",
+        "androidx.compose.ui": "1.8.0-alpha01"
+      }
+    },
+    "2024.09.00-beta": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.0",
+        "androidx.compose.foundation": "1.7.0",
+        "androidx.compose.material": "1.7.0",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.0.0-beta01",
+        "androidx.compose.ui": "1.7.0"
+      }
+    },
+    "2024.09.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.1",
+        "androidx.compose.foundation": "1.7.1",
+        "androidx.compose.material": "1.7.1",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.1",
+        "androidx.compose.ui": "1.7.1"
+      }
+    },
+    "2024.09.02": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.2",
+        "androidx.compose.foundation": "1.7.2",
+        "androidx.compose.material": "1.7.2",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.2",
+        "androidx.compose.ui": "1.7.2"
+      }
+    },
+    "2024.09.03": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.3",
+        "androidx.compose.foundation": "1.7.3",
+        "androidx.compose.material": "1.7.3",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.3",
+        "androidx.compose.ui": "1.7.3"
+      }
+    },
+    "2024.10.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.4",
+        "androidx.compose.foundation": "1.7.4",
+        "androidx.compose.material": "1.7.4",
+        "androidx.compose.material3": "1.3.0",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.4",
+        "androidx.compose.ui": "1.7.4"
+      }
+    },
+    "2024.10.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.5",
+        "androidx.compose.foundation": "1.7.5",
+        "androidx.compose.material": "1.7.5",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.5",
+        "androidx.compose.ui": "1.7.5"
+      }
+    },
+    "2024.11.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.5",
+        "androidx.compose.foundation": "1.7.5",
+        "androidx.compose.material": "1.7.5",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.5",
+        "androidx.compose.ui": "1.7.5"
+      }
+    },
+    "2024.12.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.6",
+        "androidx.compose.foundation": "1.7.6",
+        "androidx.compose.material": "1.7.6",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.6",
+        "androidx.compose.ui": "1.7.6"
+      }
+    },
+    "2025.01.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.6",
+        "androidx.compose.foundation": "1.7.6",
+        "androidx.compose.material": "1.7.6",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.6",
+        "androidx.compose.ui": "1.7.6"
+      }
+    },
+    "2025.01.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.7",
+        "androidx.compose.foundation": "1.7.7",
+        "androidx.compose.material": "1.7.7",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.7",
+        "androidx.compose.ui": "1.7.7"
+      }
+    },
+    "2025.02.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.8",
+        "androidx.compose.foundation": "1.7.8",
+        "androidx.compose.material": "1.7.8",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.0.0",
+        "androidx.compose.runtime": "1.7.8",
+        "androidx.compose.ui": "1.7.8"
+      }
+    },
+    "2025.03.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.8",
+        "androidx.compose.foundation": "1.7.8",
+        "androidx.compose.material": "1.7.8",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.7.8",
+        "androidx.compose.ui": "1.7.8"
+      }
+    },
+    "2025.03.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.8",
+        "androidx.compose.foundation": "1.7.8",
+        "androidx.compose.material": "1.7.8",
+        "androidx.compose.material3": "1.3.1",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.7.8",
+        "androidx.compose.ui": "1.7.8"
+      }
+    },
+    "2025.04.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.7.8",
+        "androidx.compose.foundation": "1.7.8",
+        "androidx.compose.material": "1.7.8",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.7.8",
+        "androidx.compose.ui": "1.7.8"
+      }
+    },
+    "2025.04.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.8.0",
+        "androidx.compose.foundation": "1.8.0",
+        "androidx.compose.material": "1.8.0",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.8.0",
+        "androidx.compose.ui": "1.8.0"
+      }
+    },
+    "2025.05.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.8.1",
+        "androidx.compose.foundation": "1.8.1",
+        "androidx.compose.material": "1.8.1",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.8.1",
+        "androidx.compose.ui": "1.8.1"
+      }
+    },
+    "2025.05.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.8.2",
+        "androidx.compose.foundation": "1.8.2",
+        "androidx.compose.material": "1.8.2",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.8.2",
+        "androidx.compose.ui": "1.8.2"
+      }
+    },
+    "2025.06.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.8.2",
+        "androidx.compose.foundation": "1.8.2",
+        "androidx.compose.material": "1.8.2",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.8.2",
+        "androidx.compose.ui": "1.8.2"
+      }
+    },
+    "2025.06.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.8.3",
+        "androidx.compose.foundation": "1.8.3",
+        "androidx.compose.material": "1.8.3",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.8.3",
+        "androidx.compose.ui": "1.8.3"
+      }
+    },
+    "2025.07.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.8.3",
+        "androidx.compose.foundation": "1.8.3",
+        "androidx.compose.material": "1.8.3",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.8.3",
+        "androidx.compose.ui": "1.8.3"
+      }
+    },
+    "2025.08.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.0",
+        "androidx.compose.foundation": "1.9.0",
+        "androidx.compose.material": "1.9.0",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.9.0",
+        "androidx.compose.ui": "1.9.0"
+      }
+    },
+    "2025.08.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.0",
+        "androidx.compose.foundation": "1.9.0",
+        "androidx.compose.material": "1.9.0",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.9.0",
+        "androidx.compose.ui": "1.9.0"
+      }
+    },
+    "2025.09.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.1",
+        "androidx.compose.foundation": "1.9.1",
+        "androidx.compose.material": "1.9.1",
+        "androidx.compose.material3": "1.3.2",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.9.1",
+        "androidx.compose.ui": "1.9.1"
+      }
+    },
+    "2025.09.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.2",
+        "androidx.compose.foundation": "1.9.2",
+        "androidx.compose.material": "1.9.2",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.9.2",
+        "androidx.compose.ui": "1.9.2"
+      }
+    },
+    "2025.10.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.3",
+        "androidx.compose.foundation": "1.9.3",
+        "androidx.compose.material": "1.9.3",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.1.0",
+        "androidx.compose.runtime": "1.9.3",
+        "androidx.compose.ui": "1.9.3"
+      }
+    },
+    "2025.10.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.4",
+        "androidx.compose.foundation": "1.9.4",
+        "androidx.compose.material": "1.9.4",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.9.4",
+        "androidx.compose.ui": "1.9.4"
+      }
+    },
+    "2025.11.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.4",
+        "androidx.compose.foundation": "1.9.4",
+        "androidx.compose.material": "1.9.4",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.9.4",
+        "androidx.compose.ui": "1.9.4"
+      }
+    },
+    "2025.11.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.9.5",
+        "androidx.compose.foundation": "1.9.5",
+        "androidx.compose.material": "1.9.5",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.9.5",
+        "androidx.compose.ui": "1.9.5"
+      }
+    },
+    "2025.12.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.0",
+        "androidx.compose.foundation": "1.10.0",
+        "androidx.compose.material": "1.10.0",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.0",
+        "androidx.compose.ui": "1.10.0"
+      }
+    },
+    "2025.12.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.0",
+        "androidx.compose.foundation": "1.10.0",
+        "androidx.compose.material": "1.10.0",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.0",
+        "androidx.compose.ui": "1.10.0"
+      }
+    },
+    "2026.01.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.1",
+        "androidx.compose.foundation": "1.10.1",
+        "androidx.compose.material": "1.10.1",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.1",
+        "androidx.compose.ui": "1.10.1"
+      }
+    },
+    "2026.01.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.2",
+        "androidx.compose.foundation": "1.10.2",
+        "androidx.compose.material": "1.10.2",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.2",
+        "androidx.compose.ui": "1.10.2"
+      }
+    },
+    "2026.02.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.3",
+        "androidx.compose.foundation": "1.10.3",
+        "androidx.compose.material": "1.10.3",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.3",
+        "androidx.compose.ui": "1.10.3"
+      }
+    },
+    "2026.02.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.4",
+        "androidx.compose.foundation": "1.10.4",
+        "androidx.compose.material": "1.10.4",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.4",
+        "androidx.compose.ui": "1.10.4"
+      }
+    },
+    "2026.03.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.5",
+        "androidx.compose.foundation": "1.10.5",
+        "androidx.compose.material": "1.10.5",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.5",
+        "androidx.compose.ui": "1.10.5"
+      }
+    },
+    "2026.03.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.10.6",
+        "androidx.compose.foundation": "1.10.6",
+        "androidx.compose.material": "1.10.6",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.6",
+        "androidx.compose.ui": "1.10.6"
+      }
+    },
+    "2026.04.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.11.0",
+        "androidx.compose.foundation": "1.11.0",
+        "androidx.compose.material": "1.11.0",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.6",
+        "androidx.compose.ui": "1.11.0"
+      }
+    },
+    "2026.05.00": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.11.1",
+        "androidx.compose.foundation": "1.11.1",
+        "androidx.compose.material": "1.11.1",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.10.6",
+        "androidx.compose.ui": "1.11.1"
+      }
+    }
+  },
+  "library_releases": {
+    "androidx.compose.animation": {
+      "1.3.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.3.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.3.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.3.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Updated to support androidx.compose.ui 1.3.2"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.3.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.3.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.4.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.4.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.4.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.4.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.5.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.5.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed text fields showing keyboard and being editable when readOnly is true. Also fixed the keyboard not showing when readOnly is changed from true to false while focused. ( I34a19 , b/246909589 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.5.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.5.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.5.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Compatibility fix for KeyframesSpec . ( I2bdf3 , b/322214617 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.6.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0-alpha01": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.8.0-alpha01",
+        "changes": {
+          "new_features": [
+            "New Modifier.animateBounds API for animating size and position changes within a lookahead scope. 94b9394"
+          ],
+          "bug_fixes": [
+            "Skip placeHolderSize logic when no match is found ( 77c0160 )",
+            "Clamp play time in AndroidFlingSpline to prevent crashes due to non-monotonically increasing play time( 9d47587 )",
+            "Fix SharedTransitionScope not drawing items in certain conditions ( b41077b6 )"
+          ],
+          "api_changes": [
+            "Remove experimental flags on Keyframes with Arcs and Splines ( 89e1199 )"
+          ]
+        }
+      },
+      "1.7.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a bug causing improper alignment for Modifier.animateContentSize under RTL. ( Idae6b , b/372055503 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.7.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.8.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.8.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.8.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.8.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.9.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.9.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix initializing animation for sharedElementWithCallerManagedVisibility . ( fa29de )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.9.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.9.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.9.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.9.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed the crash caused by a corner case where the shared content node is detached before the shared transition root was ever placed. ( 121310 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.10.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.11.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.11.0",
+        "changes": {
+          "new_features": [
+            "Visual Debugging for Lookahead: Introduced a new set of visual debugging capabilities that allows visualizations of information related to shared elements and Modifier.animatedBounds . Such information includes: target bounds, the trajectory of the bounds animation, number of matches found, whether the transition is active, etc."
+          ],
+          "bug_fixes": [
+            "Thread Safety: SeekableTransitionState now properly handles off-thread state changes. Previously, if the state was modified off the UI thread using Snapshot.withMutableSnapshot() , the transition incorrectly tried to handle the update off of the UI thread. ( 0aba38 )",
+            "Performance: Improved performance of sharedElements map access. ( 93f57d )",
+            "State Reporting: Fixed isTransitionActive so that it only reports true when there are active animations from matched shared elements. ( d3426a , b/474385510 )",
+            "Stability: Required shared transition root to be placed before querying bounds ( 77d59c ) and ensured positions for sharedElements are only acquired if SharedTransitionLayout is attached. ( I2a035 )",
+            "Interruption Handling: Fixed the corner case interruption handling when a child exit animation finishes while the parent transition is still running in AnimatedContent . ( ad9b4f )",
+            "Validation: Validated duration in InfiniteRepeatableSpec to prevent 0-duration cycles. ( 151b6d )",
+            "Customization: Respect visibilityThreshold in custom AnimationSpec for animateFloatAsState . ( 3a1cdc )"
+          ],
+          "api_changes": [
+            "Added new APIs LookaheadAnimationVisualDebugging , CustomizedLookaheadAnimationVisualDebugging , and LookaheadAnimationVisualDebugConfig to help debug animated bounds and shared element animations. ( Id5575 , b/390011686 , b/466169919 )"
+          ]
+        }
+      },
+      "1.11.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.11.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      }
+    },
+    "androidx.compose.foundation": {
+      "1.3.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.3.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.3.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix performance issue in BeyondBoundsLayout ( aosp/2255266 )",
+            "ContentInViewModifier will not read layout coordinates unless attached ( aosp/2241316 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.4.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.4.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.4.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.4.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.5.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.5.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed text fields showing keyboard and being editable when readOnly is true. Also fixed the keyboard not showing when readOnly is changed from true to false while focused. ( I34a19 , b/246909589 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.5.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a bug in text that led to crashes in certain circumstances when semantics were invalidated."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.5.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.5.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix staggered grid measure when scrolled over limit. ( bffc39 )",
+            "Add check for layout with large dimensions. ( e74af5 )",
+            "Fix placement of 0-sized items at the start of the staggered grid. ( 785f94 )",
+            "Call onRelease callback in the same order as onForgotten. ( 31ce3b )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix AnimateContentSize not resetting properly. ( I07051 )",
+            "Fix issue where intrinsicHeight of text would be over-cached in some circumstances. ( 3cd398 , b/217910352 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "A long-press-then-drag selection gesture which moves out of the text’s layout bounds in the first frame of the drag no longer crashes. ( Icdf90 , b/325307463 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Adds debugging logs to hard-to-reproduce bugs in Row/Column: ( b/300280216 and b/297974033 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a bug where in certain conditions toggling enabled or readOnly attributes of TextField would cause a crash. ( Iae17b )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.6.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.0.0-alpha07": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.0.0-alpha07",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Introduced ScaleFactor\ninline class to represent scale\nfactors for the horizontal and vertical\naxes independent of one another in order\nto support non-uniform scaling use cases. Added computeScaleFactor method to\nContentScale Added ContentScale.FillBounds to perform\nnon-uniform scaling to stretch the src\nbounds to fully occupy the destination. Added operator methods to compute\nScaleFactor parameters with Size parameters. ( Ic96a6 , b/172291582 )",
+            "captureToBitmap moved to captureToImage. ( I86385 )",
+            "Marks CoreText as @InternalTextApi. Use BasicText instead. ( I6aaeb )",
+            "Rename KeyboardOptions as ImeOptions ( I82f36 )",
+            "Moved KeyboardType and ImeAction into KeyboardOptions ( I910ce )",
+            "CoreTextField has been marked as @InternalTextApi. Use BasicTextField instead ( Ie2469 )",
+            "ExperimentalSubcomposeLayoutApi annotation was removed. SubcomposeLayout can now be used without adding @OptIn ( I708ad )",
+            "Introduce ui-test-junit4 module ( Ib91f8 )",
+            "Updated Icon API to take in Color.Unspecified\nas a possible tint color which will draw the provided\nasset or painter without a ColorFilter. Previously\nattempts to ignore tinting with Color.Unspecified\nwould tint with a transparent color ending up\nwith nothing rendered at all. ( I049e2 , b/171624632 )",
+            "MeasureResult was moved out of MeasureScope. ( Ibf96d , b/171184002 )",
+            "Several layout related symbols were moved from androidx.compose.ui to androidx.compose.layout.ui. ( I0fa98 , b/170475424 )",
+            "androidx.ui.test moved to androidx.compose.ui.test ( I9ffdb )",
+            "FirstBaseline and LastBaseline were moved to androidx.compose.ui.layout package ( Ied2e7 )",
+            "Added SelectionContainer without the callback ( Ibfadb )",
+            "Add Tests for SelectionHandles' Positions in SelectionContainer. ( Ie93db )",
+            "Added Keyboard auto correct IME Option ( I57b8d )"
+          ],
+          "api_changes": [
+            "Similarly to Modifier.fillMaxSize[Width|Height] we now support fractions in Modifier.fillParentMaxSize[Width|Height] inside the scope of LazyColumn/Row ( I797e2 , b/166586426 )",
+            "Removed KeyboardOptions.toImeOptions from public API. ( Ic2e45 )",
+            "The foundation AmbientTextStyle, ProvideTextStyle, and AmbientContentColor have been deprecated. Instead use the new versions available in the Material library. For non-Material applications, you should instead create your own design system specific theming ambients that can be consumed in your own components. ( I74acc , b/172067770 )",
+            "foundation.Text has been deprecated and replaced with material.Text. For a basic, unopinionated text API that does not consume values from a theme, see androidx.compose.foundation.BasicText. ( If64cb )",
+            "Added maxLines to TextFields ( Ib2a5b )",
+            "Update TextFields to accept KeyboardOptions ( Ida7f3 )",
+            "Added KeyboardOptions for use in TextFields ( I9ca32 )",
+            "Adds BasicText as a design-unopinionated API for text, parallel to BasicTextField. ( I28268 )",
+            "ExperimentalLazyDsl annotation was removed. LazyColumn/LazyRow can now be used without adding @OptIn ( Idab7a , b/166584730 )",
+            "BaseTextField has been deprecated. Use BasicTextField instead. ( I896eb )",
+            "BasicTextField has been added as a replacement for both CoreTextField and BaseTextField ( Id4cea )",
+            "Remove deprecated LazyColumnItems/LazyRowItems ( I1d8a8 )",
+            "The deprecated composables for sizing to intrinsic measurements were removed. ( I18537 , b/171811496 )",
+            "relativePaddingFrom was renamed to paddingFrom. The paddingFromBaseline modifier was added, as convenience for specifying distances from layout bounds to text baselines. ( I0440a , b/170633813 )",
+            "The matchHeightConstraintsFirst parameter was added to the aspectRatio modifier, which can be used to specify the modifier to size to height constraints before trying the width correspondents. ( Ie7c43 , b/155290593 )",
+            "The deprecated DpConstraints was removed. ( I87884 , b/171702471 )"
+          ]
+        }
+      },
+      "1.7.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix issue with draggable that was missing down events which caused flings to look slower than normal."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a memory leak with BasicText when minLines is set to a non-default value."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a bug causing a rare crash in text fields. ( I475c6 , b/313010266 )",
+            "Removed ReusableContentHost at the root of Lazy layout items. This was a potential root cause for “measure called on a deactivated node” crashes. ( Id6e60 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Ensure that pinned items are not subcomposed twice in the content padding area. ( Ic6224 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed text inline content not being visible to accessibility services.",
+            "Fixed an issue where AndroidEmbeddedExternalSurface would not reset properly and be stuck when reusing in a lazy list."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed IndexOutOfBound crash with link annotation. ( Ic96d2 )",
+            "Fixed infinite recomposition in some edge cases with links. ( I04a03 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.7.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix crash in BasicTextField with input transformation when replacing part of the pasted text. ( I73702 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.8.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.8.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.8.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a bug in BasicText and TextAutoSize where using TextOverflow.Ellipsize would result in smaller-than-optimal text. ( I1e1d8 , b/396582066 )",
+            "Fixed a bug in BasicTextField that caused miscellaneous crashes when TextFieldDecorator skips calling innerTextField . ( I2638c ), b/308398612",
+            "Fixed a bug in TextField that caused the text toolbar and selection handles to completely disappear when the TextFieldState instance was changed. ( I8068a ), b/390477786",
+            "Fixed a bug in BasicText where changing the min width constraint did not update the text’s placement when textAlign was set to a non-default value. ( I77a96 ), b/406305552"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.8.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.8.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Introduced a fix that prevents calculation of number of items to load for focus search to cause a division by zero. Applied the check to all layouts that use LazyLayoutBeyondBoundsState . ( 8e6dc8 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.8.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.8.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.9.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.9.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixes crash happening when using LazyLayoutCacheWindow in LazyLists ( c39f5f3 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.9.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.9.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.9.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.9.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix a crash when text selection extends from one Text instance to another that are aligned horizontally. I351311 , b/439758956"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a crash when navigating back from a screen with an active text selection. ( I9f540 , b/444482508 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a regression bug where using an alignment modifier from a different scope (e.g., ColumnScope.align inside a Row ) resulted in incorrect positioning. ( 6888f2b , b/477639546 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed an IndexOutOfBoundsException in BasicTextField when using OutputTransformation and deleting text. ( I20ee1 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.10.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "ComposeFoundationFlags.isPausableCompositionInPrefetchEnabled is disabled by default to address stability concerns. ( I73960 , b/482223006 , b/488433633 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.11.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.11.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.11.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.11.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed an issue in FlexBox where items would not shrink correctly when exceeding the container bounds. ( Ia741d , b/480797591 )"
+          ],
+          "api_changes": []
+        }
+      }
+    },
+    "androidx.compose.material": {
+      "1.3.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.3.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": [
+            "Add a Pull-To-Refresh component to Compose ( I29168 ).",
+            "Change parameter name from values to value in RangeSlider ( I3b79a )."
+          ]
+        }
+      },
+      "1.3.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.3.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.4.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": [
+            "Add Modifier.minimumInteractiveComponentSize . It can be used to reserve at least 48.dp in size to disambiguate touch interactions if the element would measure smaller. ( I33f58 , b/258495559 )",
+            "Incorporated changes in the Swipeable APIs in ModalDrawer . DrawerState 's animateTo has been replaced by the open and close methods and the offset is now nullable. Use requireOffset to require the offset. ( I3de9e )",
+            "Added minLines parameter into material and material3 Text, TextField and OutlinedTextField which allows setting the minimum height of the component in terms of number of lines ( I4af1d )",
+            "Added minLines parameter to the BasicText and BasicTextField . It allows to set the minimum height of these composables in terms of number of lines ( I24294 , b/122476634 )"
+          ]
+        }
+      },
+      "1.4.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.4.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.4.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.4.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.5.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixes an issue where pullRefresh was not consuming velocity, causing overscroll to show. Also changed the API signature of the onRelease lambda in Modifier.pullRefresh to return a Float for consumed velocity ( I7db65 , b/266874741 )",
+            "BottomSheetState , ModalBottomSheetState and BottomDrawerState now expose a progress property indicating the progress between the current (settled) anchor and the closest anchor in the swipe direction. ( I1b317 , b/271169225 , b/276375124 , b/276776071 , b/270066861 )",
+            "Fixed the AlertDialog dismiss action to appear below the confirm action when the actions stacked over each other to fit into the dialog's width. This fix aligns the implementation with the Material Design spec. ( I029de , b/235454277 )",
+            "BottomSheetScaffold will not participate in nested scroll anymore when gesturesEnabled is set to false. ( I634f3 , b/215403277 )",
+            "Fixed a bug where BottomSheetScaffold would crash when provided with empty content for slots. ( Ib24a5 , b/235588730 )",
+            "Fixes PullRefreshIndicator intercepting clicks/pointer events. ( 2494256 , b/271777421 )",
+            "Fixed an issue where ModalBottomSheetLayout would crash in an edge case on orientation change. Layout animations (e.g. Modifier.animateContentSize ) in/on the sheet content now work smoothly. ( I2f981 , b/266780234 )"
+          ],
+          "api_changes": [
+            "Incorporated changes in the Swipeable1 APIs in BottomSheetScaffold . BottomSheetState 's confirmStateChange param has been renamed to confirmValueChange . progress is now exposed as a float value. animateTo and snapTo are internal. Use expand() and collapse() instead. direction and overflow have been removed. offset has been replaced with requireOffset() . I323b4",
+            "Mark the snapTo function in Drawer as non-experimental API. ( Ib9c18 , b/261425368 )",
+            "Added a track color parameter for circular progress indicators, and a stroke cap parameter for both circular and linear progress indicators. ( Ie668c , b/216325962 , b/222964817 )",
+            "Renamed ModalBottomSheetState , ModalBottomSheetState.Saver and rememberModalBottomSheetState 's confirmStateChange to confirmValueChange . ( Ib48d1 )",
+            "Add Modifier.minimumInteractiveComponentSize . It can be used to reserve at least 48.dp in size to disambiguate touch interactions if the element would measure smaller. ( I33f58 , b/258495559 )",
+            "Incorporated changes in the Swipeable APIs in ModalBottomSheetLayout . ModalBottomSheetState 's animateTo does not take an animationSpec parameter anymore and the offset exposed is now nullable. Use requireOffset to require the offset. ( Ia2e79 )",
+            "Adding @JvmDefaultWithCompatibility annotation ( I8f206 )",
+            "Incorporated changes in the Swipeable APIs in ModalDrawer. DrawerState 's animateTo has been replaced by the open and close methods and the offset is now nullable. Use requireOffset to require the offset. ( I3de9e )",
+            "Updated Drawers and Sheets to correctly delay presses in case gestures can become scroll events.",
+            "Added minLines parameter into material and material3 Text, TextField and OutlinedTextField which allows setting the minimum height of the component in terms of number of lines ( I4af1d )"
+          ]
+        }
+      },
+      "1.5.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.5.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.5.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.5.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.5.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix regression in ExposedDropdownMenu to make it focusable again. ( c0e0ed , b/323694447 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.6.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0-alpha01": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.8.0-alpha01",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": [
+            "Added new NavGraphBuilder.bottomSheet builder to create a bottomSheet with safe args (( I28589 , I777db , b/351858980 ))",
+            "Added new TextField and OutlinedTextField overloads that take a TextFieldState ( I3b74c )"
+          ]
+        }
+      },
+      "1.7.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.7.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.8.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.8.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.8.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.8.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.9.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "ExposedDropdownMenu is binary compat with older versions. ( I133f7 )"
+          ],
+          "api_changes": [
+            "Lint checks shipped with Compose now require a minimum AGP version of 8.8.2. If you are unable to upgrade AGP, you can instead upgrade Lint on its own by using android.experimental.lint.version=8.8.2 (or a newer version) in your gradle.properties. To run Compose lint checks inside the IDE, Android Studio Ladybug or newer is required.",
+            "Projects released with Kotlin 2.0 require KGP 2.0.0 or newer to be consumed. ( Idb6b5 )",
+            "Text field decoration box APIs are no longer experimental. ( I7480f )"
+          ]
+        }
+      },
+      "1.9.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.9.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.9.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.9.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.9.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.9.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.10.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.11.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.11.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.11.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.11.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      }
+    },
+    "androidx.compose.material3": {
+      "1.0.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.0.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.0.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.0.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Updates Material3 Medium and Large top app bars to apply the same background color across their entire surface, and to allow setting overriding the default colors with transparent color values. ( I67659 , b/249688556 , b/250838918 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.1.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.1.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.1.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.1.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Adds call for ModalBottomSheet without windowInset param for binary compatibility. ( Ib7959 )",
+            "Add window insets parameter to ModalBottomSheet . Scrim for ModalBottomSheet may now be drawn behind status bar with windowInsets set to zero Updated default ModalBottomSheet functionality to stay outside of system bars including navigation Status bar inset handling is provided by drag handle in edge-to-edge mode. BottomSheetDefaults includes window insets for BottomSheetWindow . ( I31200 , b/274872542 , b/272973615 , b/272334475 , b/268432129 , b/275849044 , b/275486106 , b/268433162 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.1.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.1.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed modifier incorrectly being passed to two composables. ( b/282761472 )",
+            "Fixed TimePickerState returns incorrect hours when initialized with 23 hours. ( b/278242122 )",
+            "Fixed initial toggle state for noon and minute validation. ( b/269768197 , b/282790635 )",
+            "Fixed state.hour returning incorrect value for 11pm. ( b/282761472 , b/278242122 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.2.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.2.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.2.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.2.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Make the Slider states stable again. Making State.onValueChangeFinished a val again. Wrapping onValueChangeFinished in a rememberUpdatedState . ( Ie8fd0 , b/322269951 )",
+            "Removing @Stable from the states of Slider since we're changing state.onValueChangeFinished to a var . ( I82ba1 , b/322269951 )",
+            "Fix NavigationBar custom colors to copy from defaults. ( 80a779 , b/326894020 )",
+            "Fix regression in ExposedDropdownMenu to make it focusable again ( 3fcec1 , b/323694447 )",
+            "Fix button color caching issue ( 3e5bbc b/327371655 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.3.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.3.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.3.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "The DatePicker and DateRangePicker now correctly update the displayed month when set via their state's displayedMonthMillis . ( If9e47 , b/333414302 )",
+            "Fix crashes in the DatePicker and DateRangePicker when the minimum selectable year is set to a future year. ( I78656 , b/319395747 )",
+            "Fix a date-picker issue to update the UI when an updated SelectableDates instance is applied. ( Iad59a , b/290135807 , b/339898760 )",
+            "Change back callback priority used by bottom sheets to PRIORITY_DEFAULT to allow IME keyboard to dismiss first. ( I447fb )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.3.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.3.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "ListItem corrects its intrinsic height calculation, now reserving the appropriate amount of space in Layout.",
+            "Remove excess NavigationBarItem label padding, correctly aligning with spec.",
+            "Corrects TabRow Layout in RTL mode."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.4.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": [
+            "This library no longer adds a dependency to material-icons-core so if your project relied on that, you will have to explicitly add that dependency in your build.gradle[.kts] files. ( I735ff , b/349894318 )",
+            "NavigationBarItem and NavigationRailItem 's active label color change from onSurface to secondary in order to improve usability, color contrast and improve coherence within the system ( Ibc297 ), to revert to the previous behavior, copy the default colors and change the selectedTextColor to MaterialTheme.colorScheme.onSurface .",
+            "Material 3 components are now using the new MotionScheme to define their motion. ( Ie0f93 )",
+            "Indeterminate circular Progress Indicator motion changes ( I3c07e )"
+          ]
+        }
+      }
+    },
+    "androidx.compose.runtime": {
+      "1.3.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.3.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.3.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.3.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Updated to support androidx.compose.ui 1.3.2"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.3.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.3.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.4.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Clear both scope indexes in SnapshotStateObserver 29f4a3e",
+            "Add groups needed in the body of unskippable lambdas 7d06752",
+            "Improve memory reference characteristics of Snapshot state 93fcae8",
+            "Remove boxing in composition local lookups 0875717",
+            "Use correct key for non-reusable nodes groups 6388d8d",
+            "Protect SnapshotStateObserver from recursive and concurrent applies 98cb6ba",
+            "Added a check-index-bounds check in the IdentityArraySet \"get\" method 35a77d3",
+            "Update compose module to use ViewTreeLifecycleOwner extensions 21c2122",
+            "Send apply notifications after Recomposer finishes frame. 98f2641",
+            "Fix index out of bounds crash when cancelling the Recomposer 8f8656f",
+            "Always force recompose if parent providers of Composition have changed 9526fcc",
+            "Recomposer tolerance for cancelled Jobs a55f7ed",
+            "Improve handling invalidations for large number of composers 9b7ed67",
+            "Fix generating closing groups for non-local returns b6f590c"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.4.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix endToMarker() when ending node groups. d71d980"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.4.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix potential deadlock in snapshot list and map 2eb6570",
+            "Adding content to a SnapshotStateList or SnapshotStateMap can encounter a deadlock if the modification is concurrent with a direct write to the state record. This was made significantly more likely to be encountered  with the changes introduced by 93fcae828b that uses direct writes to release unused records.",
+            "The locks are now ordered in that a snapshot lock is never attempted to be taken when a map or list lock is held."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.4.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.5.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Skip recomposition of subcompositions that will be removed. ( Ieeb99 , b/254645321 )",
+            "Don't retain snapshot reference in ComposerImpl ( 0206f7 )",
+            "Don’t apply composition twice ( f5791b )",
+            "Ensure invalidation for non-initialized derived state values ( aa2a92 )",
+            "Call onEndChanges during composition dispose. ( 62cc8c )",
+            "Fix moving content into a sub-composition ( 4beb41 )",
+            "Fix potential deadlocks ( c1a425 and 8edce0 )",
+            "The recomposer created for an Android window will now only block calls to withFrameNanos instead of all composition when it receives an ON_STOP notification. This means windows associated with stopped activites will continue to recompose for data changes but the animations, or any other caller of withFrameNanos , will block. ( Id9e7f , b/240975572 )",
+            "Execute deactivation callbacks for LayoutNode before disposing effects 3784073",
+            "Fix changed flags for restarted lambdas ea81df9",
+            "Fix live edit regression for Composable with nodes 73fd4d8",
+            "ON_STOP should pause the frame clock broadcasts instead of composition ae276f1",
+            "Invalidate SnapshotStateObserver scopes for unchanged derived states 84d9b1c",
+            "Fix potential dead-lock when disposing compositions 28761fc",
+            "Fix moving content into a sub-composition 92d4156",
+            "Fix changed flags for restarted lambdas ( 8a03e9 )",
+            "Execute deactivation callbacks for LayoutNode before disposing effects ( 8b0fa4 )",
+            "Fix endToMarker() when ending node groups. ( d71d980 )",
+            "Use current SlotWriter group for check on deactivation ( a0b518b )",
+            "Remove the fill in SlotTable.moveSlotGapTo() and move it to close ( 81f9935 )",
+            "Fix missing invalidations while movable content is moving ( 1d7c024 )",
+            "Fix immediate invalidations for moved movable content ( 8676618 )"
+          ],
+          "api_changes": [
+            "Removed allocations in recomposition, color animations, and AndroidComposeView . ( Ib2bfa )",
+            "Added a @StateFactoryMarker annotation, to mark functions that create states and must be wrapped in a remember call. ( I64550 )",
+            "Add primitive versions of State and MutableState ( fb3d89 )",
+            "Added Snapshot.isApplyObserverNotificationPending ( I672a5 )",
+            "Added primitive versions of the State API, allowing Int, Long, Float, and Double values to be tracked in State objects without incurring penalties for autoboxing. Use the new factory methods mutableIntState(Int) , mutableFloatStateOf(Float) , etc in order to use these. ( I48e43 )"
+          ]
+        }
+      },
+      "1.5.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.5.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.5.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.5.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.5.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.0",
+        "changes": {
+          "new_features": [
+            "Re-throw exceptions that are swallowed during recomposition loop ( 4dff9a )"
+          ],
+          "bug_fixes": [
+            "Fix slot table memory leak ( 73fcfe )",
+            "Skip recomposition of subcompositions that will be removed. ( Ieeb99 , b/254645321 )",
+            "Only trigger RememberObserver lifecycles when it is stored in remember calculation. ( f6b4dc )",
+            "Restrict $dirty capture to inline lambdas. ( acfca0 )",
+            "Fix moveable content sometimes receiving the wrong composition locals. ( 035cd6 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Call onRelease callback in the same order as onForgotten . ( 2cd790 )",
+            "Filter changed states that are not observed in snapshotFlow . ( 796b80 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.6.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.0.0-beta01": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.0.0-beta01",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": [
+            "Add Recomposer.runRecomposeConcurrentlyAndApplyChanges experimental API for recomposing invalidated compositions off the main\nframe loop. ( I342d0 )",
+            "Any composables marked with @ReadOnlyComposable are now compile-time validated to ensure that they only make calls to other @ReadOnlyComposables ( I58961 )",
+            "The defaultFactory for compositionLocalOf and staticCompositionLocalOf is now required instead of\noptional. This changes removes a potential type error for non-nullable\ntypes where no default factory was provided. Previously this\nwould provide a null reference for a non-nullable type. For nullable types consider supplying { null } as the default\nfactory. We do not recommend using locals with non-nullable types unless\na sensible default can be provided. If no sensible default exists,\nthe defaultFactory lambda should throw an exception. However\nthrowing an exception means that consumers of the local will have\nan implicit dependency on it being provided that is not enforced\nby the type system. ( Ifbd2a )",
+            "Deprecated symbols were removed from the compose runtime ( I3252c )",
+            "Deprecated emptyContent() is removed. Use {} instead. ( Idb33f , b/179432510 )",
+            "Providers has been renamed to CompositionLocalProvider The Composition constructor no longer accepts a key parameter, and has been deprecated. currentCompositeKeyHash has been turned into a composable top level property instead of a composable top level function. CompositionData and CompositionGroup have been moved to the androidx.compose.runtime.tooling namespace ComposableLambda has been made an interface instead of a concrete class, and no longer has type parameters. ComposableLambdaN has been made an interface instead of a concrete class, and no longer has type parameters. The snapshotFlow function has been moved to the androidx.compose.runtime namespace the merge method of SnapshotMutationPolicy is no longer experimental The @TestOnly top level clearRoots function has been removed. It is no longer necessary. keySourceInfoOf and resetSourceInfo functions have been removed. They are no longer necessary. Composer.collectKeySourceInformation has been removed. It is no longer necessary. isJoinedKey, joinedKeyLeft, and joinedKeyRight methods have been removed. They are no longer necessary. Various top level APIs have been moved and reorganized into different files. Due to Kotlin’s file class semantics, this will break binary compatibility but not source compatibility, so should not be an issue for most users. ( I99b7d , b/177245490 )",
+            "SnapshotStateObserver is not Experimental anymore ( Id2e6a )",
+            "Deleted some previously deprecated APIs ( Ice5da , b/178633932 )",
+            "Made the following Material API changes: Added contentPadding parameter to Top/BottomAppBar to allow customizing the default padding. Reordered parameters in BackdropScaffold to follow API guidelines for required parameters being before optional parameters. Moved icon parameter in BottomNavigationItem to be after selected and onClick . Renamed alwaysShowLabels parameter in BottomNavigationItem to alwaysShowLabel . Renamed bodyContent parameters in a few components to just content . Reordered parameters in ButtonDefaults.buttonColors() . Please note that because the type of the parameters have not changed, this will not cause an error in your code - please ensure you are either using named parameters or update the ordering manually, otherwise your code will not work the same as previously. Added secondaryVariant parameter to darkColors() . This color is typically the same as secondary in dark theme, but adding for consistency and further customization. Removed ElevationDefaults and animateElevation() from the public API surface since they were not commonly used / useful. Renamed onValueChangeEnd in Slider to onValueChangeFinished and made it nullable. Renamed text parameter in Snackbar to content for consistency. Added contentPadding parameter to DropdownMenuItem to allow customizing the default padding and made content be an extension on RowScope . Renamed ModalDrawerLayout to ModalDrawer . Renamed BottomDrawerLayout to BottomDrawer . ( I1cc66 )"
+          ]
+        }
+      },
+      "1.7.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.7.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.8.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.8.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.8.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.8.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.9.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.9.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Avoid recomposing compositions that are in the process of composing. ( Iacb01 )",
+            "Prevent recompose scopes from being paused twice. ( I060b2 , b/431584881 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.9.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.9.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.9.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.9.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Transfers invalidations of the scope in movable content before moving that content out of the slot table ( I9d123 , b/451651649 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.10.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix \"Cannot disable reuse from root if it was caused by other groups\" crash in pausable composition ( I474b5 , b/488433633 )",
+            "Fix \"Apply is called on deactivated node\" crash in pausable composition ( I880c0 , b/484300733 )"
+          ],
+          "api_changes": []
+        }
+      }
+    },
+    "androidx.compose.ui": {
+      "1.3.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.3.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.3.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.3.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.3.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Updated to use Profobuf 3.21.8, which avoids a security alert in protobuf-javalite:3.19.4 (CVE-2022-3171) ( b/255545055 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.3.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.3.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix for a crash sometimes happening on Android 9 when Activity is saving the state of the Compose View. ( I0b755 , b/260322832 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.4.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.4.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.4.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixes an issue with ParentDataModifier not affecting AndroidView ( b/274797771 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.4.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed an issue where AndroidView would not reuse its modifiers correctly, potentially resulting in unexpected behavior and crashes. ( Ib67ee , b/275919849 )",
+            "Fixed regression where keyboard wasn't showing for text fields inside dialogs not created by the Dialog composable ( I82551 , b/262140644 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.4.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.4.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed an issue where AndroidView may not be laid out correctly when used with certain Modifiers. ( I4dc77 , b/274797771 )",
+            "Fixed a bug in 2D Focus Search that affected DropDown Menus ( b/276811828 )",
+            "Fixed a bug in custom focus enter/exit properties that only ran the enter/exit block the first time the lambda was invoked ( b/277234245 )",
+            "Fixed a regression in the focus system that caused a crash while reading focusProperties . ( b/271324781 , b/274897776 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.5.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.5.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.5.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed text fields showing keyboard and being editable when readOnly is true. Also fixed the keyboard not showing when readOnly is changed from true to false while focused. ( I34a19 , b/246909589 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.5.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Added workaround for crashes when accessibility scroll API was accessed from background thread.",
+            "Fix unattached nodes being added to the semantics tree."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.5.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "( b/301209788 ) TextField would sometimes incorrectly apply previous commands when focusing and inputting Korean input, leading to lost characters."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.5.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.5.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a backwards compatibility issue with SemanticsPropertyReceiver.performImeAction and SemanticsActions.PerformImeAction . ( Ie0bb2 , b/322269946 )",
+            "Layouts now issue an error while measuring when one returns an abnormally large size. This kind of error normally happens when the measurement uses maximum constraints directly without checking for Constraints.Infinity . The check will help developers find problems with the layout having the wrong size rather than in a layout that contains it. ( I339a9 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixes a rare BasicTextField crash."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.6.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.6.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.6.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed inconsistencies in font scaling when the font scale is less than the lowest defined table. In this case, we now interpolate between the linear 1x scale and the lowest defined table, so that the font size is monotonically increasing as scales increase. ( Icbae3 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0-alpha01": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.8.0-alpha01",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Improved performance of accessibility node info and semantics events by removing verbose tracing. ( I89156 , b/362530618 )",
+            "ComposeView will no longer crash when passed exceptionally large measurement size ( da5db , b/347036173 )",
+            "Fixed an accessibility screenreader issue where LiveRegion announcements on buttons were not made. ( f66fa7 , b/348590026 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed issue where specifying a generic outline clip would lead to an empty clip boundary on certain Android versions.",
+            "Fixed exception thrown when the IME is active on an external View and the Next action is used to enter focus on the ComposeView . The clearFocus() behavior aligns with View behavior on API < 28, where clearFocus() can cause the default View to be focused.",
+            "Fixed an issue where an incorrect placeOrder was used for lookahead invalidation, therefore fixing an edge case where lookahead placement was skipped."
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.7.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed issues where elevation and clipping with custom outlines would not render properly.",
+            "Fixes a text crash that happens with a zero-width LinkAnnotation . ( Ic1e2e )",
+            "Fixes an announcement in Talkback of the button when it's built as a clickable Text composable. ( I1f588 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "We previously used to throw an error whenever we encountered a key event when we encountered a key event when the focus system had pending invalidations. We now log an error instead ( I7ea0 , b/346370327 ).",
+            "Removed experimental annotation from SemanticsPropertyReceiver.invisibleToUser() . This will be deprecated in 1.8 to be replaced with SemanticsPropertyReceiver.hideFromAccessibility() . ( I448f0 , b/376479686 )",
+            "Fixed an issue that prevented TextField from functioning correctly when using the POBox Japanese Keyboard on certain older Sony devices. ( I94e0e , b/373743376 )",
+            "Fixed an accessibility issue where BasicText ’s inlineContent was not announced by TalkBack . ( I67bcb , b/376479686 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.7": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.7",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed IndexOutOfBoundsException when passing an AnnotatedString with the LinkAnnotation to the Text composable. ( Ic96d2 )",
+            "Fixed a timeout issue in tests in some rare cases when LinkAnnotation is used in the AnnotatedString . ( I04a03 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.7.8": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.8",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.8.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.8.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.8.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix some issues with onLayoutRectChanged and LazyLayout d791b11",
+            "Skip remeasure requests for precomposed items. This bug affected the lazy layouts scrolling performance as the prefetch was not working efficiently in some cases, the measurement was happening within the frame. 742087a"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.8.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.8.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixes NPE when dialog is being removed during active event stream on dialog ( 6a7e7f )",
+            "Fix onLayoutRectChange not updating per throttled timeline  when draw-only updates occur. ( 03b82d )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.8.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.8.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Flag for isGetFocusedRectReturnEmptyEnabled has been removed now that the feature has been fully verified. ( Ife722 )",
+            "Flag ComposeUiFlags.isGetFocusedRectReturnEmptyEnabled makes it so that when nothing is focusable in a ComposeView , it sets the rect to an Empty value. This prevents a focus search from choosing the View to focus on. This is especially important for when an IME has a NEXT option where it might try to focus on the ComposeView and requestFocus() fails. ( Ibd0e2 , b/369256395 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.9.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.9.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.9.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixes a color bug when using a vector drawable that uses one color and the fillColor is neither fully opaque nor fully transparent. ( I3b041 , b/328677973 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.9.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Modifier.onVisibilityChanged() now correctly fires when a node is detached or reused. ( Ic5ce20 )",
+            "Modifier.onVisibilityChanged() and onLayoutRectChanged() now properly handles parent layouts using placeWithLayer() to place children. ( Ia05ac9 )",
+            "For Modifier.onVisibilityChanged() and onLayoutRectChanged() , properly notify in corner cases like removing a layer/layer modifier or updating layer properties. ( Ia05ac )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.9.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed a bug where onVisibilityChanged/onFirstVisible/onLayoutRectChanged modifiers were not receiving callbacks if the layout being moved has over 170 descendants. ( 4f2fdd , b/445356774 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.9.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fixed an issue where inline text content was disappearing if it was on the last line of a multi-line ellipsized text even though the inline content wasn’t in the ellipsized region. ( I76aaf , b/441829208 )",
+            "Fixed an issue where onLayoutRectChanged modifier callbacks were not always being called when debounceMillis is not zero. ( 72aba47 , b/445324854 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.9.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.9.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [
+            "Fix a crash with pausable composition when animated with LookaheadScope ( I7e649 , b/469669851 )",
+            "Fixed a bug in Jetpack Compose Popup where absolute coordinates of the anchor bounds were being passed to the PopupPositionProvider , leading to incorrect popup placements. Popup positioning calculations now use the correct relative coordinates.( 1f7edf , b/469940907 )"
+          ],
+          "api_changes": []
+        }
+      },
+      "1.10.2": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.2",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.3": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.3",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.4": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.4",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.5": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.5",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.10.6": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.10.6",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.11.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.11.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.11.1": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.11.1",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      }
+    },
+    "androidx.compose.material3.adaptive": {
+      "1.0.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive#1.0.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.1.0-alpha02": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive#1.1.0-alpha02",
+        "changes": {
+          "new_features": [
+            "Motion customization ( I0bf9c ), ( I80e66 ) is supported for makers to change the default motions during adaptive scaffold state changes. Makers can choose from a set of default entering and exiting transitions, or implement pure custom transitions with the info provided through new motion scopes.",
+            "Implement fading animation of pane expansion drag handles ( 46e3c69 )",
+            "Make remembered PaneExpansionState Saveable ( 61ff76f )"
+          ],
+          "bug_fixes": [],
+          "api_changes": [
+            "Add missing pane expansion APis to scaffolds ( Ic5bc0 )",
+            "ThreePaneScaffoldDestinationItem.content renamed to contentKey . rememberListDetailPaneScaffoldNavigator and rememberSupportingPaneScaffoldNavigator default type argument changed from Nothing to Any . ( I58749 )",
+            "Mark ThreePaneScaffoldState as stable ( I64aec )",
+            "Make drag handle parameters be scoped ( Ic0aa2 )"
+          ]
+        }
+      },
+      "1.1.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive#1.1.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      },
+      "1.2.0": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive#1.2.0",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      }
+    },
+    "androidx.compose": {
+      "0.1.0-dev14": {
+        "release_date": "",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose#0.1.0-dev14",
+        "changes": {
+          "new_features": [],
+          "bug_fixes": [],
+          "api_changes": []
+        }
+      }
+    }
+  },
   "whats_new": {}
 }
