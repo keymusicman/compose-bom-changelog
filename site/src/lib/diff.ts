@@ -7,10 +7,12 @@ export interface LibraryDiff {
   releases: LibraryVersion[]
 }
 
+export type WhatsNewItem = Article & { bomVersion: string }
+
 export interface DiffResult {
   changed: LibraryDiff[]
   unchanged: string[]
-  whatsNew: Article[]
+  whatsNew: WhatsNewItem[]
 }
 
 function parseSemver(v: string): [number, number, number, string] {
@@ -85,9 +87,11 @@ export function computeDiff(
     }
   }
 
-  // whatsNew: BOM versions strictly after actualFrom, up to and including actualTo
-  const inRange = sorted.slice(actualFromIdx + 1, actualToIdx + 1)
-  const whatsNew = inRange.flatMap(v => data.whats_new[v] ?? [])
+  // whatsNew: BOM versions strictly after actualFrom, up to and including actualTo, newest first
+  const inRange = sorted.slice(actualFromIdx + 1, actualToIdx + 1).reverse()
+  const whatsNew: WhatsNewItem[] = inRange.flatMap(v =>
+    (data.whats_new[v] ?? []).map(a => ({ ...a, bomVersion: v }))
+  )
 
   return { changed, unchanged, whatsNew }
 }

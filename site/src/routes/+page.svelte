@@ -119,8 +119,8 @@
     {#if diff}
       {#if diff.whatsNew.length > 0}
         <section class="whats-new" aria-label="What's new articles">
-          {#each diff.whatsNew as article}
-            <WhatsNewCard {article} />
+          {#each diff.whatsNew as item}
+            <WhatsNewCard article={item} bomVersion={item.bomVersion} />
           {/each}
         </section>
       {/if}

@@ -113,11 +113,17 @@ describe('computeDiff', () => {
     expect(ui.releases[1].changes.bug_fixes).toContain('Fix B')
   })
 
-  it('collects whatsNew articles for BOM versions strictly after from, up to and including to', () => {
+  it('collects whatsNew articles for BOM versions strictly after from, up to and including to, newest first', () => {
     const result = computeDiff('2026.01.00', '2026.03.00', testData)
     expect(result.whatsNew).toHaveLength(2)
-    expect(result.whatsNew[0].title).toBe('Feb release')
-    expect(result.whatsNew[1].title).toBe('Mar release')
+    expect(result.whatsNew[0].title).toBe('Mar release')
+    expect(result.whatsNew[1].title).toBe('Feb release')
+  })
+
+  it('attaches bomVersion to each whatsNew item', () => {
+    const result = computeDiff('2026.01.00', '2026.03.00', testData)
+    expect(result.whatsNew[0].bomVersion).toBe('2026.03.00')
+    expect(result.whatsNew[1].bomVersion).toBe('2026.02.00')
   })
 
   it('does not include whatsNew for the fromBom itself', () => {
