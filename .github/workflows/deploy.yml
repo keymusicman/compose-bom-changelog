@@ -30,7 +30,7 @@ jobs:
         run: cd site && npm ci
 
       - name: Copy BOM data into static directory
-        run: cp data/bom-data.json site/static/data/bom-data.json
+        run: mkdir -p site/static/data && cp data/bom-data.json site/static/data/bom-data.json
 
       - name: Build site
         run: cd site && npm run build
