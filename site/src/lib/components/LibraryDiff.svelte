@@ -15,7 +15,23 @@
   $: allApiChanges = diff.releases.flatMap(r => r.changes.api_changes)
 
   $: releaseNotesUrl = diff.releases.at(-1)?.release_notes_url
-  $: commitsUrl = diff.releases.at(-1)?.commits_url
+  $: commitsUrl = combinedCommitsUrl(diff.releases)
+
+  function combinedCommitsUrl(releases: LibraryDiffType['releases']): string | undefined {
+    if (releases.length === 0) return undefined
+    const first = releases[0].commits_url
+    const last = releases.at(-1)!.commits_url
+    if (!first || !last) return last ?? first
+    if (releases.length === 1) return last
+
+    const logPattern = /\+log\/([a-f0-9]+)\.\.([a-f0-9]+)\/(.+)$/
+    const firstMatch = first.match(logPattern)
+    const lastMatch = last.match(logPattern)
+    if (!firstMatch || !lastMatch) return last
+
+    const base = last.slice(0, last.search(logPattern))
+    return `${base}+log/${firstMatch[1]}..${lastMatch[2]}/${lastMatch[3]}`
+  }
 
   let copied = false
 
