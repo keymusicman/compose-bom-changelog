@@ -10,7 +10,7 @@
     <div class="summary">{article.summary}</div>
   </div>
   <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-    <path fill="currentColor" d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </a>
 

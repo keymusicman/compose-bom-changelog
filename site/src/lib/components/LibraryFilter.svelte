@@ -67,7 +67,7 @@
         </label>
       {/each}
 
-      <div class="divider" />
+      <div class="divider"></div>
 
       <label class="option">
         <input type="checkbox" checked={showUnchanged} on:change={toggleUnchanged} />
