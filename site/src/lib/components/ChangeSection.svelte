@@ -46,8 +46,8 @@
     position: absolute;
     left: 2px;
     color: var(--color-text-secondary);
-    font-size: 18px;
-    line-height: 1.3;
+    font-size: 28px;
+    line-height: 0.9;
   }
 
   li :global(strong) {
