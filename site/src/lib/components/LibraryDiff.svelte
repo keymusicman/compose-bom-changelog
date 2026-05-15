@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { LibraryDiff as LibraryDiffType } from '$lib/diff'
+  import { htmlToMarkdown } from '$lib/utils'
   import ChangeSection from './ChangeSection.svelte'
 
   export let diff: LibraryDiffType
@@ -35,25 +36,21 @@
 
   let copied = false
 
-  function stripHtml(html: string): string {
-    return html.replace(/<[^>]+>/g, '')
-  }
-
   function copy() {
     const from = diff.fromVersion ?? 'new'
     const to = diff.toVersion ?? 'removed'
     const lines: string[] = [`${diff.group.replace('androidx.', '')}: ${from} → ${to}`]
     if (allNewFeatures.length > 0) {
       lines.push('', 'New Features')
-      allNewFeatures.forEach(f => lines.push(`· ${stripHtml(f)}`))
+      allNewFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
     if (allBugFixes.length > 0) {
       lines.push('', 'Bug Fixes')
-      allBugFixes.forEach(f => lines.push(`· ${stripHtml(f)}`))
+      allBugFixes.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
     if (allApiChanges.length > 0) {
       lines.push('', 'API Changes')
-      allApiChanges.forEach(f => lines.push(`· ${stripHtml(f)}`))
+      allApiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
     navigator.clipboard.writeText(lines.join('\n'))
     copied = true

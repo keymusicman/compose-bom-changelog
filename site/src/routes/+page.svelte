@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation'
   import type { PageData } from './$types'
   import { computeDiff } from '$lib/diff'
+  import { htmlToMarkdown } from '$lib/utils'
   import BomSelector from '$lib/components/BomSelector.svelte'
   import LibraryFilter from '$lib/components/LibraryFilter.svelte'
   import WhatsNewCard from '$lib/components/WhatsNewCard.svelte'
@@ -72,15 +73,15 @@
       const apiChanges = d.releases.flatMap(r => r.changes.api_changes)
       if (newFeatures.length > 0) {
         lines.push('', 'New Features')
-        newFeatures.forEach(f => lines.push(`· ${f.replace(/<[^>]+>/g, '')}`))
+        newFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
       }
       if (bugFixes.length > 0) {
         lines.push('', 'Bug Fixes')
-        bugFixes.forEach(f => lines.push(`· ${f.replace(/<[^>]+>/g, '')}`))
+        bugFixes.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
       }
       if (apiChanges.length > 0) {
         lines.push('', 'API Changes')
-        apiChanges.forEach(f => lines.push(`· ${f.replace(/<[^>]+>/g, '')}`))
+        apiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
       }
       return lines.join('\n')
     })
@@ -157,11 +158,16 @@
           </div>
           <div class="unchanged-list">
             {#each visibleUnchanged as group}
+              {@const version = data.data.bom_versions[toBom]?.libraries[group] ?? ''}
+              {@const releaseNotesUrl = version ? data.data.library_releases[group]?.[version]?.release_notes_url : undefined}
               <div class="unchanged-item">
                 <span>{group.replace('androidx.', '')}</span>
-                <span class="unchanged-version">
-                  {data.data.bom_versions[toBom]?.libraries[group] ?? ''}
-                </span>
+                <div class="unchanged-right">
+                  <span class="unchanged-version">{version}</span>
+                  {#if releaseNotesUrl}
+                    <a class="notes-link" href={releaseNotesUrl} target="_blank" rel="noopener noreferrer">Release notes ↗</a>
+                  {/if}
+                </div>
               </div>
             {/each}
           </div>
@@ -283,10 +289,22 @@
     font-size: 13px;
   }
 
+  .unchanged-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
   .unchanged-version {
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
     color: var(--color-text-secondary);
+  }
+
+  .notes-link {
+    font-size: 13px;
+    color: var(--color-accent);
+    white-space: nowrap;
   }
 
   .copy-btn {
