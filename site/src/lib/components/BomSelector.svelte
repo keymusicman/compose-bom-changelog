@@ -60,32 +60,32 @@
   .label {
     font-size: 12px;
     font-weight: 500;
-    color: rgba(255,255,255,0.6);
+    color: var(--nav-text-secondary);
     white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   select {
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--nav-control-border);
     border-radius: 4px;
     padding: 0 26px 0 10px;
     height: 30px;
     font-size: 13px;
     font-family: inherit;
-    background: rgba(255,255,255,0.08);
-    color: #ffffff;
+    background-color: var(--nav-control-bg);
+    background-image: var(--nav-chevron);
+    color: var(--nav-text);
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.6)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 8px center;
     cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background-color 0.15s, border-color 0.15s;
   }
 
   select:hover {
-    background-color: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.35);
+    background-color: var(--nav-control-hover-bg);
+    border-color: var(--nav-control-hover-border);
   }
 
   select:focus {
@@ -95,12 +95,12 @@
   }
 
   select option {
-    background: #303134;
-    color: #ffffff;
+    background: var(--color-surface);
+    color: var(--color-text);
   }
 
   .arrow {
-    color: rgba(255,255,255,0.4);
+    color: var(--nav-text-secondary);
     font-size: 14px;
   }
 

@@ -50,18 +50,18 @@
     justify-content: center;
     width: 30px;
     height: 30px;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--nav-control-border);
     border-radius: 4px;
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.8);
+    background: var(--nav-control-bg);
+    color: var(--nav-text);
     padding: 0;
     flex-shrink: 0;
     transition: background 0.15s, border-color 0.15s;
   }
 
   .theme-btn:hover {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.35);
-    color: #ffffff;
+    background: var(--nav-control-hover-bg);
+    border-color: var(--nav-control-hover-border);
+    color: var(--nav-text);
   }
 </style>

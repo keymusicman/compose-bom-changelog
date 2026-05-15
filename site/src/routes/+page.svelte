@@ -219,6 +219,7 @@
     top: 0;
     z-index: 10;
     background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-bottom-border);
     height: var(--header-height);
   }
 
@@ -237,7 +238,7 @@
     font-size: 17px;
     font-weight: 500;
     white-space: nowrap;
-    color: #ffffff;
+    color: var(--nav-text);
     letter-spacing: 0.01em;
   }
 
