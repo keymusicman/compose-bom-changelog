@@ -387,13 +387,19 @@
 
     .controls {
       width: 100%;
-      flex-wrap: nowrap;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .controls :global(.bom-selector) {
-      flex: 1;
-      min-width: 0;
+      width: 100%;
+    }
+
+    .controls :global(.filter-root) {
+      margin-left: auto;
+    }
+
+    .controls-end {
+      margin-left: 0;
     }
   }
 </style>

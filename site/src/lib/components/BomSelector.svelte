@@ -108,6 +108,7 @@
     .bom-selector {
       flex-direction: column;
       align-items: stretch;
+      gap: 0px;
     }
 
     .selector-group {

@@ -151,9 +151,9 @@
 
   @media (max-width: 480px) {
     .popover {
-      right: auto;
-      left: 0;
-      width: calc(100vw - 40px);
+      right: 0;
+      left: auto;
+      max-width: calc(100vw - 40px);
     }
   }
 </style>
