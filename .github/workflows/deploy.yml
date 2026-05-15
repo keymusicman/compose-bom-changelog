@@ -34,6 +34,8 @@ jobs:
 
       - name: Build site
         run: cd site && npm run build
+        env:
+          BASE_PATH: /compose-bom-changelog
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
