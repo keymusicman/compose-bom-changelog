@@ -1,5 +1,6 @@
 {
   "last_updated": "2026-05-15T12:01:37+00:00",
+  "latest_bom_version": "2026.05.00",
   "bom_versions": {
     "2022.10.00": {
       "release_date": "",

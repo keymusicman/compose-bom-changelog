@@ -48,6 +48,8 @@ def load_existing() -> dict:
 
 def save(data: dict) -> None:
     data["last_updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    if data["bom_versions"]:
+        data["latest_bom_version"] = sorted(data["bom_versions"].keys())[-1]
     DATA_FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
 
