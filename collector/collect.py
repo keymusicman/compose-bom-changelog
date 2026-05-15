@@ -93,7 +93,7 @@ def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
         if hasattr(node, "name"):
             if node.name in ("h2", "h3"):
                 break
-            if node.name == "h4":
+            if node.name in ("h4", "p"):
                 label = node.get_text(strip=True).lower()
                 current_category = next(
                     (v for k, v in CATEGORY_MAP.items() if k in label), None
@@ -106,6 +106,60 @@ def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
         node = node.next_sibling
 
     return changes
+
+
+def get_release_date(group: str, version: str) -> str:
+    """Fetch release date from POM Last-Modified header, falling back to empty string."""
+    slug = maven_group_to_slug(group)
+    artifact = slug
+    group_path = group.replace(".", "/")
+    url = f"{MAVEN_BASE}/{group_path}/{artifact}/{version}/{artifact}-{version}.pom"
+    try:
+        resp = httpx.head(url, timeout=15, follow_redirects=True)
+        last_modified = resp.headers.get("last-modified", "")
+        if last_modified:
+            from email.utils import parsedate_to_datetime
+            dt = parsedate_to_datetime(last_modified)
+            return dt.strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    return ""
+
+
+def main() -> None:
+    data = load_existing()
+
+    print("Fetching BOM versions…")
+    all_versions = get_bom_versions()
+    new_versions = [v for v in all_versions if v not in data["bom_versions"]]
+    print(f"  Known: {len(data['bom_versions'])}, New: {len(new_versions)}")
+
+    for bom_version in new_versions:
+        print(f"  Processing BOM {bom_version}…")
+        libraries = get_bom_libraries(bom_version)
+        data["bom_versions"][bom_version] = {
+            "release_date": "",
+            "libraries": libraries,
+        }
+
+        for group, lib_version in libraries.items():
+            if group not in data["library_releases"]:
+                data["library_releases"][group] = {}
+
+            if lib_version not in data["library_releases"][group]:
+                print(f"    Scraping {group} {lib_version}…")
+                changes = scrape_release_notes(group, lib_version)
+                release_date = get_release_date(group, lib_version)
+                slug = maven_group_to_slug(group)
+                release_notes_url = f"{RELEASES_BASE}/{slug}#{lib_version}"
+                data["library_releases"][group][lib_version] = {
+                    "release_date": release_date,
+                    "release_notes_url": release_notes_url,
+                    "changes": changes,
+                }
+
+    save(data)
+    print(f"Done. Wrote {DATA_FILE}")
 
 
 def get_bom_versions() -> list[str]:

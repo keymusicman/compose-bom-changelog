@@ -58,12 +58,12 @@ RELEASES_HTML = """
 <html><body>
   <h3 id="1.11.0">Version 1.11.0</h3>
   <p>April 2, 2026</p>
-  <h4>New Features</h4>
+  <p>New Features</p>
   <ul>
     <li>Added shared element debug tools</li>
     <li>Added trackpad event support</li>
   </ul>
-  <h4>Bug Fixes</h4>
+  <p>Bug Fixes</p>
   <ul>
     <li>Fixed measurement issue</li>
   </ul>
