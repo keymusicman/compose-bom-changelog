@@ -58,6 +58,7 @@ RELEASES_HTML = """
 <html><body>
   <h3 id="1.11.0">Version 1.11.0</h3>
   <p>April 2, 2026</p>
+  <p>androidx.compose.ui:ui-*:1.11.0 is released. Version 1.11.0 contains <a href="https://googlesource.com/commits123">these commits</a>.</p>
   <p>New Features</p>
   <ul>
     <li>Added shared element debug tools</li>
@@ -72,6 +73,19 @@ RELEASES_HTML = """
 </body></html>
 """
 
+RELEASES_HTML_RICH = """
+<html><body>
+  <h3 id="1.12.0">Version 1.12.0</h3>
+  <p>May 1, 2026</p>
+  <p>Version 1.12.0 contains <a href="https://googlesource.com/commits456">these commits</a>.</p>
+  <p>Bug Fixes</p>
+  <ul>
+    <li><strong>State Reporting:</strong> Fixed isTransitionActive. (<a href="https://review.googlesource.com/d3426a">d3426a</a>, <a href="https://issuetracker.google.com/474385510">b/474385510</a>)</li>
+    <li>Plain fix with no markup.</li>
+  </ul>
+</body></html>
+"""
+
 
 def test_maven_group_to_slug():
     assert maven_group_to_slug("androidx.compose.ui") == "compose-ui"
@@ -81,19 +95,35 @@ def test_maven_group_to_slug():
 
 def test_scrape_release_notes_extracts_changes():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        result = scrape_release_notes("androidx.compose.ui", "1.11.0")
-    assert result["new_features"] == [
+        changes, commits_url = scrape_release_notes("androidx.compose.ui", "1.11.0")
+    assert changes["new_features"] == [
         "Added shared element debug tools",
         "Added trackpad event support",
     ]
-    assert result["bug_fixes"] == ["Fixed measurement issue"]
-    assert result["api_changes"] == []
+    assert changes["bug_fixes"] == ["Fixed measurement issue"]
+    assert changes["api_changes"] == []
+    assert commits_url == "https://googlesource.com/commits123"
 
 
 def test_scrape_release_notes_returns_empty_on_missing_version():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        result = scrape_release_notes("androidx.compose.ui", "9.9.9")
-    assert result == {"new_features": [], "bug_fixes": [], "api_changes": []}
+        changes, commits_url = scrape_release_notes("androidx.compose.ui", "9.9.9")
+    assert changes == {"new_features": [], "bug_fixes": [], "api_changes": []}
+    assert commits_url == ""
+
+
+def test_scrape_release_notes_preserves_bold_and_links():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML_RICH)):
+        changes, commits_url = scrape_release_notes("androidx.compose.ui", "1.12.0")
+    assert commits_url == "https://googlesource.com/commits456"
+    assert len(changes["bug_fixes"]) == 2
+    rich_item = changes["bug_fixes"][0]
+    assert "<strong>State Reporting:</strong>" in rich_item
+    assert 'href="https://review.googlesource.com/d3426a"' in rich_item
+    assert ">d3426a<" in rich_item
+    assert 'href="https://issuetracker.google.com/474385510"' in rich_item
+    plain_item = changes["bug_fixes"][1]
+    assert plain_item == "Plain fix with no markup."
 
 
 def test_get_bom_libraries_groups_by_maven_group():

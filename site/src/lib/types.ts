@@ -13,6 +13,7 @@ export interface Commit {
 export interface LibraryVersion {
   release_date: string
   release_notes_url: string
+  commits_url?: string
   changes: Changes
   commits?: Commit[]
 }

@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
 
 DATA_FILE = Path(__file__).parent.parent / "data" / "bom-data.json"
 
@@ -61,7 +61,41 @@ def maven_group_to_slug(group: str) -> str:
     return group.removeprefix("androidx.").replace(".", "-")
 
 
-def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
+def _element_to_html(node: NavigableString | Tag) -> str:
+    """Serialize a BS4 node to an HTML snippet, preserving safe inline tags."""
+    if isinstance(node, NavigableString):
+        return str(node)
+    if node.name in ("strong", "b", "em"):
+        inner = "".join(_element_to_html(c) for c in node.children)
+        return f"<strong>{inner}</strong>"
+    if node.name == "a":
+        href = node.get("href", "")
+        inner = "".join(_element_to_html(c) for c in node.children)
+        return f'<a href="{href}" target="_blank" rel="noopener noreferrer">{inner}</a>'
+    if node.name == "code":
+        inner = "".join(_element_to_html(c) for c in node.children)
+        return f"<code>{inner}</code>"
+    return "".join(_element_to_html(c) for c in node.children)
+
+
+def _extract_commits_url(heading: Tag) -> str:
+    """Return the googlesource 'these commits' URL from the paragraph after the heading."""
+    node = heading.next_sibling
+    while node is not None:
+        if hasattr(node, "name"):
+            if node.name in ("h2", "h3"):
+                break
+            if node.name == "p":
+                link = node.find("a")
+                if link and "commit" in link.get_text().lower():
+                    return link.get("href", "")
+        node = node.next_sibling
+    return ""
+
+
+def scrape_release_notes(
+    group: str, version: str
+) -> tuple[dict[str, list[str]], str]:
     slug = maven_group_to_slug(group)
     url = f"{RELEASES_BASE}/{slug}"
     empty: dict[str, list[str]] = {"new_features": [], "bug_fixes": [], "api_changes": []}
@@ -70,7 +104,7 @@ def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
         resp = httpx.get(url, timeout=30, follow_redirects=True)
         resp.raise_for_status()
     except httpx.HTTPError:
-        return empty
+        return empty, ""
 
     soup = BeautifulSoup(resp.text, "lxml")
 
@@ -83,7 +117,9 @@ def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
         or soup.find(id=f"version-{version.replace('.', '-')}")
     )
     if not heading:
-        return empty
+        return empty, ""
+
+    commits_url = _extract_commits_url(heading)
 
     changes: dict[str, list[str]] = {"new_features": [], "bug_fixes": [], "api_changes": []}
     current_category: str | None = None
@@ -100,12 +136,12 @@ def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
                 )
             elif node.name == "ul" and current_category:
                 for li in node.find_all("li", recursive=False):
-                    text = li.get_text(separator=" ", strip=True)
-                    if text:
-                        changes[current_category].append(text)
+                    html = "".join(_element_to_html(c) for c in li.children).strip()
+                    if html:
+                        changes[current_category].append(html)
         node = node.next_sibling
 
-    return changes
+    return changes, commits_url
 
 
 def get_release_date(group: str, version: str) -> str:
@@ -148,13 +184,14 @@ def main() -> None:
 
             if lib_version not in data["library_releases"][group]:
                 print(f"    Scraping {group} {lib_version}…")
-                changes = scrape_release_notes(group, lib_version)
+                changes, commits_url = scrape_release_notes(group, lib_version)
                 release_date = get_release_date(group, lib_version)
                 slug = maven_group_to_slug(group)
                 release_notes_url = f"{RELEASES_BASE}/{slug}#{lib_version}"
                 data["library_releases"][group][lib_version] = {
                     "release_date": release_date,
                     "release_notes_url": release_notes_url,
+                    "commits_url": commits_url,
                     "changes": changes,
                 }
 

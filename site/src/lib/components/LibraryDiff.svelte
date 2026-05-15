@@ -15,6 +15,7 @@
   $: allApiChanges = diff.releases.flatMap(r => r.changes.api_changes)
 
   $: releaseNotesUrl = diff.releases.at(-1)?.release_notes_url
+  $: commitsUrl = diff.releases.at(-1)?.commits_url
 </script>
 
 <div class="card">
@@ -33,11 +34,18 @@
         <span class="removed">removed</span>
       {/if}
     </div>
-    {#if releaseNotesUrl}
-      <a class="notes-link" href={releaseNotesUrl} target="_blank" rel="noopener noreferrer">
-        Release notes ↗
-      </a>
-    {/if}
+    <div class="links">
+      {#if releaseNotesUrl}
+        <a class="notes-link" href={releaseNotesUrl} target="_blank" rel="noopener noreferrer">
+          Release notes ↗
+        </a>
+      {/if}
+      {#if commitsUrl}
+        <a class="notes-link" href={commitsUrl} target="_blank" rel="noopener noreferrer">
+          All commits ↗
+        </a>
+      {/if}
+    </div>
   </div>
 
   {#if hasChanges}
@@ -110,8 +118,14 @@
     font-weight: 600;
   }
 
-  .notes-link {
+  .links {
     margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .notes-link {
     font-size: 13px;
     color: var(--color-accent);
     white-space: nowrap;

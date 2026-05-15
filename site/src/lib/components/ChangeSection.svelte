@@ -8,7 +8,7 @@
     <h4 class="section-label">{label}</h4>
     <ul class="items">
       {#each items as item}
-        <li>{item}</li>
+        <li>{@html item}</li>
       {/each}
     </ul>
   </div>
