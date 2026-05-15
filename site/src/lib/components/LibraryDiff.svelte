@@ -39,17 +39,17 @@
   function copy() {
     const from = diff.fromVersion ?? 'new'
     const to = diff.toVersion ?? 'removed'
-    const lines: string[] = [`${diff.group.replace('androidx.', '')}: ${from} → ${to}`]
+    const lines: string[] = [`# ${diff.group.replace('androidx.', '')}: ${from} → ${to}`]
     if (allNewFeatures.length > 0) {
-      lines.push('', 'New Features')
+      lines.push('', '## New Features')
       allNewFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
     if (allBugFixes.length > 0) {
-      lines.push('', 'Bug Fixes')
+      lines.push('', '## Bug Fixes')
       allBugFixes.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
     if (allApiChanges.length > 0) {
-      lines.push('', 'API Changes')
+      lines.push('', '## API Changes')
       allApiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
     navigator.clipboard.writeText(lines.join('\n'))

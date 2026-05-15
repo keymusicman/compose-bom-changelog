@@ -64,28 +64,29 @@
 
   let copiedAll = false
   function copyAllChanged() {
+    const header = `# Compose BOM: ${fromBom} → ${toBom}`
     const sections = visibleChanged.map(d => {
       const from = d.fromVersion ?? 'new'
       const to = d.toVersion ?? 'removed'
-      const lines: string[] = [`${d.group.replace('androidx.', '')}: ${from} → ${to}`]
+      const lines: string[] = [`## ${d.group.replace('androidx.', '')}: ${from} → ${to}`]
       const newFeatures = d.releases.flatMap(r => r.changes.new_features)
       const bugFixes = d.releases.flatMap(r => r.changes.bug_fixes)
       const apiChanges = d.releases.flatMap(r => r.changes.api_changes)
       if (newFeatures.length > 0) {
-        lines.push('', 'New Features')
+        lines.push('', '### New Features')
         newFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
       }
       if (bugFixes.length > 0) {
-        lines.push('', 'Bug Fixes')
+        lines.push('', '### Bug Fixes')
         bugFixes.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
       }
       if (apiChanges.length > 0) {
-        lines.push('', 'API Changes')
+        lines.push('', '### API Changes')
         apiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
       }
       return lines.join('\n')
     })
-    navigator.clipboard.writeText(sections.join('\n\n'))
+    navigator.clipboard.writeText([header, ...sections].join('\n\n'))
     copiedAll = true
     setTimeout(() => { copiedAll = false }, 1500)
   }
