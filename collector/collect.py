@@ -51,5 +51,31 @@ def save(data: dict) -> None:
     DATA_FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
 
+def get_bom_versions() -> list[str]:
+    url = f"{MAVEN_BASE}/{BOM_GROUP_PATH}/{BOM_ARTIFACT}/maven-metadata.xml"
+    resp = httpx.get(url, timeout=30, follow_redirects=True)
+    resp.raise_for_status()
+    root = ET.fromstring(resp.text)
+    return sorted(v.text for v in root.findall(".//version") if v.text)
+
+
+def get_bom_libraries(version: str) -> dict[str, str]:
+    url = (
+        f"{MAVEN_BASE}/{BOM_GROUP_PATH}/{BOM_ARTIFACT}"
+        f"/{version}/{BOM_ARTIFACT}-{version}.pom"
+    )
+    resp = httpx.get(url, timeout=30, follow_redirects=True)
+    resp.raise_for_status()
+    root = ET.fromstring(resp.text)
+
+    groups: dict[str, str] = {}
+    for dep in root.findall(".//m:dependency", MAVEN_NS):
+        group_id = dep.findtext("m:groupId", namespaces=MAVEN_NS) or ""
+        ver = dep.findtext("m:version", namespaces=MAVEN_NS) or ""
+        if group_id and ver:
+            groups[group_id] = ver  # safe: all artifacts in a group share the same version
+    return groups
+
+
 if __name__ == "__main__":
     main()
