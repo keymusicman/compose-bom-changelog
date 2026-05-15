@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from collect import get_bom_versions, get_bom_libraries
+from collect import get_bom_versions, get_bom_libraries, scrape_release_notes, maven_group_to_slug
 
 
 METADATA_XML = """<?xml version="1.0" encoding="UTF-8"?>
@@ -52,6 +52,48 @@ def test_get_bom_versions():
     with patch("httpx.get", return_value=mock_response(METADATA_XML)):
         versions = get_bom_versions()
     assert versions == ["2026.04.00", "2026.05.00"]
+
+
+RELEASES_HTML = """
+<html><body>
+  <h3 id="1.11.0">Version 1.11.0</h3>
+  <p>April 2, 2026</p>
+  <h4>New Features</h4>
+  <ul>
+    <li>Added shared element debug tools</li>
+    <li>Added trackpad event support</li>
+  </ul>
+  <h4>Bug Fixes</h4>
+  <ul>
+    <li>Fixed measurement issue</li>
+  </ul>
+  <h3 id="1.10.0">Version 1.10.0</h3>
+  <p>February 1, 2026</p>
+</body></html>
+"""
+
+
+def test_maven_group_to_slug():
+    assert maven_group_to_slug("androidx.compose.ui") == "compose-ui"
+    assert maven_group_to_slug("androidx.compose.material3") == "compose-material3"
+    assert maven_group_to_slug("androidx.activity") == "activity"
+
+
+def test_scrape_release_notes_extracts_changes():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
+        result = scrape_release_notes("androidx.compose.ui", "1.11.0")
+    assert result["new_features"] == [
+        "Added shared element debug tools",
+        "Added trackpad event support",
+    ]
+    assert result["bug_fixes"] == ["Fixed measurement issue"]
+    assert result["api_changes"] == []
+
+
+def test_scrape_release_notes_returns_empty_on_missing_version():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
+        result = scrape_release_notes("androidx.compose.ui", "9.9.9")
+    assert result == {"new_features": [], "bug_fixes": [], "api_changes": []}
 
 
 def test_get_bom_libraries_groups_by_maven_group():

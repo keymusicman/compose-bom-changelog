@@ -51,6 +51,63 @@ def save(data: dict) -> None:
     DATA_FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 
 
+def maven_group_to_slug(group: str) -> str:
+    """Convert Maven group ID to AndroidX releases page slug.
+
+    androidx.compose.ui       -> compose-ui
+    androidx.compose.material3 -> compose-material3
+    androidx.activity         -> activity
+    """
+    return group.removeprefix("androidx.").replace(".", "-")
+
+
+def scrape_release_notes(group: str, version: str) -> dict[str, list[str]]:
+    slug = maven_group_to_slug(group)
+    url = f"{RELEASES_BASE}/{slug}"
+    empty: dict[str, list[str]] = {"new_features": [], "bug_fixes": [], "api_changes": []}
+
+    try:
+        resp = httpx.get(url, timeout=30, follow_redirects=True)
+        resp.raise_for_status()
+    except httpx.HTTPError:
+        return empty
+
+    soup = BeautifulSoup(resp.text, "lxml")
+
+    # AndroidX release pages use version as heading id, e.g. id="1.11.0"
+    version_id = version.replace(".", "_")
+    heading = (
+        soup.find(id=version)
+        or soup.find(id=version_id)
+        or soup.find(id=f"version_{version_id}")
+        or soup.find(id=f"version-{version.replace('.', '-')}")
+    )
+    if not heading:
+        return empty
+
+    changes: dict[str, list[str]] = {"new_features": [], "bug_fixes": [], "api_changes": []}
+    current_category: str | None = None
+    node = heading.next_sibling
+
+    while node is not None:
+        if hasattr(node, "name"):
+            if node.name in ("h2", "h3"):
+                break
+            if node.name == "h4":
+                label = node.get_text(strip=True).lower()
+                current_category = next(
+                    (v for k, v in CATEGORY_MAP.items() if k in label), None
+                )
+            elif node.name == "ul" and current_category:
+                for li in node.find_all("li", recursive=False):
+                    text = li.get_text(separator=" ", strip=True)
+                    if text:
+                        changes[current_category].append(text)
+        node = node.next_sibling
+
+    return changes
+
+
 def get_bom_versions() -> list[str]:
     url = f"{MAVEN_BASE}/{BOM_GROUP_PATH}/{BOM_ARTIFACT}/maven-metadata.xml"
     resp = httpx.get(url, timeout=30, follow_redirects=True)
