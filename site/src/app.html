@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Compare Jetpack Compose BOM versions and see what changed" />
     <title>Compose BOM Changelog</title>
+    <script>
+      const t = localStorage.getItem('theme')
+      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t
+    </script>
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">

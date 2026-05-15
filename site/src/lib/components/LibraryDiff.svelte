@@ -174,8 +174,8 @@
   }
 
   .removed {
-    background: #fce8e6;
-    color: #c5221f;
+    background: var(--color-removed-bg);
+    color: var(--color-removed);
     padding: 1px 8px;
     border-radius: 999px;
     font-size: 11px;

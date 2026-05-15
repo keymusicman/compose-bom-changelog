@@ -68,8 +68,8 @@
   li :global(code) {
     font-family: 'Roboto Mono', 'Google Sans Mono', monospace;
     font-size: 0.85em;
-    background: #f1f3f4;
-    border: 1px solid #dadce0;
+    background: var(--color-code-bg);
+    border: 1px solid var(--color-border);
     padding: 2px 5px;
     border-radius: 4px;
     color: var(--color-text);

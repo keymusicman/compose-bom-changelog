@@ -8,6 +8,7 @@
   import LibraryFilter from '$lib/components/LibraryFilter.svelte'
   import WhatsNewCard from '$lib/components/WhatsNewCard.svelte'
   import LibraryDiff from '$lib/components/LibraryDiff.svelte'
+  import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte'
 
   export let data: PageData
 
@@ -110,6 +111,9 @@
           on:change={handleFilterChange}
         />
       {/if}
+      <div class="controls-end">
+        <ThemeSwitcher />
+      </div>
     </div>
   </div>
 </header>
@@ -222,6 +226,10 @@
     gap: 8px;
     flex: 1;
     flex-wrap: wrap;
+  }
+
+  .controls-end {
+    margin-left: auto;
   }
 
   .main {
