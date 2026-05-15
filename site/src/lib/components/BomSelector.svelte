@@ -69,7 +69,8 @@
   select {
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 4px;
-    padding: 5px 26px 5px 10px;
+    padding: 0 26px 0 10px;
+    height: 30px;
     font-size: 13px;
     font-family: inherit;
     background: rgba(255,255,255,0.08);
@@ -106,7 +107,13 @@
   @media (max-width: 480px) {
     .bom-selector {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
+    }
+
+    .selector-group {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      align-items: center;
     }
 
     .arrow {

@@ -88,7 +88,8 @@
     gap: 5px;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 4px;
-    padding: 5px 10px;
+    padding: 0 10px;
+    height: 30px;
     font-size: 13px;
     font-family: inherit;
     background: rgba(255,255,255,0.08);

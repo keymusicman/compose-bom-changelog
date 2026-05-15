@@ -60,6 +60,34 @@
   $: visibleUnchanged = showUnchanged
     ? (diff?.unchanged.filter(g => selected.has(g)) ?? [])
     : []
+
+  let copiedAll = false
+  function copyAllChanged() {
+    const sections = visibleChanged.map(d => {
+      const from = d.fromVersion ?? 'new'
+      const to = d.toVersion ?? 'removed'
+      const lines: string[] = [`${d.group.replace('androidx.', '')}: ${from} → ${to}`]
+      const newFeatures = d.releases.flatMap(r => r.changes.new_features)
+      const bugFixes = d.releases.flatMap(r => r.changes.bug_fixes)
+      const apiChanges = d.releases.flatMap(r => r.changes.api_changes)
+      if (newFeatures.length > 0) {
+        lines.push('', 'New Features')
+        newFeatures.forEach(f => lines.push(`· ${f.replace(/<[^>]+>/g, '')}`))
+      }
+      if (bugFixes.length > 0) {
+        lines.push('', 'Bug Fixes')
+        bugFixes.forEach(f => lines.push(`· ${f.replace(/<[^>]+>/g, '')}`))
+      }
+      if (apiChanges.length > 0) {
+        lines.push('', 'API Changes')
+        apiChanges.forEach(f => lines.push(`· ${f.replace(/<[^>]+>/g, '')}`))
+      }
+      return lines.join('\n')
+    })
+    navigator.clipboard.writeText(sections.join('\n\n'))
+    copiedAll = true
+    setTimeout(() => { copiedAll = false }, 1500)
+  }
 </script>
 
 <header class="header">
@@ -100,6 +128,18 @@
           <div class="section-header">
             <h2 class="section-title">Changed</h2>
             <span class="count">{visibleChanged.length}</span>
+            <button class="copy-btn" class:done={copiedAll} on:click={copyAllChanged} title="Copy all" aria-label="Copy all changed libraries">
+              {#if copiedAll}
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              {:else}
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                </svg>
+              {/if}
+            </button>
           </div>
           <div class="library-list">
             {#each visibleChanged as libDiff (libDiff.group)}
@@ -223,7 +263,7 @@
   .library-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
 
   .unchanged-list {
@@ -249,6 +289,27 @@
     color: var(--color-text-secondary);
   }
 
+  .copy-btn {
+    background: none;
+    border: none;
+    padding: 2px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    transition: opacity 0.15s, color 0.15s;
+  }
+
+  .copy-btn:hover {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+
+  .copy-btn.done {
+    color: var(--color-brand);
+    opacity: 1;
+  }
+
   .empty {
     color: var(--color-text-secondary);
     font-size: 14px;
@@ -270,6 +331,13 @@
 
     .controls {
       width: 100%;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+
+    .controls :global(.bom-selector) {
+      flex: 1;
+      min-width: 0;
     }
   }
 </style>

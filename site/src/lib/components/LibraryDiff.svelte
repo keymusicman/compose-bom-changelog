@@ -16,6 +16,33 @@
 
   $: releaseNotesUrl = diff.releases.at(-1)?.release_notes_url
   $: commitsUrl = diff.releases.at(-1)?.commits_url
+
+  let copied = false
+
+  function stripHtml(html: string): string {
+    return html.replace(/<[^>]+>/g, '')
+  }
+
+  function copy() {
+    const from = diff.fromVersion ?? 'new'
+    const to = diff.toVersion ?? 'removed'
+    const lines: string[] = [`${diff.group.replace('androidx.', '')}: ${from} → ${to}`]
+    if (allNewFeatures.length > 0) {
+      lines.push('', 'New Features')
+      allNewFeatures.forEach(f => lines.push(`· ${stripHtml(f)}`))
+    }
+    if (allBugFixes.length > 0) {
+      lines.push('', 'Bug Fixes')
+      allBugFixes.forEach(f => lines.push(`· ${stripHtml(f)}`))
+    }
+    if (allApiChanges.length > 0) {
+      lines.push('', 'API Changes')
+      allApiChanges.forEach(f => lines.push(`· ${stripHtml(f)}`))
+    }
+    navigator.clipboard.writeText(lines.join('\n'))
+    copied = true
+    setTimeout(() => { copied = false }, 1500)
+  }
 </script>
 
 <div class="card">
@@ -45,6 +72,18 @@
           All commits ↗
         </a>
       {/if}
+      <button class="copy-btn" class:done={copied} on:click={copy} title="Copy" aria-label="Copy library info">
+        {#if copied}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        {:else}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+          </svg>
+        {/if}
+      </button>
     </div>
   </div>
 
@@ -153,5 +192,32 @@
     font-size: 13px;
     color: var(--color-text-secondary);
     font-style: italic;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    padding: 2px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    transition: opacity 0.15s, color 0.15s;
+  }
+
+  .copy-btn:hover {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+
+  .copy-btn.done {
+    color: var(--color-brand);
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .links {
+      margin-left: 0;
+    }
   }
 </style>
