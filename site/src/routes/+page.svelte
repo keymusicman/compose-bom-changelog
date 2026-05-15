@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { page } from '$app/stores'
   import { goto } from '$app/navigation'
   import type { PageData } from './$types'
@@ -64,7 +65,11 @@
     : []
 
   let copiedAll = false
-  function copyAllChanged() {
+  let canShare = false
+
+  onMount(() => { canShare = !!navigator.share })
+
+  function buildAllText(): string {
     const header = `# Compose BOM: ${fromBom} → ${toBom}`
     const sections = visibleChanged.map(d => {
       const from = d.fromVersion ?? 'new'
@@ -87,9 +92,20 @@
       }
       return lines.join('\n')
     })
-    navigator.clipboard.writeText([header, ...sections].join('\n\n'))
+    return [header, ...sections].join('\n\n')
+  }
+
+  function copyAllChanged() {
+    navigator.clipboard.writeText(buildAllText())
     copiedAll = true
     setTimeout(() => { copiedAll = false }, 1500)
+  }
+
+  async function shareAllChanged() {
+    await navigator.share({
+      title: `Compose BOM: ${fromBom} → ${toBom}`,
+      text: buildAllText(),
+    })
   }
 </script>
 
@@ -146,6 +162,15 @@
                 </svg>
               {/if}
             </button>
+            {#if canShare}
+              <button class="copy-btn share-btn" on:click={shareAllChanged} title="Share all" aria-label="Share all changed libraries">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                  <polyline points="16 6 12 2 8 6"/>
+                  <line x1="12" y1="2" x2="12" y2="15"/>
+                </svg>
+              </button>
+            {/if}
           </div>
           <div class="library-list">
             {#each visibleChanged as libDiff (libDiff.group)}
@@ -342,6 +367,10 @@
     font-size: 14px;
     text-align: center;
     padding: 40px 0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .share-btn { display: none; }
   }
 
   @media (max-width: 600px) {

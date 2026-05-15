@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import type { LibraryDiff as LibraryDiffType } from '$lib/diff'
   import { htmlToMarkdown } from '$lib/utils'
   import ChangeSection from './ChangeSection.svelte'
@@ -35,8 +36,11 @@
   }
 
   let copied = false
+  let canShare = false
 
-  function copy() {
+  onMount(() => { canShare = !!navigator.share })
+
+  function buildText(): string {
     const from = diff.fromVersion ?? 'new'
     const to = diff.toVersion ?? 'removed'
     const lines: string[] = [`# ${diff.group.replace('androidx.', '')}: ${from} → ${to}`]
@@ -52,9 +56,22 @@
       lines.push('', '## API Changes')
       allApiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
     }
-    navigator.clipboard.writeText(lines.join('\n'))
+    return lines.join('\n')
+  }
+
+  function copy() {
+    navigator.clipboard.writeText(buildText())
     copied = true
     setTimeout(() => { copied = false }, 1500)
+  }
+
+  async function share() {
+    const from = diff.fromVersion ?? 'new'
+    const to = diff.toVersion ?? 'removed'
+    await navigator.share({
+      title: `${diff.group.replace('androidx.', '')}: ${from} → ${to}`,
+      text: buildText(),
+    })
   }
 </script>
 
@@ -97,6 +114,15 @@
           </svg>
         {/if}
       </button>
+      {#if canShare}
+        <button class="copy-btn share-btn" on:click={share} title="Share" aria-label="Share library info">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+        </button>
+      {/if}
     </div>
   </div>
 
@@ -226,6 +252,10 @@
   .copy-btn.done {
     color: var(--color-brand);
     opacity: 1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .share-btn { display: none; }
   }
 
   @media (max-width: 600px) {
