@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { page } from '$app/stores'
   import type { LibraryDiff as LibraryDiffType } from '$lib/diff'
   import { htmlToMarkdown } from '$lib/utils'
   import ChangeSection from './ChangeSection.svelte'
@@ -43,7 +44,11 @@
   function buildText(): string {
     const from = diff.fromVersion ?? 'new'
     const to = diff.toVersion ?? 'removed'
-    const lines: string[] = [`# ${diff.group.replace('androidx.', '')}: ${from} → ${to}`]
+    const lines: string[] = [
+      `# ${diff.group.replace('androidx.', '')}: ${from} → ${to}`,
+      '',
+      `Full changelog: ${$page.url.href}`,
+    ]
     if (allNewFeatures.length > 0) {
       lines.push('', '## New Features')
       allNewFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))

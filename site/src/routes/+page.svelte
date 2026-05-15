@@ -70,7 +70,7 @@
   onMount(() => { canShare = !!navigator.share })
 
   function buildAllText(): string {
-    const header = `# Compose BOM: ${fromBom} → ${toBom}`
+    const header = `# Compose BOM: ${fromBom} → ${toBom}\n\nFull changelog: ${$page.url.href}`
     const sections = visibleChanged.map(d => {
       const from = d.fromVersion ?? 'new'
       const to = d.toVersion ?? 'removed'
