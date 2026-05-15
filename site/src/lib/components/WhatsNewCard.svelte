@@ -18,14 +18,16 @@
   .card {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
     padding: 14px 16px;
-    background: var(--color-accent-light);
-    border: 1px solid var(--color-accent);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-brand);
     border-radius: var(--radius);
     color: var(--color-text);
     text-decoration: none;
-    transition: box-shadow 0.15s;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
   }
 
   .card:hover {
@@ -34,7 +36,7 @@
   }
 
   .icon {
-    font-size: 20px;
+    font-size: 18px;
     flex-shrink: 0;
     margin-top: 1px;
   }
@@ -45,20 +47,20 @@
   }
 
   .title {
-    font-weight: 600;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 14px;
     color: var(--color-accent);
-    margin-bottom: 2px;
+    margin-bottom: 3px;
   }
 
   .summary {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--color-text-secondary);
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   .chevron {
-    color: var(--color-accent);
+    color: var(--color-text-secondary);
     flex-shrink: 0;
     margin-top: 3px;
   }

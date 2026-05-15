@@ -85,30 +85,37 @@
   .filter-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 6px 12px;
-    font-size: 14px;
-    background: var(--color-bg);
-    color: var(--color-text);
+    gap: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
     white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .filter-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.35);
   }
 
   .filter-btn.active {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: var(--color-brand);
+    color: var(--color-brand);
   }
 
   .popover {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 8px);
     right: 0;
     z-index: 100;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow);
     min-width: 220px;
     padding: 8px 0;
   }
@@ -119,7 +126,8 @@
     gap: 10px;
     padding: 7px 16px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
+    color: var(--color-text);
   }
 
   .option:hover {
@@ -144,7 +152,7 @@
     .popover {
       right: auto;
       left: 0;
-      width: calc(100vw - 32px);
+      width: calc(100vw - 40px);
     }
   }
 </style>

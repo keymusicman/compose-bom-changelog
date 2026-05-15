@@ -49,7 +49,7 @@
   </div>
 
   {#if hasChanges}
-    <div class="changes">
+    <div class="body">
       <ChangeSection label="New Features" items={allNewFeatures} />
       <ChangeSection label="Bug Fixes" items={allBugFixes} />
       <ChangeSection label="API Changes" items={allApiChanges} />
@@ -63,28 +63,38 @@
   .card {
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: 16px;
+    overflow: hidden;
     background: var(--color-bg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow);
   }
 
   .header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
+    padding: 12px 20px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .group-name {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 15px;
+    color: var(--color-text);
   }
 
   .version-badge {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    gap: 4px;
+    font-size: 14px;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .from {
@@ -93,51 +103,54 @@
 
   .arrow {
     color: var(--color-text-secondary);
+    font-size: 11px;
   }
 
   .to {
     color: var(--color-accent);
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .added {
     background: var(--color-added-bg);
     color: var(--color-added);
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: inherit;
   }
 
   .removed {
-    background: #fef2f2;
-    color: #991b1b;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
+    background: #fce8e6;
+    color: #c5221f;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: inherit;
   }
 
   .links {
     margin-left: auto;
     display: flex;
-    gap: 12px;
+    gap: 16px;
     align-items: center;
   }
 
   .notes-link {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--color-accent);
     white-space: nowrap;
   }
 
-  .changes {
-    margin-top: 4px;
+  .body {
+    padding: 14px 20px 16px;
   }
 
   .no-changes {
-    margin-top: 10px;
-    font-size: 14px;
+    padding: 12px 20px;
+    font-size: 13px;
     color: var(--color-text-secondary);
     font-style: italic;
   }

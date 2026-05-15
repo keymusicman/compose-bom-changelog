@@ -7,28 +7,31 @@
 :root {
   --color-bg: #ffffff;
   --color-surface: #f8f9fa;
-  --color-border: #e0e0e0;
-  --color-text: #1a1a1a;
-  --color-text-secondary: #6b7280;
-  --color-accent: #4f46e5;
-  --color-accent-light: #eef2ff;
-  --color-added: #166534;
-  --color-added-bg: #dcfce7;
-  --color-changed: #92400e;
-  --color-changed-bg: #fef3c7;
-  --color-unchanged: #6b7280;
+  --color-border: #dadce0;
+  --color-text: #202124;
+  --color-text-secondary: #5f6368;
+  --color-accent: #1a73e8;
+  --color-accent-light: #e8f0fe;
+  --color-brand: #3ddc84;
+  --color-added: #137333;
+  --color-added-bg: #e6f4ea;
+  --color-changed: #b06000;
+  --color-changed-bg: #fef7e0;
+  --color-unchanged: #5f6368;
+  --nav-bg: #202124;
   --radius: 8px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.1);
-  --max-width: 860px;
+  --shadow: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  --shadow-sm: 0 1px 2px rgba(60,64,67,.2);
+  --max-width: 900px;
   --header-height: 64px;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 16px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 15px;
   line-height: 1.5;
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--color-surface);
 }
 
 a {
@@ -43,4 +46,14 @@ a:hover {
 button {
   cursor: pointer;
   font: inherit;
+}
+
+code {
+  font-family: 'Roboto Mono', 'Google Sans Mono', monospace;
+  font-size: 0.85em;
+  background: #f1f3f4;
+  border: 1px solid #dadce0;
+  padding: 2px 5px;
+  border-radius: 4px;
+  color: var(--color-text);
 }

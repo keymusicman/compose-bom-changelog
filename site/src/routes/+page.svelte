@@ -64,7 +64,7 @@
 
 <header class="header">
   <div class="header-inner">
-    <h1 class="site-title">Compose BOM Changelog</h1>
+    <h1 class="site-title"><span class="brand">Compose</span> BOM Changelog</h1>
     <div class="controls">
       {#if fromBom && toBom}
         <BomSelector
@@ -142,15 +142,14 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
+    background: var(--nav-bg);
     height: var(--header-height);
   }
 
   .header-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 20px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -159,22 +158,27 @@
   }
 
   .site-title {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 500;
     white-space: nowrap;
-    color: var(--color-text);
+    color: #ffffff;
+    letter-spacing: 0.01em;
+  }
+
+  .site-title .brand {
+    color: var(--color-brand);
   }
 
   .controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     flex: 1;
     flex-wrap: wrap;
   }
 
   .main {
-    padding: 24px 16px;
+    padding: 24px 20px 48px;
   }
 
   .container {
@@ -182,25 +186,28 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
   }
 
   .whats-new {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   .section-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-border);
   }
 
   .section-title {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-text);
   }
 
   .count {
@@ -210,18 +217,19 @@
     border-radius: 999px;
     padding: 1px 10px;
     color: var(--color-text-secondary);
+    font-weight: 400;
   }
 
   .library-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   .unchanged-list {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   .unchanged-item {
@@ -229,20 +237,21 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 12px;
-    background: var(--color-surface);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .unchanged-version {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 13px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
     color: var(--color-text-secondary);
   }
 
   .empty {
     color: var(--color-text-secondary);
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
     padding: 40px 0;
   }
