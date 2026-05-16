@@ -1,2 +1,3 @@
 .DS_STORE
 site/static/data/bom-data.json
+site/static/diffs/

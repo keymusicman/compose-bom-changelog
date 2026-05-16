@@ -32,6 +32,9 @@ jobs:
       - name: Copy BOM data into static directory
         run: mkdir -p site/static/data && cp data/bom-data.json site/static/data/bom-data.json
 
+      - name: Generate static diffs
+        run: node scripts/generate-diffs.mjs
+
       - name: Build site
         run: cd site && npm run build
         env:

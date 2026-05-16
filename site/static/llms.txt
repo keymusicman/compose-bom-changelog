@@ -1,0 +1,69 @@
+# Compose BOM Changelog
+
+> A tool for Android developers to compare Jetpack Compose BOM versions and see exactly what changed — aggregated library release notes in one place.
+
+## What this site does
+
+Jetpack Compose is distributed via a Bill of Materials (BOM) that pins versions of all Compose libraries together. When developers upgrade their BOM version, they need to know what changed across all affected libraries. This site provides that diff.
+
+## Machine-readable data
+
+All BOM data is available as a single JSON file:
+
+- **Full dataset**: https://compose-bom.com/data/bom-data.json
+
+The JSON contains:
+- `bom_versions`: all BOM versions (2022.10.00 through present) with their library version mappings
+- `library_releases`: release notes per library per version, structured as `new_features`, `bug_fixes`, `api_changes`
+- `whats_new`: links to official "What's new in Jetpack Compose" articles per BOM version
+
+## Coverage
+
+- **BOM versions**: 2022.10.00 to present (67+ versions)
+- **Libraries tracked**: androidx.compose.animation, androidx.compose.foundation, androidx.compose.material, androidx.compose.material3, androidx.compose.material3.adaptive, androidx.compose.runtime, androidx.compose.ui, androidx.compose
+
+## Pre-computed diffs (recommended for agents)
+
+Static diffs are pre-generated for every pair of adjacent BOM versions and served as JSON and Markdown files.
+
+**Discovery index**: https://compose-bom.com/diffs/index.json
+
+The index lists all available diffs:
+```json
+{
+  "diffs": [
+    {
+      "from": "2022.10.00",
+      "to": "2022.11.00",
+      "changed": 4,
+      "unchanged": 3,
+      "json": "/diffs/2022.10.00--2022.11.00.json",
+      "md": "/diffs/2022.10.00--2022.11.00.md"
+    }
+  ]
+}
+```
+
+**URL pattern**:
+- JSON: `https://compose-bom.com/diffs/{from}--{to}.json`
+- Markdown: `https://compose-bom.com/diffs/{from}--{to}.md`
+
+**Recommended agent workflow**:
+1. Fetch `https://compose-bom.com/diffs/index.json` to get all available version pairs
+2. Find the entry matching the versions you need
+3. Fetch the `.json` or `.md` file for the full diff
+
+Each diff JSON contains: `from`, `to`, `changed` (array with release notes), `unchanged` (array), `whatsNew` (links to official articles).
+
+## How to compute a diff manually
+
+Fetch `bom-data.json`, then:
+1. Look up `bom_versions[fromVersion].libraries` and `bom_versions[toVersion].libraries`
+2. Compare library versions between the two BOM versions
+3. For changed libraries, look up `library_releases[group][version]` for release notes
+
+## Source
+
+- Site: https://compose-bom.com
+- GitHub: https://github.com/keymusicman/compose-bom-changelog
+- Official BOM mapping: https://developer.android.com/develop/ui/compose/bom/bom-mapping
