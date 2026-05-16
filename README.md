@@ -2,7 +2,7 @@
 
 Browse diffs between any two [Jetpack Compose BOM](https://developer.android.com/jetpack/compose/bom) versions, with direct links to library release notes.
 
-**[→ Open the site](https://keymusicman.github.io/compose-bom-changelog/)**
+**[→ Open the site](https://compose-bom.com)**
 
 [![Latest BOM](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fkeymusicman.github.io%2Fcompose-bom-changelog%2Fdata%2Fbom-data.json&query=%24.latest_bom_version&label=latest%20BOM&color=blue)](https://keymusicman.github.io/compose-bom-changelog/)
 [![Last updated](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fkeymusicman.github.io%2Fcompose-bom-changelog%2Fdata%2Fbom-data.json&query=%24.last_updated&label=last%20updated&color=green)](https://keymusicman.github.io/compose-bom-changelog/)
