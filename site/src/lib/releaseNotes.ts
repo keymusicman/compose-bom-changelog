@@ -50,6 +50,58 @@ function extractItems(el: Element, fromVersion: string): MergedItem[] {
   return [{ html: el.outerHTML, kind: 'other', fromVersion }]
 }
 
+const CHANGE_ID_RE = /\bI[0-9a-f]{5,}\b/gi
+const BUG_ID_RE = /\bb\/\d+\b/gi
+
+function extractTrackerIds(html: string): Set<string> {
+  const text = html.replace(/<[^>]+>/g, ' ')
+  const ids = new Set<string>()
+  for (const m of text.matchAll(CHANGE_ID_RE)) {
+    // Normalize to "I" + first 6 hex chars — AndroidX sometimes renders the full
+    // 40-char id in one place and the 6-char short form in another.
+    ids.add(('i' + m[0].slice(1, 7)).toLowerCase())
+  }
+  for (const m of text.matchAll(BUG_ID_RE)) {
+    ids.add(m[0].toLowerCase())
+  }
+  return ids
+}
+
+function plainText(html: string): string {
+  return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
+}
+
+function itemsAreDupes(a: MergedItem, b: MergedItem): boolean {
+  const idsA = extractTrackerIds(a.html)
+  const idsB = extractTrackerIds(b.html)
+  for (const id of idsA) if (idsB.has(id)) return true
+  // Text-substring fallback: catches "Visual Debugging: <stable wording>" repeated as
+  // bare "<pre-release wording>" without tracker IDs.
+  const ta = plainText(a.html)
+  const tb = plainText(b.html)
+  if (ta.length < 40 || tb.length < 40) return false
+  const [shorter, longer] = ta.length < tb.length ? [ta, tb] : [tb, ta]
+  return longer.includes(shorter)
+}
+
+function dedupeItems(items: MergedItem[]): MergedItem[] {
+  // Drop earlier items that duplicate a later one in the same section. The later
+  // item is kept because AndroidX stable releases usually carry the polished
+  // consolidated wording for changes first introduced in alpha/beta releases.
+  const drop = new Set<number>()
+  for (let i = 0; i < items.length; i++) {
+    if (drop.has(i)) continue
+    for (let j = i + 1; j < items.length; j++) {
+      if (drop.has(j)) continue
+      if (itemsAreDupes(items[i], items[j])) {
+        drop.add(i)
+        break
+      }
+    }
+  }
+  return items.filter((_, i) => !drop.has(i))
+}
+
 export function mergeReleaseSections(releases: LibraryRelease[]): MergedSection[] {
   const sections: MergedSection[] = []
   const byHeading = new Map<string, MergedSection>()
@@ -86,6 +138,9 @@ export function mergeReleaseSections(releases: LibraryRelease[]): MergedSection[
     }
   }
 
+  for (const section of sections) {
+    section.items = dedupeItems(section.items)
+  }
   return sections.filter(s => s.items.length > 0)
 }
 

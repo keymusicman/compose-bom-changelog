@@ -118,6 +118,70 @@ describe('mergeReleaseSections', () => {
   })
 })
 
+describe('mergeReleaseSections — dedup', () => {
+  it('drops an earlier item that shares a change-id with a later one (stable wins)', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.11.0-alpha03',
+        '<p><strong>API Changes</strong></p><ul>' +
+          '<li>Added a new api LookaheadAnimationVisualDebugging. (<a href="https://x/Id5575389fd198a82de8f3187c4ab2e16036e64d4">Id5575</a>, <a href="https://x/b/390011686">b/390011686</a>)</li>' +
+          '</ul>'
+      ),
+      release(
+        '1.11.0',
+        '<p><strong>API Changes</strong></p><ul>' +
+          '<li>Added new APIs LookaheadAnimationVisualDebugging, etc. (<a href="https://x/Id5575">Id5575</a>, <a href="https://x/b/390011686">b/390011686</a>)</li>' +
+          '</ul>'
+      ),
+    ])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].items).toHaveLength(1)
+    expect(merged[0].items[0].fromVersion).toBe('stable')
+    expect(merged[0].items[0].html).toContain('Added new APIs')
+  })
+
+  it('drops an earlier item whose text is contained in a later one (no tracker IDs)', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.11.0-alpha01',
+        '<p><strong>New Features</strong></p><ul>' +
+          '<li>Introduced visual debugging capabilities to allow visualizations of shared elements and animated bounds, including target bounds and trajectory.</li>' +
+          '</ul>'
+      ),
+      release(
+        '1.11.0',
+        '<p><strong>New Features</strong></p><ul>' +
+          '<li><strong>Visual Debugging:</strong> Introduced visual debugging capabilities to allow visualizations of shared elements and animated bounds, including target bounds and trajectory.</li>' +
+          '</ul>'
+      ),
+    ])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].items).toHaveLength(1)
+    expect(merged[0].items[0].fromVersion).toBe('stable')
+    expect(merged[0].items[0].html).toContain('<strong>Visual Debugging:</strong>')
+  })
+
+  it('keeps distinct items that happen to share a section heading', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.11.0-alpha01',
+        '<p><strong>Bug Fixes</strong></p><ul>' +
+          '<li>Fixed thread safety in SeekableTransitionState. (<a href="https://x/Ia">Ia11111</a>)</li>' +
+          '</ul>'
+      ),
+      release(
+        '1.11.0',
+        '<p><strong>Bug Fixes</strong></p><ul>' +
+          '<li>Performance: Improved sharedElements map access. (<a href="https://x/Ib">Ib22222</a>)</li>' +
+          '</ul>'
+      ),
+    ])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].items).toHaveLength(2)
+    expect(merged[0].items.map(i => i.fromVersion)).toEqual(['alpha01', 'stable'])
+  })
+})
+
 describe('mergedSectionsToMarkdown', () => {
   it('renders sections with bold headings and tagged items', () => {
     const merged = mergeReleaseSections([
