@@ -2,11 +2,17 @@
   import { onMount } from 'svelte'
   import { page } from '$app/stores'
   import type { LibraryDiff as LibraryDiffType } from '$lib/diff'
-  import { htmlToMarkdown } from '$lib/utils'
+  import { groupReleasesByStable } from '$lib/diff'
+  import { mergeReleaseSections, mergedSectionsToMarkdown } from '$lib/releaseNotes'
 
   export let diff: LibraryDiffType
 
-  $: hasReleases = diff.releases.length > 0
+  $: groups = groupReleasesByStable(diff.releases)
+  $: viewGroups = groups.map(g => ({
+    ...g,
+    mergedSections: mergeReleaseSections(g.releases),
+  }))
+  $: hasReleases = viewGroups.length > 0
 
   $: releaseNotesUrl = diff.releases.at(-1)?.release_notes_url
   $: commitsUrl = combinedCommitsUrl(diff.releases)
@@ -40,11 +46,14 @@
       '',
       `Full changelog: ${$page.url.href}`,
     ]
-    for (const r of diff.releases) {
-      const heading = r.release_date ? `${r.version} — ${r.release_date}` : r.version
+    for (const g of viewGroups) {
+      const heading = g.releaseDate ? `${g.stableVersion} — ${g.releaseDate}` : g.stableVersion
       lines.push('', `## ${heading}`)
-      lines.push('')
-      lines.push(r.release_notes_html.trim() ? htmlToMarkdown(r.release_notes_html) : '_No changes_')
+      if (g.mergedSections.length === 0) {
+        lines.push('', '_No changes_')
+      } else {
+        lines.push('', mergedSectionsToMarkdown(g.mergedSections))
+      }
     }
     return lines.join('\n')
   }
@@ -118,16 +127,27 @@
 
   {#if hasReleases}
     <div class="body">
-      {#each diff.releases as r (r.version)}
+      {#each viewGroups as g (g.stableVersion)}
         <section class="release">
           <h4 class="release-version">
-            <span class="version-num">{r.version}</span>
-            {#if r.release_date}
-              <span class="release-date">{r.release_date}</span>
+            <span class="version-num">{g.stableVersion}</span>
+            {#if g.releaseDate}
+              <span class="release-date">{g.releaseDate}</span>
             {/if}
           </h4>
-          {#if r.release_notes_html.trim()}
-            <div class="release-body">{@html r.release_notes_html}</div>
+          {#if g.mergedSections.length > 0}
+            <div class="release-body">
+              {#each g.mergedSections as section}
+                {#if section.heading}
+                  <h5 class="section-heading">{section.heading}</h5>
+                {/if}
+                <ul class="items">
+                  {#each section.items as item}
+                    <li class="item" class:item-block={item.kind !== 'li'}><span class="item-html">{@html item.html}</span>{#if item.fromVersion !== 'stable'}<span class="version-chip">{item.fromVersion}</span>{/if}</li>
+                  {/each}
+                </ul>
+              {/each}
+            </div>
           {:else}
             <p class="no-changes-inline">No changes</p>
           {/if}
@@ -234,7 +254,7 @@
   .release {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
 
   .release + .release {
@@ -255,6 +275,7 @@
     font-family: 'Roboto Mono', monospace;
     color: var(--color-text);
     font-weight: 600;
+    font-size: 14px;
   }
 
   .release-date {
@@ -264,57 +285,67 @@
     font-variant-numeric: tabular-nums;
   }
 
-  .no-changes-inline {
-    font-size: 13px;
-    color: var(--color-text-secondary);
-    font-style: italic;
-    margin: 0;
-  }
-
   .release-body {
     font-size: 15px;
     line-height: 1.6;
     color: var(--color-text);
   }
 
-  .release-body :global(p) {
-    margin: 0 0 8px;
-  }
-
-  .release-body :global(p:last-child) {
-    margin-bottom: 0;
-  }
-
-  .release-body :global(h4),
-  .release-body :global(h5) {
+  .section-heading {
     font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text-secondary);
-    margin: 12px 0 6px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 10px 0 6px;
   }
 
-  .release-body :global(ul),
-  .release-body :global(ol) {
+  .section-heading:first-child {
+    margin-top: 0;
+  }
+
+  .items {
     list-style: none;
     padding: 0;
     margin: 0 0 8px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
   }
 
-  .release-body :global(li) {
+  .item {
     padding-left: 16px;
     position: relative;
   }
 
-  .release-body :global(li::before) {
+  .item::before {
     content: '·';
     position: absolute;
     left: 2px;
+    top: -2px;
     color: var(--color-text-secondary);
     font-size: 28px;
     line-height: 0.9;
+  }
+
+  .item-block {
+    padding-left: 0;
+  }
+
+  .item-block::before {
+    content: none;
+  }
+
+  .version-chip {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 1px 7px;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: 1px;
   }
 
   .release-body :global(strong),
@@ -352,6 +383,13 @@
     padding: 10px 12px;
     overflow-x: auto;
     font-size: 13px;
+  }
+
+  .no-changes-inline {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin: 0;
   }
 
   .no-changes {

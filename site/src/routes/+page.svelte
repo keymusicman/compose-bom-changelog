@@ -3,8 +3,8 @@
   import { page } from '$app/stores'
   import { goto } from '$app/navigation'
   import type { PageData } from './$types'
-  import { computeDiff } from '$lib/diff'
-  import { htmlToMarkdown } from '$lib/utils'
+  import { computeDiff, groupReleasesByStable } from '$lib/diff'
+  import { mergeReleaseSections, mergedSectionsToMarkdown } from '$lib/releaseNotes'
   import BomSelector from '$lib/components/BomSelector.svelte'
   import LibraryFilter from '$lib/components/LibraryFilter.svelte'
   import WhatsNewCard from '$lib/components/WhatsNewCard.svelte'
@@ -75,10 +75,12 @@
       const from = d.fromVersion ?? 'new'
       const to = d.toVersion ?? 'removed'
       const lines: string[] = [`## ${d.group.replace('androidx.', '')}: ${from} → ${to}`]
-      for (const r of d.releases) {
-        const heading = r.release_date ? `${r.version} — ${r.release_date}` : r.version
+      const groups = groupReleasesByStable(d.releases)
+      for (const g of groups) {
+        const heading = g.releaseDate ? `${g.stableVersion} — ${g.releaseDate}` : g.stableVersion
+        const merged = mergeReleaseSections(g.releases)
         lines.push('', `### ${heading}`, '')
-        lines.push(r.release_notes_html.trim() ? htmlToMarkdown(r.release_notes_html) : '_No changes_')
+        lines.push(merged.length === 0 ? '_No changes_' : mergedSectionsToMarkdown(merged))
       }
       return lines.join('\n')
     })

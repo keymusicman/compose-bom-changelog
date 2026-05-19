@@ -1,6 +1,12 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from collect import get_bom_versions, get_bom_libraries, scrape_release_notes, maven_group_to_slug
+from collect import (
+    find_versions_on_page,
+    get_bom_libraries,
+    get_bom_versions,
+    maven_group_to_slug,
+    scrape_release_notes,
+)
 
 
 METADATA_XML = """<?xml version="1.0" encoding="UTF-8"?>
@@ -207,6 +213,43 @@ def test_scrape_release_notes_returns_empty_html_when_only_date():
     assert html == ""
     assert release_date == "2026-06-15"
     assert commits_url == "https://googlesource.com/x"
+
+
+VERSIONS_PAGE = """
+<html><body>
+  <h3 id="1.11.0">Version 1.11.0</h3>
+  <h3 id="1.11.0-rc01">Version 1.11.0-rc01</h3>
+  <h3 id="1.11.0-beta02">Version 1.11.0-beta02</h3>
+  <h3 id="1.11.0-alpha05">Version 1.11.0-alpha05</h3>
+  <h3 id="1.10.0">Version 1.10.0</h3>
+  <h2 id="overview">Overview</h2>
+  <h3 id="not-a-version">Some other anchor</h3>
+  <h3 id="1.10">Not a full semver</h3>
+</body></html>
+"""
+
+
+def test_find_versions_on_page_returns_only_semver_ids():
+    versions = find_versions_on_page(VERSIONS_PAGE)
+    assert set(versions) == {
+        "1.11.0",
+        "1.11.0-rc01",
+        "1.11.0-beta02",
+        "1.11.0-alpha05",
+        "1.10.0",
+    }
+
+
+def test_scrape_release_notes_uses_provided_page_text():
+    # When page_text is given, no HTTP call should happen
+    with patch("httpx.get") as mock_get:
+        html, commits_url, release_date = scrape_release_notes(
+            "androidx.compose.ui", "1.11.0", page_text=RELEASES_HTML
+        )
+        assert not mock_get.called
+    assert release_date == "2026-04-02"
+    assert commits_url == "https://googlesource.com/commits123"
+    assert "<li>Added shared element debug tools</li>" in html
 
 
 def test_get_bom_libraries_groups_by_maven_group():

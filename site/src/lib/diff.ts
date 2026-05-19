@@ -7,6 +7,38 @@ export interface LibraryDiff {
   releases: LibraryRelease[]
 }
 
+export interface ReleaseGroup {
+  stableVersion: string
+  releaseDate: string
+  releaseNotesUrl: string
+  commitsUrl: string
+  releases: LibraryRelease[]
+}
+
+export function groupReleasesByStable(releases: LibraryRelease[]): ReleaseGroup[] {
+  const map = new Map<string, LibraryRelease[]>()
+  for (const r of releases) {
+    const stableKey = r.version.split('-')[0]
+    const list = map.get(stableKey) ?? []
+    list.push(r)
+    map.set(stableKey, list)
+  }
+  const groups: ReleaseGroup[] = []
+  for (const [stableVersion, items] of map) {
+    const sorted = [...items].sort((a, b) => compareSemver(a.version, b.version))
+    const stable = sorted.find(r => !r.version.includes('-'))
+    const last = sorted[sorted.length - 1]
+    groups.push({
+      stableVersion,
+      releaseDate: stable?.release_date ?? last.release_date,
+      releaseNotesUrl: stable?.release_notes_url ?? last.release_notes_url,
+      commitsUrl: stable?.commits_url ?? last.commits_url,
+      releases: sorted,
+    })
+  }
+  return groups.sort((a, b) => compareSemver(a.stableVersion, b.stableVersion))
+}
+
 export type WhatsNewItem = Article & { bomVersion: string }
 
 export interface DiffResult {
@@ -21,7 +53,7 @@ function parseSemver(v: string): [number, number, number, string] {
   return [major, minor, patch, pre]
 }
 
-function compareSemver(a: string, b: string): number {
+export function compareSemver(a: string, b: string): number {
   const [aMaj, aMin, aPatch, aPre] = parseSemver(a)
   const [bMaj, bMin, bPatch, bPre] = parseSemver(b)
   if (aMaj !== bMaj) return aMaj - bMaj

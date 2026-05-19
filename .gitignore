@@ -1,3 +1,4 @@
 .DS_STORE
+.claude/
 site/static/data/bom-data.json
 site/static/diffs/

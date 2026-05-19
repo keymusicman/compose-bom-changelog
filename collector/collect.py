@@ -19,6 +19,7 @@ import httpx
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 DATE_RE = re.compile(r"^[A-Z][a-z]+ \d{1,2}, \d{4}$")
+VERSION_ID_RE = re.compile(r"^\d+\.\d+\.\d+(?:-[a-zA-Z0-9]+)?$")
 
 DATA_FILE = Path(__file__).parent.parent / "data" / "bom-data.json"
 
@@ -130,18 +131,35 @@ def _extract_commits_url(heading: Tag) -> str:
     return ""
 
 
-def scrape_release_notes(group: str, version: str) -> tuple[str, str, str]:
-    """Scrape one version's release notes. Returns (html, commits_url, release_date)."""
+def fetch_library_page(group: str) -> str:
     slug = maven_group_to_slug(group)
     url = f"{RELEASES_BASE}/{slug}"
+    resp = httpx.get(url, timeout=60, follow_redirects=True)
+    resp.raise_for_status()
+    return resp.text
 
-    try:
-        resp = httpx.get(url, timeout=30, follow_redirects=True)
-        resp.raise_for_status()
-    except httpx.HTTPError:
-        return "", "", ""
 
-    soup = BeautifulSoup(resp.text, "lxml")
+def find_versions_on_page(page_text: str) -> list[str]:
+    """Return every version-id heading on a library page, e.g. ['1.10.0', '1.10.0-rc01', ...]."""
+    soup = BeautifulSoup(page_text, "lxml")
+    return [el.get("id", "") for el in soup.find_all(id=VERSION_ID_RE)]
+
+
+def scrape_release_notes(
+    group: str, version: str, page_text: str | None = None
+) -> tuple[str, str, str]:
+    """Scrape one version's release notes. Returns (html, commits_url, release_date).
+
+    Pass `page_text` to reuse an already-fetched page (avoids re-downloading
+    when scraping multiple versions from the same library).
+    """
+    if page_text is None:
+        try:
+            page_text = fetch_library_page(group)
+        except httpx.HTTPError:
+            return "", "", ""
+
+    soup = BeautifulSoup(page_text, "lxml")
 
     version_id = version.replace(".", "_")
     heading = (
@@ -179,24 +197,6 @@ def scrape_release_notes(group: str, version: str) -> tuple[str, str, str]:
     return html, commits_url, release_date
 
 
-def get_release_date(group: str, version: str) -> str:
-    """Fetch release date from POM Last-Modified header, falling back to empty string."""
-    slug = maven_group_to_slug(group)
-    artifact = slug
-    group_path = group.replace(".", "/")
-    url = f"{MAVEN_BASE}/{group_path}/{artifact}/{version}/{artifact}-{version}.pom"
-    try:
-        resp = httpx.head(url, timeout=15, follow_redirects=True)
-        last_modified = resp.headers.get("last-modified", "")
-        if last_modified:
-            from email.utils import parsedate_to_datetime
-            dt = parsedate_to_datetime(last_modified)
-            return dt.strftime("%Y-%m-%d")
-    except Exception:
-        pass
-    return ""
-
-
 def main() -> None:
     data = load_existing()
 
@@ -204,6 +204,8 @@ def main() -> None:
     all_versions = get_bom_versions()
     new_versions = [v for v in all_versions if v not in data["bom_versions"]]
     print(f"  Known: {len(data['bom_versions'])}, New: {len(new_versions)}")
+
+    pages: dict[str, str] = {}
 
     for bom_version in new_versions:
         print(f"  Processing BOM {bom_version}…")
@@ -217,14 +219,23 @@ def main() -> None:
             if group not in data["library_releases"]:
                 data["library_releases"][group] = {}
 
-            if lib_version not in data["library_releases"][group]:
-                print(f"    Scraping {group} {lib_version}…")
-                release_notes_html, commits_url, scraped_date = scrape_release_notes(group, lib_version)
-                release_date = scraped_date or get_release_date(group, lib_version)
+            if group not in pages:
+                pages[group] = fetch_library_page(group)
+            page = pages[group]
+
+            # Scrape every version heading on the page that we haven't seen yet
+            # (covers the BOM-shipped stable plus all alpha/beta/rc pre-releases).
+            for v in find_versions_on_page(page):
+                if v in data["library_releases"][group]:
+                    continue
+                print(f"    Scraping {group} {v}…")
+                release_notes_html, commits_url, scraped_date = scrape_release_notes(
+                    group, v, page_text=page
+                )
                 slug = maven_group_to_slug(group)
-                release_notes_url = f"{RELEASES_BASE}/{slug}#{lib_version}"
-                data["library_releases"][group][lib_version] = {
-                    "release_date": release_date,
+                release_notes_url = f"{RELEASES_BASE}/{slug}#{v}"
+                data["library_releases"][group][v] = {
+                    "release_date": scraped_date,
                     "release_notes_url": release_notes_url,
                     "commits_url": commits_url,
                     "release_notes_html": release_notes_html,
