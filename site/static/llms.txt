@@ -14,7 +14,7 @@ All BOM data is available as a single JSON file:
 
 The JSON contains:
 - `bom_versions`: all BOM versions (2022.10.00 through present) with their library version mappings
-- `library_releases`: release notes per library per version, structured as `new_features`, `bug_fixes`, `api_changes`
+- `library_releases`: per-library release notes, where each version entry has `release_date`, `release_notes_url`, `commits_url`, and `release_notes_html` (verbatim sanitized HTML of the release notes section from the AndroidX docs)
 - `whats_new`: links to official "What's new in Jetpack Compose" articles per BOM version
 
 ## Coverage

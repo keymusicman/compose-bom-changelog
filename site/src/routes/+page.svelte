@@ -75,20 +75,11 @@
       const from = d.fromVersion ?? 'new'
       const to = d.toVersion ?? 'removed'
       const lines: string[] = [`## ${d.group.replace('androidx.', '')}: ${from} → ${to}`]
-      const newFeatures = d.releases.flatMap(r => r.changes.new_features)
-      const bugFixes = d.releases.flatMap(r => r.changes.bug_fixes)
-      const apiChanges = d.releases.flatMap(r => r.changes.api_changes)
-      if (newFeatures.length > 0) {
-        lines.push('', '### New Features')
-        newFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
-      }
-      if (bugFixes.length > 0) {
-        lines.push('', '### Bug Fixes')
-        bugFixes.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
-      }
-      if (apiChanges.length > 0) {
-        lines.push('', '### API Changes')
-        apiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
+      for (const r of d.releases) {
+        if (!r.release_notes_html.trim()) continue
+        lines.push('', `### ${r.version}`)
+        if (r.release_date) lines.push(`_${r.release_date}_`)
+        lines.push('', htmlToMarkdown(r.release_notes_html))
       }
       return lines.join('\n')
     })

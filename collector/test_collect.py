@@ -59,12 +59,12 @@ RELEASES_HTML = """
   <h3 id="1.11.0">Version 1.11.0</h3>
   <p>April 2, 2026</p>
   <p>androidx.compose.ui:ui-*:1.11.0 is released. Version 1.11.0 contains <a href="https://googlesource.com/commits123">these commits</a>.</p>
-  <p>New Features</p>
+  <h4>New Features</h4>
   <ul>
     <li>Added shared element debug tools</li>
     <li>Added trackpad event support</li>
   </ul>
-  <p>Bug Fixes</p>
+  <h4>Bug Fixes</h4>
   <ul>
     <li>Fixed measurement issue</li>
   </ul>
@@ -78,11 +78,38 @@ RELEASES_HTML_RICH = """
   <h3 id="1.12.0">Version 1.12.0</h3>
   <p>May 1, 2026</p>
   <p>Version 1.12.0 contains <a href="https://googlesource.com/commits456">these commits</a>.</p>
-  <p>Bug Fixes</p>
+  <h4>Bug Fixes</h4>
   <ul>
     <li><strong>State Reporting:</strong> Fixed isTransitionActive. (<a href="https://review.googlesource.com/d3426a">d3426a</a>, <a href="https://issuetracker.google.com/474385510">b/474385510</a>)</li>
     <li>Plain fix with no markup.</li>
   </ul>
+</body></html>
+"""
+
+RELEASES_HTML_FREEFORM = """
+<html><body>
+  <h3 id="1.0.0-beta01">Version 1.0.0-beta01</h3>
+  <p>April 7, 2021</p>
+  <p>androidx.compose.animation:animation:1.0.0-beta01 is released. Version 1.0.0-beta01 contains <a href="https://googlesource.com/commitsAB">these commits</a>.</p>
+  <p>Beta is a major milestone where all of the APIs and functionality are complete. <b>Compose 1.0 Beta</b> is ready for you to try out today.</p>
+  <p>For more details on Compose 1.0 Beta, please see <a href="https://example.com/blog">our blog post</a>.</p>
+  <h3 id="0.9.0">Version 0.9.0</h3>
+</body></html>
+"""
+
+RELEASES_HTML_DISALLOWED = """
+<html><body>
+  <h3 id="2.0.0">Version 2.0.0</h3>
+  <p>Date</p>
+  <p>Version 2.0.0 contains <a href="https://googlesource.com/c">these commits</a>.</p>
+  <div class="release-note-card">
+    <p class="some-class">Wrapped content.</p>
+    <script>alert('xss')</script>
+    <ul>
+      <li onclick="evil()">Item with handler</li>
+    </ul>
+  </div>
+  <h3 id="1.0.0">Version 1.0.0</h3>
 </body></html>
 """
 
@@ -93,37 +120,71 @@ def test_maven_group_to_slug():
     assert maven_group_to_slug("androidx.activity") == "activity"
 
 
-def test_scrape_release_notes_extracts_changes():
+def test_scrape_release_notes_returns_html_and_commits():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        changes, commits_url = scrape_release_notes("androidx.compose.ui", "1.11.0")
-    assert changes["new_features"] == [
-        "Added shared element debug tools",
-        "Added trackpad event support",
-    ]
-    assert changes["bug_fixes"] == ["Fixed measurement issue"]
-    assert changes["api_changes"] == []
+        html, commits_url = scrape_release_notes("androidx.compose.ui", "1.11.0")
     assert commits_url == "https://googlesource.com/commits123"
+    assert "<h4>New Features</h4>" in html
+    assert "<li>Added shared element debug tools</li>" in html
+    assert "<li>Added trackpad event support</li>" in html
+    assert "<h4>Bug Fixes</h4>" in html
+    assert "<li>Fixed measurement issue</li>" in html
+
+
+def test_scrape_release_notes_strips_commits_paragraph():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
+        html, _ = scrape_release_notes("androidx.compose.ui", "1.11.0")
+    assert "these commits" not in html
+    assert "is released" not in html
+
+
+def test_scrape_release_notes_stops_at_next_version():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
+        html, _ = scrape_release_notes("androidx.compose.ui", "1.11.0")
+    assert "1.10.0" not in html
+    assert "February 1, 2026" not in html
 
 
 def test_scrape_release_notes_returns_empty_on_missing_version():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        changes, commits_url = scrape_release_notes("androidx.compose.ui", "9.9.9")
-    assert changes == {"new_features": [], "bug_fixes": [], "api_changes": []}
+        html, commits_url = scrape_release_notes("androidx.compose.ui", "9.9.9")
+    assert html == ""
     assert commits_url == ""
 
 
 def test_scrape_release_notes_preserves_bold_and_links():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML_RICH)):
-        changes, commits_url = scrape_release_notes("androidx.compose.ui", "1.12.0")
+        html, commits_url = scrape_release_notes("androidx.compose.ui", "1.12.0")
     assert commits_url == "https://googlesource.com/commits456"
-    assert len(changes["bug_fixes"]) == 2
-    rich_item = changes["bug_fixes"][0]
-    assert "<strong>State Reporting:</strong>" in rich_item
-    assert 'href="https://review.googlesource.com/d3426a"' in rich_item
-    assert ">d3426a<" in rich_item
-    assert 'href="https://issuetracker.google.com/474385510"' in rich_item
-    plain_item = changes["bug_fixes"][1]
-    assert plain_item == "Plain fix with no markup."
+    assert "<strong>State Reporting:</strong>" in html
+    assert 'href="https://review.googlesource.com/d3426a"' in html
+    assert ">d3426a<" in html
+    assert 'href="https://issuetracker.google.com/474385510"' in html
+    assert 'target="_blank"' in html
+    assert 'rel="noopener noreferrer"' in html
+    assert "Plain fix with no markup." in html
+
+
+def test_scrape_release_notes_captures_free_form_paragraphs():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML_FREEFORM)):
+        html, commits_url = scrape_release_notes("androidx.compose.animation", "1.0.0-beta01")
+    assert commits_url == "https://googlesource.com/commitsAB"
+    assert "Beta is a major milestone" in html
+    assert "<strong>Compose 1.0 Beta</strong>" in html
+    assert 'href="https://example.com/blog"' in html
+    assert "these commits" not in html
+
+
+def test_scrape_release_notes_strips_disallowed_tags_and_attributes():
+    with patch("httpx.get", return_value=mock_response(RELEASES_HTML_DISALLOWED)):
+        html, _ = scrape_release_notes("androidx.compose.ui", "2.0.0")
+    assert "<div" not in html
+    assert "<script" not in html
+    assert "release-note-card" not in html
+    assert 'class="some-class"' not in html
+    assert "onclick" not in html
+    assert "Wrapped content." in html
+    assert "<li>Item with handler</li>" in html
 
 
 def test_get_bom_libraries_groups_by_maven_group():

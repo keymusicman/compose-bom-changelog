@@ -8,6 +8,7 @@ Additive only: never overwrites existing library_releases entries,
 never touches the whats_new section.
 """
 
+import html as html_module
 import json
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -26,13 +27,12 @@ RELEASES_BASE = "https://developer.android.com/jetpack/androidx/releases"
 
 MAVEN_NS = {"m": "http://maven.apache.org/POM/4.0.0"}
 
-CATEGORY_MAP = {
-    "new features": "new_features",
-    "api changes": "api_changes",
-    "behavior changes": "api_changes",
-    "bug fixes": "bug_fixes",
-    "deprecations": "api_changes",
+ALLOWED_TAGS = {
+    "p", "ul", "ol", "li", "h4", "h5", "strong", "b", "em",
+    "code", "pre", "a", "br",
 }
+TAG_REMAP = {"b": "strong"}
+VOID_TAGS = {"br"}
 
 
 def load_existing() -> dict:
@@ -63,21 +63,40 @@ def maven_group_to_slug(group: str) -> str:
     return group.removeprefix("androidx.").replace(".", "-")
 
 
-def _element_to_html(node: NavigableString | Tag) -> str:
-    """Serialize a BS4 node to an HTML snippet, preserving safe inline tags."""
+def _is_commits_paragraph(node: Tag) -> bool:
+    if node.name != "p":
+        return False
+    for link in node.find_all("a"):
+        if "commit" in link.get_text(strip=True).lower():
+            return True
+    return False
+
+
+def _serialize(node: NavigableString | Tag) -> str:
     if isinstance(node, NavigableString):
-        return str(node)
-    if node.name in ("strong", "b", "em"):
-        inner = "".join(_element_to_html(c) for c in node.children)
-        return f"<strong>{inner}</strong>"
-    if node.name == "a":
+        return html_module.escape(str(node), quote=False)
+
+    if not hasattr(node, "name") or node.name is None:
+        return ""
+
+    name = node.name.lower()
+
+    if name not in ALLOWED_TAGS:
+        # drop the tag, keep its children
+        return "".join(_serialize(c) for c in node.children)
+
+    out_name = TAG_REMAP.get(name, name)
+
+    if out_name in VOID_TAGS:
+        return f"<{out_name}>"
+
+    inner = "".join(_serialize(c) for c in node.children)
+
+    if out_name == "a":
         href = node.get("href", "")
-        inner = "".join(_element_to_html(c) for c in node.children)
-        return f'<a href="{href}" target="_blank" rel="noopener noreferrer">{inner}</a>'
-    if node.name == "code":
-        inner = "".join(_element_to_html(c) for c in node.children)
-        return f"<code>{inner}</code>"
-    return "".join(_element_to_html(c) for c in node.children)
+        return f'<a href="{html_module.escape(href)}" target="_blank" rel="noopener noreferrer">{inner}</a>'
+
+    return f"<{out_name}>{inner}</{out_name}>"
 
 
 def _extract_commits_url(heading: Tag) -> str:
@@ -95,22 +114,18 @@ def _extract_commits_url(heading: Tag) -> str:
     return ""
 
 
-def scrape_release_notes(
-    group: str, version: str
-) -> tuple[dict[str, list[str]], str]:
+def scrape_release_notes(group: str, version: str) -> tuple[str, str]:
     slug = maven_group_to_slug(group)
     url = f"{RELEASES_BASE}/{slug}"
-    empty: dict[str, list[str]] = {"new_features": [], "bug_fixes": [], "api_changes": []}
 
     try:
         resp = httpx.get(url, timeout=30, follow_redirects=True)
         resp.raise_for_status()
     except httpx.HTTPError:
-        return empty, ""
+        return "", ""
 
     soup = BeautifulSoup(resp.text, "lxml")
 
-    # AndroidX release pages use version as heading id, e.g. id="1.11.0"
     version_id = version.replace(".", "_")
     heading = (
         soup.find(id=version)
@@ -119,31 +134,24 @@ def scrape_release_notes(
         or soup.find(id=f"version-{version.replace('.', '-')}")
     )
     if not heading:
-        return empty, ""
+        return "", ""
 
     commits_url = _extract_commits_url(heading)
 
-    changes: dict[str, list[str]] = {"new_features": [], "bug_fixes": [], "api_changes": []}
-    current_category: str | None = None
+    parts: list[str] = []
     node = heading.next_sibling
-
     while node is not None:
         if hasattr(node, "name"):
             if node.name in ("h2", "h3"):
                 break
-            if node.name in ("h4", "p"):
-                label = node.get_text(strip=True).lower()
-                current_category = next(
-                    (v for k, v in CATEGORY_MAP.items() if k in label), None
-                )
-            elif node.name == "ul" and current_category:
-                for li in node.find_all("li", recursive=False):
-                    html = "".join(_element_to_html(c) for c in li.children).strip()
-                    if html:
-                        changes[current_category].append(html)
+            if isinstance(node, Tag) and _is_commits_paragraph(node):
+                node = node.next_sibling
+                continue
+            parts.append(_serialize(node))
         node = node.next_sibling
 
-    return changes, commits_url
+    html = "".join(parts).strip()
+    return html, commits_url
 
 
 def get_release_date(group: str, version: str) -> str:
@@ -186,7 +194,7 @@ def main() -> None:
 
             if lib_version not in data["library_releases"][group]:
                 print(f"    Scraping {group} {lib_version}…")
-                changes, commits_url = scrape_release_notes(group, lib_version)
+                release_notes_html, commits_url = scrape_release_notes(group, lib_version)
                 release_date = get_release_date(group, lib_version)
                 slug = maven_group_to_slug(group)
                 release_notes_url = f"{RELEASES_BASE}/{slug}#{lib_version}"
@@ -194,7 +202,7 @@ def main() -> None:
                     "release_date": release_date,
                     "release_notes_url": release_notes_url,
                     "commits_url": commits_url,
-                    "changes": changes,
+                    "release_notes_html": release_notes_html,
                 }
 
     save(data)

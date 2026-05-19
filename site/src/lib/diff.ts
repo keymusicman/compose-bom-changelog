@@ -1,10 +1,10 @@
-import type { BomData, LibraryVersion, Article } from './types'
+import type { BomData, LibraryVersion, LibraryRelease, Article } from './types'
 
 export interface LibraryDiff {
   group: string
   fromVersion: string | undefined
   toVersion: string | undefined
-  releases: LibraryVersion[]
+  releases: LibraryRelease[]
 }
 
 export type WhatsNewItem = Article & { bomVersion: string }
@@ -42,11 +42,11 @@ function releasesInRange(
   groupReleases: Record<string, LibraryVersion>,
   fromVersion: string,
   toVersion: string
-): LibraryVersion[] {
+): LibraryRelease[] {
   return Object.entries(groupReleases)
     .filter(([v]) => compareSemver(v, fromVersion) > 0 && compareSemver(v, toVersion) <= 0)
     .sort(([a], [b]) => compareSemver(a, b))
-    .map(([, release]) => release)
+    .map(([version, release]) => ({ version, ...release }))
 }
 
 export function computeDiff(

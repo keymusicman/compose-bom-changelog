@@ -35,46 +35,54 @@ const testData: BomData = {
       '1.10.0': {
         release_date: '2026-01-01',
         release_notes_url: 'https://example.com/ui#1.10.0',
-        changes: { new_features: [], bug_fixes: ['Fix A'], api_changes: [] }
+        commits_url: '',
+        release_notes_html: '<h4>Bug Fixes</h4><ul><li>Fix A</li></ul>'
       },
       '1.11.0': {
         release_date: '2026-02-01',
         release_notes_url: 'https://example.com/ui#1.11.0',
-        changes: { new_features: ['Feature X'], bug_fixes: [], api_changes: [] }
+        commits_url: '',
+        release_notes_html: '<h4>New Features</h4><ul><li>Feature X</li></ul>'
       },
       '1.11.1': {
         release_date: '2026-03-01',
         release_notes_url: 'https://example.com/ui#1.11.1',
-        changes: { new_features: [], bug_fixes: ['Fix B'], api_changes: [] }
+        commits_url: '',
+        release_notes_html: '<h4>Bug Fixes</h4><ul><li>Fix B</li></ul>'
       },
     },
     'androidx.compose.material3': {
       '1.3.0': {
         release_date: '2026-01-01',
         release_notes_url: 'https://example.com/material3#1.3.0',
-        changes: { new_features: [], bug_fixes: [], api_changes: [] }
+        commits_url: '',
+        release_notes_html: ''
       },
       '1.4.0': {
         release_date: '2026-03-01',
         release_notes_url: 'https://example.com/material3#1.4.0',
-        changes: { new_features: ['Material Feature'], bug_fixes: [], api_changes: [] }
+        commits_url: '',
+        release_notes_html: '<h4>New Features</h4><ul><li>Material Feature</li></ul>'
       },
     },
     'androidx.compose.runtime': {
       '1.10.0': {
         release_date: '2026-01-01',
         release_notes_url: 'https://example.com/runtime#1.10.0',
-        changes: { new_features: [], bug_fixes: [], api_changes: [] }
+        commits_url: '',
+        release_notes_html: ''
       },
       '1.11.0': {
         release_date: '2026-02-01',
         release_notes_url: 'https://example.com/runtime#1.11.0',
-        changes: { new_features: [], bug_fixes: ['Runtime fix'], api_changes: [] }
+        commits_url: '',
+        release_notes_html: '<h4>Bug Fixes</h4><ul><li>Runtime fix</li></ul>'
       },
       '1.11.1': {
         release_date: '2026-03-01',
         release_notes_url: 'https://example.com/runtime#1.11.1',
-        changes: { new_features: [], bug_fixes: [], api_changes: [] }
+        commits_url: '',
+        release_notes_html: ''
       },
     },
   },
@@ -105,12 +113,13 @@ describe('computeDiff', () => {
     expect(ui.toVersion).toBe('1.11.0')
   })
 
-  it('includes all intermediate release notes in range', () => {
+  it('includes all intermediate release notes in range with their versions attached', () => {
     const result = computeDiff('2026.01.00', '2026.03.00', testData)
     const ui = result.changed.find(c => c.group === 'androidx.compose.ui')!
     expect(ui.releases).toHaveLength(2) // 1.11.0 and 1.11.1, not 1.10.0
-    expect(ui.releases[0].changes.new_features).toContain('Feature X')
-    expect(ui.releases[1].changes.bug_fixes).toContain('Fix B')
+    expect(ui.releases.map(r => r.version)).toEqual(['1.11.0', '1.11.1'])
+    expect(ui.releases[0].release_notes_html).toContain('Feature X')
+    expect(ui.releases[1].release_notes_html).toContain('Fix B')
   })
 
   it('collects whatsNew articles for BOM versions strictly after from, up to and including to, newest first', () => {

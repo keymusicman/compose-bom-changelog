@@ -1,21 +1,12 @@
-export interface Changes {
-  new_features: string[]
-  bug_fixes: string[]
-  api_changes: string[]
-}
-
-export interface Commit {
-  sha: string
-  message: string
-  url: string
-}
-
 export interface LibraryVersion {
   release_date: string
   release_notes_url: string
-  commits_url?: string
-  changes: Changes
-  commits?: Commit[]
+  commits_url: string
+  release_notes_html: string
+}
+
+export interface LibraryRelease extends LibraryVersion {
+  version: string
 }
 
 export interface BomVersion {

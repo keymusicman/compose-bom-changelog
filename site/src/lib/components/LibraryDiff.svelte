@@ -3,19 +3,11 @@
   import { page } from '$app/stores'
   import type { LibraryDiff as LibraryDiffType } from '$lib/diff'
   import { htmlToMarkdown } from '$lib/utils'
-  import ChangeSection from './ChangeSection.svelte'
 
   export let diff: LibraryDiffType
 
-  $: hasChanges = diff.releases.some(r =>
-    r.changes.new_features.length > 0 ||
-    r.changes.bug_fixes.length > 0 ||
-    r.changes.api_changes.length > 0
-  )
-
-  $: allNewFeatures = diff.releases.flatMap(r => r.changes.new_features)
-  $: allBugFixes = diff.releases.flatMap(r => r.changes.bug_fixes)
-  $: allApiChanges = diff.releases.flatMap(r => r.changes.api_changes)
+  $: nonEmptyReleases = diff.releases.filter(r => r.release_notes_html.trim().length > 0)
+  $: hasChanges = nonEmptyReleases.length > 0
 
   $: releaseNotesUrl = diff.releases.at(-1)?.release_notes_url
   $: commitsUrl = combinedCommitsUrl(diff.releases)
@@ -24,7 +16,7 @@
     if (releases.length === 0) return undefined
     const first = releases[0].commits_url
     const last = releases.at(-1)!.commits_url
-    if (!first || !last) return last ?? first
+    if (!first || !last) return last || first
     if (releases.length === 1) return last
 
     const logPattern = /\+log\/([a-f0-9]+)\.\.([a-f0-9]+)\/(.+)$/
@@ -49,17 +41,10 @@
       '',
       `Full changelog: ${$page.url.href}`,
     ]
-    if (allNewFeatures.length > 0) {
-      lines.push('', '## New Features')
-      allNewFeatures.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
-    }
-    if (allBugFixes.length > 0) {
-      lines.push('', '## Bug Fixes')
-      allBugFixes.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
-    }
-    if (allApiChanges.length > 0) {
-      lines.push('', '## API Changes')
-      allApiChanges.forEach(f => lines.push(`- ${htmlToMarkdown(f)}`))
+    for (const r of nonEmptyReleases) {
+      lines.push('', `## ${r.version}`)
+      if (r.release_date) lines.push(`_${r.release_date}_`)
+      lines.push('', htmlToMarkdown(r.release_notes_html))
     }
     return lines.join('\n')
   }
@@ -133,9 +118,17 @@
 
   {#if hasChanges}
     <div class="body">
-      <ChangeSection label="New Features" items={allNewFeatures} />
-      <ChangeSection label="Bug Fixes" items={allBugFixes} />
-      <ChangeSection label="API Changes" items={allApiChanges} />
+      {#each nonEmptyReleases as r (r.version)}
+        <section class="release">
+          <h4 class="release-version">
+            <span class="version-num">{r.version}</span>
+            {#if r.release_date}
+              <span class="release-date">{r.release_date}</span>
+            {/if}
+          </h4>
+          <div class="release-body">{@html r.release_notes_html}</div>
+        </section>
+      {/each}
     </div>
   {:else}
     <p class="no-changes">No detailed release notes available.</p>
@@ -229,6 +222,123 @@
 
   .body {
     padding: 14px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .release {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .release + .release {
+    border-top: 1px dashed var(--color-border);
+    padding-top: 14px;
+  }
+
+  .release-version {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .version-num {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .release-date {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+
+  .release-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .release-body :global(p) {
+    margin: 0 0 8px;
+  }
+
+  .release-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .release-body :global(h4),
+  .release-body :global(h5) {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin: 12px 0 6px;
+  }
+
+  .release-body :global(ul),
+  .release-body :global(ol) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .release-body :global(li) {
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .release-body :global(li::before) {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: var(--color-text-secondary);
+    font-size: 28px;
+    line-height: 0.9;
+  }
+
+  .release-body :global(strong),
+  .release-body :global(b) {
+    font-weight: 700;
+  }
+
+  .release-body :global(em) {
+    font-style: italic;
+  }
+
+  .release-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .release-body :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .release-body :global(code) {
+    font-family: 'Roboto Mono', 'Google Sans Mono', monospace;
+    font-size: 0.85em;
+    background: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: var(--color-text);
+  }
+
+  .release-body :global(pre) {
+    background: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    font-size: 13px;
   }
 
   .no-changes {
