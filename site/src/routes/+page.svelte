@@ -76,10 +76,9 @@
       const to = d.toVersion ?? 'removed'
       const lines: string[] = [`## ${d.group.replace('androidx.', '')}: ${from} → ${to}`]
       for (const r of d.releases) {
-        if (!r.release_notes_html.trim()) continue
-        lines.push('', `### ${r.version}`)
-        if (r.release_date) lines.push(`_${r.release_date}_`)
-        lines.push('', htmlToMarkdown(r.release_notes_html))
+        const heading = r.release_date ? `${r.version} — ${r.release_date}` : r.version
+        lines.push('', `### ${heading}`, '')
+        lines.push(r.release_notes_html.trim() ? htmlToMarkdown(r.release_notes_html) : '_No changes_')
       }
       return lines.join('\n')
     })

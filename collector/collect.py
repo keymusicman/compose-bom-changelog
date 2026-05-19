@@ -10,12 +10,15 @@ never touches the whats_new section.
 
 import html as html_module
 import json
+import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
 from bs4 import BeautifulSoup, NavigableString, Tag
+
+DATE_RE = re.compile(r"^[A-Z][a-z]+ \d{1,2}, \d{4}$")
 
 DATA_FILE = Path(__file__).parent.parent / "data" / "bom-data.json"
 
@@ -99,6 +102,19 @@ def _serialize(node: NavigableString | Tag) -> str:
     return f"<{out_name}>{inner}</{out_name}>"
 
 
+def _is_date_only_paragraph(node: Tag) -> str:
+    """Return the ISO date if this paragraph contains only a date like 'May 06, 2026'; '' otherwise."""
+    if node.name != "p":
+        return ""
+    text = node.get_text(strip=True)
+    if not DATE_RE.match(text):
+        return ""
+    try:
+        return datetime.strptime(text, "%B %d, %Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return ""
+
+
 def _extract_commits_url(heading: Tag) -> str:
     """Return the googlesource 'these commits' URL from the paragraph after the heading."""
     node = heading.next_sibling
@@ -114,7 +130,8 @@ def _extract_commits_url(heading: Tag) -> str:
     return ""
 
 
-def scrape_release_notes(group: str, version: str) -> tuple[str, str]:
+def scrape_release_notes(group: str, version: str) -> tuple[str, str, str]:
+    """Scrape one version's release notes. Returns (html, commits_url, release_date)."""
     slug = maven_group_to_slug(group)
     url = f"{RELEASES_BASE}/{slug}"
 
@@ -122,7 +139,7 @@ def scrape_release_notes(group: str, version: str) -> tuple[str, str]:
         resp = httpx.get(url, timeout=30, follow_redirects=True)
         resp.raise_for_status()
     except httpx.HTTPError:
-        return "", ""
+        return "", "", ""
 
     soup = BeautifulSoup(resp.text, "lxml")
 
@@ -134,24 +151,32 @@ def scrape_release_notes(group: str, version: str) -> tuple[str, str]:
         or soup.find(id=f"version-{version.replace('.', '-')}")
     )
     if not heading:
-        return "", ""
+        return "", "", ""
 
     commits_url = _extract_commits_url(heading)
 
     parts: list[str] = []
+    release_date = ""
     node = heading.next_sibling
     while node is not None:
         if hasattr(node, "name"):
             if node.name in ("h2", "h3"):
                 break
-            if isinstance(node, Tag) and _is_commits_paragraph(node):
-                node = node.next_sibling
-                continue
+            if isinstance(node, Tag):
+                if _is_commits_paragraph(node):
+                    node = node.next_sibling
+                    continue
+                if not release_date:
+                    date = _is_date_only_paragraph(node)
+                    if date:
+                        release_date = date
+                        node = node.next_sibling
+                        continue
             parts.append(_serialize(node))
         node = node.next_sibling
 
     html = "".join(parts).strip()
-    return html, commits_url
+    return html, commits_url, release_date
 
 
 def get_release_date(group: str, version: str) -> str:
@@ -194,8 +219,8 @@ def main() -> None:
 
             if lib_version not in data["library_releases"][group]:
                 print(f"    Scraping {group} {lib_version}…")
-                release_notes_html, commits_url = scrape_release_notes(group, lib_version)
-                release_date = get_release_date(group, lib_version)
+                release_notes_html, commits_url, scraped_date = scrape_release_notes(group, lib_version)
+                release_date = scraped_date or get_release_date(group, lib_version)
                 slug = maven_group_to_slug(group)
                 release_notes_url = f"{RELEASES_BASE}/{slug}#{lib_version}"
                 data["library_releases"][group][lib_version] = {

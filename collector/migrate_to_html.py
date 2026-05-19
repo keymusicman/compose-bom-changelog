@@ -59,14 +59,16 @@ def main() -> None:
         with patch("collect.httpx.get", return_value=resp_stub):
             versions = sorted(releases[group].keys())
             for version in versions:
-                html, commits_url = scrape_release_notes(group, version)
+                html, commits_url, release_date = scrape_release_notes(group, version)
                 entry = releases[group][version]
                 # Replace the old `changes` field with `release_notes_html`
                 entry.pop("changes", None)
                 entry["release_notes_html"] = html
-                # Keep release_notes_url and release_date as they were.
-                # commits_url: refresh only if we got one (the page is the source of truth);
-                # don't blank out an existing value if the page didn't surface a link this time.
+                # Keep release_notes_url as it was.
+                if release_date:
+                    entry["release_date"] = release_date
+                elif "release_date" not in entry:
+                    entry["release_date"] = ""
                 if commits_url:
                     entry["commits_url"] = commits_url
                 elif "commits_url" not in entry:

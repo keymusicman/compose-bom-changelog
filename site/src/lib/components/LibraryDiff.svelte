@@ -6,8 +6,7 @@
 
   export let diff: LibraryDiffType
 
-  $: nonEmptyReleases = diff.releases.filter(r => r.release_notes_html.trim().length > 0)
-  $: hasChanges = nonEmptyReleases.length > 0
+  $: hasReleases = diff.releases.length > 0
 
   $: releaseNotesUrl = diff.releases.at(-1)?.release_notes_url
   $: commitsUrl = combinedCommitsUrl(diff.releases)
@@ -41,10 +40,11 @@
       '',
       `Full changelog: ${$page.url.href}`,
     ]
-    for (const r of nonEmptyReleases) {
-      lines.push('', `## ${r.version}`)
-      if (r.release_date) lines.push(`_${r.release_date}_`)
-      lines.push('', htmlToMarkdown(r.release_notes_html))
+    for (const r of diff.releases) {
+      const heading = r.release_date ? `${r.version} — ${r.release_date}` : r.version
+      lines.push('', `## ${heading}`)
+      lines.push('')
+      lines.push(r.release_notes_html.trim() ? htmlToMarkdown(r.release_notes_html) : '_No changes_')
     }
     return lines.join('\n')
   }
@@ -116,9 +116,9 @@
     </div>
   </div>
 
-  {#if hasChanges}
+  {#if hasReleases}
     <div class="body">
-      {#each nonEmptyReleases as r (r.version)}
+      {#each diff.releases as r (r.version)}
         <section class="release">
           <h4 class="release-version">
             <span class="version-num">{r.version}</span>
@@ -126,7 +126,11 @@
               <span class="release-date">{r.release_date}</span>
             {/if}
           </h4>
-          <div class="release-body">{@html r.release_notes_html}</div>
+          {#if r.release_notes_html.trim()}
+            <div class="release-body">{@html r.release_notes_html}</div>
+          {:else}
+            <p class="no-changes-inline">No changes</p>
+          {/if}
         </section>
       {/each}
     </div>
@@ -254,8 +258,17 @@
   }
 
   .release-date {
+    margin-left: auto;
     font-size: 12px;
     color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .no-changes-inline {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin: 0;
   }
 
   .release-body {

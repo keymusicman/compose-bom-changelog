@@ -120,10 +120,11 @@ def test_maven_group_to_slug():
     assert maven_group_to_slug("androidx.activity") == "activity"
 
 
-def test_scrape_release_notes_returns_html_and_commits():
+def test_scrape_release_notes_returns_html_and_commits_and_date():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        html, commits_url = scrape_release_notes("androidx.compose.ui", "1.11.0")
+        html, commits_url, release_date = scrape_release_notes("androidx.compose.ui", "1.11.0")
     assert commits_url == "https://googlesource.com/commits123"
+    assert release_date == "2026-04-02"
     assert "<h4>New Features</h4>" in html
     assert "<li>Added shared element debug tools</li>" in html
     assert "<li>Added trackpad event support</li>" in html
@@ -131,31 +132,34 @@ def test_scrape_release_notes_returns_html_and_commits():
     assert "<li>Fixed measurement issue</li>" in html
 
 
-def test_scrape_release_notes_strips_commits_paragraph():
+def test_scrape_release_notes_strips_commits_paragraph_and_date():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        html, _ = scrape_release_notes("androidx.compose.ui", "1.11.0")
+        html, _, _ = scrape_release_notes("androidx.compose.ui", "1.11.0")
     assert "these commits" not in html
     assert "is released" not in html
+    assert "April 2, 2026" not in html
 
 
 def test_scrape_release_notes_stops_at_next_version():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        html, _ = scrape_release_notes("androidx.compose.ui", "1.11.0")
+        html, _, _ = scrape_release_notes("androidx.compose.ui", "1.11.0")
     assert "1.10.0" not in html
     assert "February 1, 2026" not in html
 
 
 def test_scrape_release_notes_returns_empty_on_missing_version():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML)):
-        html, commits_url = scrape_release_notes("androidx.compose.ui", "9.9.9")
+        html, commits_url, release_date = scrape_release_notes("androidx.compose.ui", "9.9.9")
     assert html == ""
     assert commits_url == ""
+    assert release_date == ""
 
 
 def test_scrape_release_notes_preserves_bold_and_links():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML_RICH)):
-        html, commits_url = scrape_release_notes("androidx.compose.ui", "1.12.0")
+        html, commits_url, release_date = scrape_release_notes("androidx.compose.ui", "1.12.0")
     assert commits_url == "https://googlesource.com/commits456"
+    assert release_date == "2026-05-01"
     assert "<strong>State Reporting:</strong>" in html
     assert 'href="https://review.googlesource.com/d3426a"' in html
     assert ">d3426a<" in html
@@ -167,17 +171,19 @@ def test_scrape_release_notes_preserves_bold_and_links():
 
 def test_scrape_release_notes_captures_free_form_paragraphs():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML_FREEFORM)):
-        html, commits_url = scrape_release_notes("androidx.compose.animation", "1.0.0-beta01")
+        html, commits_url, release_date = scrape_release_notes("androidx.compose.animation", "1.0.0-beta01")
     assert commits_url == "https://googlesource.com/commitsAB"
+    assert release_date == "2021-04-07"
     assert "Beta is a major milestone" in html
     assert "<strong>Compose 1.0 Beta</strong>" in html
     assert 'href="https://example.com/blog"' in html
     assert "these commits" not in html
+    assert "April 7, 2021" not in html
 
 
 def test_scrape_release_notes_strips_disallowed_tags_and_attributes():
     with patch("httpx.get", return_value=mock_response(RELEASES_HTML_DISALLOWED)):
-        html, _ = scrape_release_notes("androidx.compose.ui", "2.0.0")
+        html, _, _ = scrape_release_notes("androidx.compose.ui", "2.0.0")
     assert "<div" not in html
     assert "<script" not in html
     assert "release-note-card" not in html
@@ -185,6 +191,22 @@ def test_scrape_release_notes_strips_disallowed_tags_and_attributes():
     assert "onclick" not in html
     assert "Wrapped content." in html
     assert "<li>Item with handler</li>" in html
+
+
+def test_scrape_release_notes_returns_empty_html_when_only_date():
+    only_date_html = """
+<html><body>
+  <h3 id="3.0.0">Version 3.0.0</h3>
+  <p>June 15, 2026</p>
+  <p>Version 3.0.0 contains <a href="https://googlesource.com/x">these commits</a>.</p>
+  <h3 id="2.9.0">Version 2.9.0</h3>
+</body></html>
+"""
+    with patch("httpx.get", return_value=mock_response(only_date_html)):
+        html, commits_url, release_date = scrape_release_notes("androidx.compose.ui", "3.0.0")
+    assert html == ""
+    assert release_date == "2026-06-15"
+    assert commits_url == "https://googlesource.com/x"
 
 
 def test_get_bom_libraries_groups_by_maven_group():
