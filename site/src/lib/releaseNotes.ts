@@ -50,25 +50,37 @@ function extractItems(el: Element, fromVersion: string): MergedItem[] {
   return [{ html: el.outerHTML, kind: 'other', fromVersion }]
 }
 
-const CHANGE_ID_RE = /\bI[0-9a-f]{5,}\b/gi
-const BUG_ID_RE = /\bb\/\d+\b/gi
+const HEX_REF_RE = /^[0-9a-f]{6,}$/i
+const I_REF_RE = /^I[0-9a-f]{5,}$/i
+const BUG_REF_RE = /^b\/\d+$/i
 
 function extractTrackerIds(html: string): Set<string> {
-  const text = html.replace(/<[^>]+>/g, ' ')
+  // Parse the HTML and pull tracker references from link text. AndroidX renders
+  // every tracker (Gerrit change-id with or without an "I" prefix; bug id like
+  // b/12345) as the text of an <a> tag — far more reliable than a free-form regex
+  // over the body, which would either miss bare-hex ids like "0aba38" or match
+  // arbitrary 6-hex tokens inside prose.
+  const doc = new DOMParser().parseFromString(`<!doctype html><body>${html}</body>`, 'text/html')
   const ids = new Set<string>()
-  for (const m of text.matchAll(CHANGE_ID_RE)) {
-    // Normalize to "I" + first 6 hex chars — AndroidX sometimes renders the full
-    // 40-char id in one place and the 6-char short form in another.
-    ids.add(('i' + m[0].slice(1, 7)).toLowerCase())
-  }
-  for (const m of text.matchAll(BUG_ID_RE)) {
-    ids.add(m[0].toLowerCase())
+  for (const a of doc.body.querySelectorAll('a')) {
+    const text = (a.textContent ?? '').trim()
+    if (!text) continue
+    if (BUG_REF_RE.test(text)) {
+      ids.add(text.toLowerCase())
+    } else if (I_REF_RE.test(text)) {
+      ids.add('hex:' + text.slice(1, 7).toLowerCase())
+    } else if (HEX_REF_RE.test(text)) {
+      ids.add('hex:' + text.slice(0, 6).toLowerCase())
+    }
   }
   return ids
 }
 
 function plainText(html: string): string {
-  return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
+  // Strip tags (replace with space to preserve word boundaries), lowercase, then
+  // remove ALL whitespace — tiny formatting differences like "thread.(0aba38)" vs
+  // "thread. (0aba38)" must not block substring matching.
+  return html.replace(/<[^>]+>/g, ' ').toLowerCase().replace(/\s+/g, '')
 }
 
 function itemsAreDupes(a: MergedItem, b: MergedItem): boolean {

@@ -161,6 +161,46 @@ describe('mergeReleaseSections — dedup', () => {
     expect(merged[0].items[0].html).toContain('<strong>Visual Debugging:</strong>')
   })
 
+  it('dedupes items linked to the same Gerrit change-id with no I prefix (bare hex like 0aba38)', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.11.0-beta02',
+        '<p><strong>Bug Fixes</strong></p><ul>' +
+          '<li><code>SeekableTransitionState</code> now properly handles off-thread state changes. (<a href="https://android-review.googlesource.com/#/q/0aba38">0aba38</a>)</li>' +
+          '</ul>'
+      ),
+      release(
+        '1.11.0',
+        '<p><strong>Bug Fixes</strong></p><ul>' +
+          '<li><strong>Thread Safety:</strong> <code>SeekableTransitionState</code> now properly handles off-thread state changes. (<a href="https://android-review.googlesource.com/#/q/0aba38">0aba38</a>)</li>' +
+          '</ul>'
+      ),
+    ])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].items).toHaveLength(1)
+    expect(merged[0].items[0].fromVersion).toBe('stable')
+    expect(merged[0].items[0].html).toContain('Thread Safety')
+  })
+
+  it('substring dedupe tolerates tiny whitespace/punctuation differences between releases', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.0.0-alpha01',
+        '<p><strong>Bug Fixes</strong></p><ul>' +
+          '<li>Some long description of the fix with details that go on for a while.( extra )</li>' +
+          '</ul>'
+      ),
+      release(
+        '1.0.0',
+        '<p><strong>Bug Fixes</strong></p><ul>' +
+          '<li><strong>Prefix:</strong> Some long description of the fix with details that go on for a while. ( extra )</li>' +
+          '</ul>'
+      ),
+    ])
+    expect(merged[0].items).toHaveLength(1)
+    expect(merged[0].items[0].fromVersion).toBe('stable')
+  })
+
   it('keeps distinct items that happen to share a section heading', () => {
     const merged = mergeReleaseSections([
       release(
