@@ -59,7 +59,10 @@
     showUnchanged = e.detail.showUnchanged
   }
 
-  $: visibleChanged = diff?.changed.filter(d => selected.has(d.group)) ?? []
+  $: visibleChanged = diff?.changed.filter(d =>
+    selected.has(d.group) &&
+    (showUnchanged || d.releases.some(r => r.release_notes_html.trim().length > 0))
+  ) ?? []
   $: visibleUnchanged = showUnchanged
     ? (diff?.unchanged.filter(g => selected.has(g)) ?? [])
     : []
@@ -75,7 +78,9 @@
       const from = d.fromVersion ?? 'new'
       const to = d.toVersion ?? 'removed'
       const lines: string[] = [`## ${d.group.replace('androidx.', '')}: ${from} → ${to}`]
-      const groups = groupReleasesByStable(d.releases)
+      const groups = groupReleasesByStable(d.releases).filter(g =>
+        showUnchanged || g.releases.some(r => r.release_notes_html.trim().length > 0)
+      )
       for (const g of groups) {
         const heading = g.releaseDate ? `${g.stableVersion} — ${g.releaseDate}` : g.stableVersion
         const merged = mergeReleaseSections(g.releases)
@@ -166,7 +171,7 @@
           </div>
           <div class="library-list">
             {#each visibleChanged as libDiff (libDiff.group)}
-              <LibraryDiff diff={libDiff} />
+              <LibraryDiff diff={libDiff} {showUnchanged} />
             {/each}
           </div>
         </section>

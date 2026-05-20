@@ -6,9 +6,13 @@
   import { mergeReleaseSections, mergedSectionsToMarkdown } from '$lib/releaseNotes'
 
   export let diff: LibraryDiffType
+  export let showUnchanged: boolean = false
 
   $: groups = groupReleasesByStable(diff.releases)
-  $: viewGroups = groups.map(g => ({
+  $: visibleGroups = groups.filter(g =>
+    showUnchanged || g.releases.some(r => r.release_notes_html.trim().length > 0)
+  )
+  $: viewGroups = visibleGroups.map(g => ({
     ...g,
     mergedSections: mergeReleaseSections(g.releases),
   }))
