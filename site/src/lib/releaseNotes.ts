@@ -72,15 +72,25 @@ function plainText(html: string): string {
 }
 
 function itemsAreDupes(a: MergedItem, b: MergedItem): boolean {
+  // Only dedupe across different releases — two distinct items inside a single
+  // release that happen to share a prefix are not duplicates.
+  if (a.fromVersion === b.fromVersion) return false
+
   const idsA = extractTrackerIds(a.html)
   const idsB = extractTrackerIds(b.html)
   for (const id of idsA) if (idsB.has(id)) return true
-  // Text-substring fallback: catches "Visual Debugging: <stable wording>" repeated as
-  // bare "<pre-release wording>" without tracker IDs.
+
+  // Text-substring fallback for items without tracker IDs. Catches the
+  // "Visual Debugging for Lookahead: <stable wording>" recap pattern where the
+  // stable version is essentially the pre-release wording plus a bold prefix.
+  // Requires the shorter item to make up at least 70% of the longer one — short
+  // shared prefixes (e.g. two distinct items both starting with "Added support
+  // for…") must not collapse.
   const ta = plainText(a.html)
   const tb = plainText(b.html)
-  if (ta.length < 40 || tb.length < 40) return false
+  if (ta.length < 60 || tb.length < 60) return false
   const [shorter, longer] = ta.length < tb.length ? [ta, tb] : [tb, ta]
+  if (shorter.length / longer.length < 0.7) return false
   return longer.includes(shorter)
 }
 
