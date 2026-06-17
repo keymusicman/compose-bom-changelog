@@ -273,12 +273,17 @@ def get_bom_libraries(version: str) -> dict[str, str]:
     resp.raise_for_status()
     root = ET.fromstring(resp.text)
 
+    # Take the version of each group's base artifact (artifactId == the group's
+    # last segment, e.g. androidx.compose.runtime:runtime). Suffixed artifacts
+    # like runtime-watchosx64 can lag a release behind, so we must not let an
+    # arbitrary one set the group version.
     groups: dict[str, str] = {}
     for dep in root.findall(".//m:dependency", MAVEN_NS):
         group_id = dep.findtext("m:groupId", namespaces=MAVEN_NS) or ""
+        artifact_id = dep.findtext("m:artifactId", namespaces=MAVEN_NS) or ""
         ver = dep.findtext("m:version", namespaces=MAVEN_NS) or ""
-        if group_id and ver:
-            groups[group_id] = ver  # safe: all artifacts in a group share the same version
+        if group_id and ver and artifact_id == group_id.rsplit(".", 1)[-1]:
+            groups[group_id] = ver
     return groups
 
 

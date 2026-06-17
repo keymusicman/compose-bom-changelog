@@ -278,8 +278,41 @@ def test_scrape_release_notes_uses_provided_page_text():
 def test_get_bom_libraries_groups_by_maven_group():
     with patch("httpx.get", return_value=mock_response(BOM_POM)):
         libraries = get_bom_libraries("2026.04.00")
-    # Both androidx.compose.ui artifacts share the same version — one entry per group
+    # The base artifact (ui) sets the group version; ui-graphics is ignored
     assert libraries == {
         "androidx.compose.ui": "1.11.0",
         "androidx.compose.material3": "1.4.0",
     }
+
+
+BOM_POM_WITH_STRAGGLERS = """<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>androidx.compose.runtime</groupId>
+        <artifactId>runtime</artifactId>
+        <version>1.11.2</version>
+      </dependency>
+      <dependency>
+        <groupId>androidx.compose.runtime</groupId>
+        <artifactId>runtime-android</artifactId>
+        <version>1.11.2</version>
+      </dependency>
+      <dependency>
+        <groupId>androidx.compose.runtime</groupId>
+        <artifactId>runtime-watchosx64</artifactId>
+        <version>1.10.6</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>"""
+
+
+def test_get_bom_libraries_uses_base_artifact_not_lagging_straggler():
+    # Google sometimes leaves obscure KMP target artifacts (e.g. -watchosx64)
+    # behind on an older version while the base artifact moves on. The group
+    # version must follow the base artifact (runtime), not a lagging straggler.
+    with patch("httpx.get", return_value=mock_response(BOM_POM_WITH_STRAGGLERS)):
+        libraries = get_bom_libraries("2026.05.01")
+    assert libraries == {"androidx.compose.runtime": "1.11.2"}
