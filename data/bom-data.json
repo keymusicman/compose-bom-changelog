@@ -1,6 +1,6 @@
 {
   "last_updated": "2026-06-11T20:06:55+00:00",
-  "latest_bom_version": "2026.06.00",
+  "latest_bom_version": "2026.05.01",
   "bom_versions": {
     "2022.10.00": {
       "release_date": "",
@@ -780,7 +780,7 @@
         "androidx.compose.ui": "1.11.1"
       }
     },
-    "2026.06.00": {
+    "2026.05.01": {
       "release_date": "",
       "libraries": {
         "androidx.compose.animation": "1.11.2",
