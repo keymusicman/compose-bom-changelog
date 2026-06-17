@@ -60,29 +60,6 @@ def test_get_bom_versions():
     assert versions == ["2026.04.00", "2026.05.00"]
 
 
-METADATA_XML_WITH_EXCLUDED = """<?xml version="1.0" encoding="UTF-8"?>
-<metadata>
-  <groupId>androidx.compose</groupId>
-  <artifactId>compose-bom</artifactId>
-  <versioning>
-    <versions>
-      <version>2026.05.00</version>
-      <version>2026.05.01</version>
-      <version>2026.06.00</version>
-    </versions>
-  </versioning>
-</metadata>"""
-
-
-def test_get_bom_versions_skips_excluded():
-    # 2026.05.01 was published to Maven but pulled from Google's official BOM
-    # mapping (superseded by 2026.06.00). The immutable Maven artifact lingers,
-    # so the collector must never re-add it.
-    with patch("httpx.get", return_value=mock_response(METADATA_XML_WITH_EXCLUDED)):
-        versions = get_bom_versions()
-    assert versions == ["2026.05.00", "2026.06.00"]
-
-
 RELEASES_HTML = """
 <html><body>
   <h3 id="1.11.0">Version 1.11.0</h3>

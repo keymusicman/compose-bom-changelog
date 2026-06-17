@@ -29,13 +29,6 @@ BOM_ARTIFACT = "compose-bom"
 
 RELEASES_BASE = "https://developer.android.com/jetpack/androidx/releases"
 
-# BOM versions Google published to Maven but later pulled from the official
-# BOM-to-library mapping (superseded by a corrected release). Maven artifacts
-# are immutable, so these linger in maven-metadata.xml and would otherwise be
-# re-added on every run. 2026.05.01 shipped runtime 1.10.6 against everything
-# else at 1.11.x and was replaced by 2026.06.00 (runtime 1.11.2).
-EXCLUDED_BOM_VERSIONS = frozenset({"2026.05.01"})
-
 MAVEN_NS = {"m": "http://maven.apache.org/POM/4.0.0"}
 
 ALLOWED_TAGS = {
@@ -257,11 +250,7 @@ def get_bom_versions() -> list[str]:
     resp = httpx.get(url, timeout=30, follow_redirects=True)
     resp.raise_for_status()
     root = ET.fromstring(resp.text)
-    return sorted(
-        v.text
-        for v in root.findall(".//version")
-        if v.text and v.text not in EXCLUDED_BOM_VERSIONS
-    )
+    return sorted(v.text for v in root.findall(".//version") if v.text)
 
 
 def get_bom_libraries(version: str) -> dict[str, str]:
