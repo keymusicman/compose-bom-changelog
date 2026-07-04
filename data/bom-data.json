@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-20T15:50:50+00:00",
-  "latest_bom_version": "2026.06.00",
+  "last_updated": "2026-07-04T20:14:02+00:00",
+  "latest_bom_version": "2026.06.01",
   "bom_versions": {
     "2022.10.00": {
       "release_date": "",
@@ -802,6 +802,18 @@
         "androidx.compose.material3.adaptive": "1.2.0",
         "androidx.compose.runtime": "1.11.3",
         "androidx.compose.ui": "1.11.3"
+      }
+    },
+    "2026.06.01": {
+      "release_date": "",
+      "libraries": {
+        "androidx.compose.animation": "1.11.4",
+        "androidx.compose.foundation": "1.11.4",
+        "androidx.compose.material": "1.11.4",
+        "androidx.compose.material3": "1.4.0",
+        "androidx.compose.material3.adaptive": "1.2.0",
+        "androidx.compose.runtime": "1.11.4",
+        "androidx.compose.ui": "1.11.4"
       }
     }
   },
@@ -2054,6 +2066,18 @@
         "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.11.3",
         "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/f024db30e2eb34d643af9804ac0650840a49a05c..b3fb8849de357e09c2efc963c36a1012543ca411/compose/animation",
         "release_notes_html": ""
+      },
+      "1.12.0-beta02": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.12.0-beta02",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/40b1610b08564489b3f6a426cd8833f8615bfc68..aa883d8aa3e51057610bdf6e76ff9753350fa02c/compose/animation",
+        "release_notes_html": ""
+      },
+      "1.11.4": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.11.4",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/b3fb8849de357e09c2efc963c36a1012543ca411..854220f44ea8ea80fee824a6c5a045f39bede289/compose/animation",
+        "release_notes_html": ""
       }
     },
     "androidx.compose.foundation": {
@@ -3292,6 +3316,18 @@
         "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.11.3",
         "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/f024db30e2eb34d643af9804ac0650840a49a05c..b3fb8849de357e09c2efc963c36a1012543ca411/compose/foundation",
         "release_notes_html": ""
+      },
+      "1.12.0-beta02": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.12.0-beta02",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/40b1610b08564489b3f6a426cd8833f8615bfc68..aa883d8aa3e51057610bdf6e76ff9753350fa02c/compose/foundation",
+        "release_notes_html": ""
+      },
+      "1.11.4": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.11.4",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/b3fb8849de357e09c2efc963c36a1012543ca411..854220f44ea8ea80fee824a6c5a045f39bede289/compose/foundation",
+        "release_notes_html": ""
       }
     },
     "androidx.compose.material": {
@@ -4524,6 +4560,18 @@
         "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.11.3",
         "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/f024db30e2eb34d643af9804ac0650840a49a05c..b3fb8849de357e09c2efc963c36a1012543ca411/compose/material",
         "release_notes_html": ""
+      },
+      "1.12.0-beta02": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.12.0-beta02",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/40b1610b08564489b3f6a426cd8833f8615bfc68..aa883d8aa3e51057610bdf6e76ff9753350fa02c/compose/material",
+        "release_notes_html": ""
+      },
+      "1.11.4": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.11.4",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/b3fb8849de357e09c2efc963c36a1012543ca411..854220f44ea8ea80fee824a6c5a045f39bede289/compose/material",
+        "release_notes_html": ""
       }
     },
     "androidx.compose.material3": {
@@ -5198,6 +5246,12 @@
         "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.5.0-alpha21",
         "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/b5d2acb5ad0a36c9d2aba8feb4c7951165f30fbe..bd4a359dc5de8a63e1994022d4282b98de45c418/compose/material3",
         "release_notes_html": "<p><strong>API Changes</strong></p>\n<ul>\n<li>Add shapes to timepicker component API (<a href=\"https://android-review.googlesource.com/#/q/I57f28998a4d9e8712394b45bdd3d2e79bf78cb55\" target=\"_blank\" rel=\"noopener noreferrer\">I57f28</a>, <a href=\"https://issuetracker.google.com/issues/441573791\" target=\"_blank\" rel=\"noopener noreferrer\">b/441573791</a>)</li>\n<li>Added <code>compressionLimit</code> to <code>animateWidth</code> that specifies the padding of the item being compressed which indicates the maximum compression that the item can be squished by. Deprecating the <code>animateWidth</code> API without this <code>compressionLimit</code> parameter. (<a href=\"https://android-review.googlesource.com/#/q/I4a7253bd1fb8b95a70958a4c8fb154324d566f20\" target=\"_blank\" rel=\"noopener noreferrer\">I4a725</a>, <a href=\"https://issuetracker.google.com/issues/418822334\" target=\"_blank\" rel=\"noopener noreferrer\">b/418822334</a>, <a href=\"https://issuetracker.google.com/issues/403281052\" target=\"_blank\" rel=\"noopener noreferrer\">b/403281052</a>)</li>\n<li><code>BottomSheet</code> and <code>ModalBottomSheet</code> <code>PartiallyExpanded</code> anchor is no longer programmatically removed based on layout conditions. Users now explicitly control this anchor via <code>rememberBottomSheetState</code>. Legacy behavior for these components can be enabled via disabling <code>isBottomSheetPartiallyExpandedDeterministicEnabled</code> feature flag or by leveraging deprecated <code>rememberModalBottomSheetState</code> and <code>rememberStandardBottomSheetState</code> functions. <code>isAnchoredDraggableComponentsAnchorRecoveryEnabled</code> has now been removed from feature flags. (<a href=\"https://android-review.googlesource.com/#/q/Ia416719592d05f705e67eb7351a70d1aaf335363\" target=\"_blank\" rel=\"noopener noreferrer\">Ia4167</a>, <a href=\"https://issuetracker.google.com/issues/478210200\" target=\"_blank\" rel=\"noopener noreferrer\">b/478210200</a>, <a href=\"https://issuetracker.google.com/issues/512076811\" target=\"_blank\" rel=\"noopener noreferrer\">b/512076811</a>)</li>\n<li>Reintroduces experimental tag for <code>PullToRefreshDefaults.loadingIndicatorColor</code> and <code>PullToRefreshDefaults.loadingIndicatorContainerColor</code> (<a href=\"https://android-review.googlesource.com/#/q/Ib9d151f52ab743a1124335010579aff6d5812824\" target=\"_blank\" rel=\"noopener noreferrer\">Ib9d15</a>, <a href=\"https://issuetracker.google.com/issues/513225663\" target=\"_blank\" rel=\"noopener noreferrer\">b/513225663</a>)</li>\n<li>Updated the <code>SelectableChipColors</code> parameters to be public (<a href=\"https://android-review.googlesource.com/#/q/I559e07e6fd666b9bcce01bbcbcc3bed91d82a921\" target=\"_blank\" rel=\"noopener noreferrer\">I559e0</a>, <a href=\"https://issuetracker.google.com/issues/512576750\" target=\"_blank\" rel=\"noopener noreferrer\">b/512576750</a>)</li>\n<li>Add <code>horizontalArrangement</code> parameter to <code>MenuItems</code> (<a href=\"https://android-review.googlesource.com/#/q/Ie8088baa0340f3455f69380071cd23614eb98032\" target=\"_blank\" rel=\"noopener noreferrer\">Ie8088</a>, <a href=\"https://issuetracker.google.com/issues/497891817\" target=\"_blank\" rel=\"noopener noreferrer\">b/497891817</a>)</li>\n<li>Re-mark Button's <code>contentPaddingFor</code> function as experimental. (<a href=\"https://android-review.googlesource.com/#/q/I07d3ee89337f467552e6053dbfc5588c345e81ee\" target=\"_blank\" rel=\"noopener noreferrer\">I07d3e</a>, <a href=\"https://issuetracker.google.com/issues/500355872\" target=\"_blank\" rel=\"noopener noreferrer\">b/500355872</a>)</li>\n<li>Introduced <code>roundedShape</code> and <code>tonalColors()</code> in both\n        <code>TextFieldDefaults</code> and <code>OutlinedTextFieldDefaults</code>, which\n        are the visual configurations for expressive style. (<a href=\"https://android-review.googlesource.com/#/q/Id9185e6356df12f82e08953120846a6a1a34515a\" target=\"_blank\" rel=\"noopener noreferrer\">Id9185</a>, <a href=\"https://issuetracker.google.com/issues/448728288\" target=\"_blank\" rel=\"noopener noreferrer\">b/448728288</a>)</li>\n<li>Deprecated <code>TextFieldLabelPosition.Attached</code>, and introduced\n        <code>Inside</code> and <code>Cutout</code> subtypes, which allows more\n        customizability like an <code>OutlinedTextField</code> with inside label\n        placement. Also deprecated\n        <code>OutlinedTextFieldDefaults.contentPadding()</code>, and introduced\n        <code>OutlinedTextFieldDefaults.contentPaddingWithLabel()</code> and\n        <code>OutlinedTextFieldDefaults.contentPaddingWithoutLabel()</code> to\n        support both label positions. (<a href=\"https://android-review.googlesource.com/#/q/I40f625168c7da2ffb815a8ba8c79cac00567ad8b\" target=\"_blank\" rel=\"noopener noreferrer\">I40f62</a>, <a href=\"https://issuetracker.google.com/issues/448728288\" target=\"_blank\" rel=\"noopener noreferrer\">b/448728288</a>)</li>\n</ul>\n<p><strong>Bug Fixes</strong></p>\n<ul>\n<li>Fixed an accessibility issue in <code>TimePicker</code> where keyboard focus was lost when switching from hours to minutes on the dial. Improved accessibility of keyboard focus. (<a href=\"https://android-review.googlesource.com/#/q/I7dd813b7f601da51cb6f1494b6b861f367d3a235\" target=\"_blank\" rel=\"noopener noreferrer\">I7dd81</a>, <a href=\"https://issuetracker.google.com/issues/498361169\" target=\"_blank\" rel=\"noopener noreferrer\">b/498361169</a>)</li>\n</ul>\n<p><strong>External Contribution</strong></p>\n<ul>\n<li>Improved BottomSheet dismiss gesture physics for a smoother experience. (<a href=\"https://android-review.googlesource.com/#/q/I21df57847dc0f9d20132109032e46351e34b1a7d\" target=\"_blank\" rel=\"noopener noreferrer\">I21df5</a>)</li>\n</ul>"
+      },
+      "1.5.0-alpha23": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.5.0-alpha23",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/14c2f2ed81d0f61a3227641684cd875e95dd6529..b65b78b30c22d688ff24192747e67d1acca21fb7/compose/material3",
+        "release_notes_html": "<p><strong>Features</strong>\n- <em>expressive timepicker</em> component  (<a href=\"https://android-review.googlesource.com/#/q/Iaa45fd694328fce77fb45628672edb1d33135d8d\" target=\"_blank\" rel=\"noopener noreferrer\">Iaa45f</a>)\n- Added new non-interactive variants of standard list item and segmented list item which follow Material Expressive specifications. The non-expressive version has been deprecated. (<a href=\"https://android-review.googlesource.com/#/q/Ide4de27c32c25243b6b0a7d38cabce1a582bc56f\" target=\"_blank\" rel=\"noopener noreferrer\">Ide4de</a>, <a href=\"https://issuetracker.google.com/issues/491994186\" target=\"_blank\" rel=\"noopener noreferrer\">b/491994186</a>)</p>\n<p><strong>Behavioral Change</strong>\n- Fix issue where minimum height of expressive list items did not change based on lines of content. The feature flag <code>isExpressiveListItemHeightBasedOnTextLinesFixEnabled</code> has been introduced to aid migration. (<a href=\"https://android-review.googlesource.com/#/q/Ibbb91f82e91a31eeee578da5f2242f500952ce1a\" target=\"_blank\" rel=\"noopener noreferrer\">Ibbb91</a>, <a href=\"https://issuetracker.google.com/issues/484693233\" target=\"_blank\" rel=\"noopener noreferrer\">b/484693233</a>)</p>\n<p><strong>API Changes</strong></p>\n<ul>\n<li>Expressive list item APIs are no longer experimental. (<a href=\"https://android-review.googlesource.com/#/q/I2836a6d2eebbdb98e97eb4038b3b2bd50e8873bd\" target=\"_blank\" rel=\"noopener noreferrer\">I2836a</a>)</li>\n<li>Remove <code>ComponentOverride</code> APIs (<a href=\"https://android-review.googlesource.com/#/q/I820c4aec6fad21ed544189b2dfbaeb6d6a6a6964\" target=\"_blank\" rel=\"noopener noreferrer\">I820c4</a>)</li>\n<li>Remove unused offset parameter from <code>DropdownMenuPopup</code>. Added the default menu properties into the menu defaults. Updated the naming for groups label from <code>MenuDefaults.Label</code> to <code>MenuDefaults.DropdownMenuGroupLabel</code>. Added <code>disabledContainerColor</code> into <code>MenuDefaults.selectableItemColors</code> and <code>MenuDefaults.selectableItemVibrantColors</code>. Added <code>Modifier</code> parameter to composable functions in <code>MenuDefaults</code> that return a layout. (<a href=\"https://android-review.googlesource.com/#/q/I3d2b19381f46df852d6290b39b199d44fbfde480\" target=\"_blank\" rel=\"noopener noreferrer\">I3d2b1</a>)</li>\n<li>Added a public <code>flingAnimationSpec</code> getter to <code>TopAppBarDefaults</code> to expose the default fling animation spec. (<a href=\"https://android-review.googlesource.com/#/q/Ic1daa778e40e6800ceabe55a69934efb9b3e6590\" target=\"_blank\" rel=\"noopener noreferrer\">Ic1daa</a>)</li>\n<li>Graduate <code>TopAppBar</code>, <code>MediumFlexibleTopAppBar</code>,<code>LargeTopAppBar</code>,<code>LargeFlexibleTopAppBar</code>,<code>TwoRowsTopAppBar</code>,<code>FlexibleBottomAppBar</code>,<code>FlexibleContentPadding</code>,<code>FlexibleBottomAppBarHeight</code>,<code>FlexibleHorizontalArrangement</code>,<code>FlexibleFixedHorizontalArrangement</code> to non-experimental. These APIs and variables no longer require the @<code>ExperimentalMaterial3ExpressiveApi</code> opt-in. (<a href=\"https://android-review.googlesource.com/#/q/Ia4af6dae6ed1456102e3eaaf785d0d19c37182cb\" target=\"_blank\" rel=\"noopener noreferrer\">Ia4af6</a>)</li>\n<li>Graduate <code>ExpandedDockedSearchBarWithGap</code> and <code>ExpandedFullScreenContainedSearchBar</code> to non-experimental (<a href=\"https://android-review.googlesource.com/#/q/Ie152d5cd5129bab9c7b103a81c96420d7195f58e\" target=\"_blank\" rel=\"noopener noreferrer\">Ie152d</a>)</li>\n</ul>\n<p><strong>Bug Fixes</strong></p>\n<ul>\n<li>Cleans up API information (<a href=\"https://android-review.googlesource.com/#/q/Ia8066818f7e33220445aaeafa9ecc0668cc4818b\" target=\"_blank\" rel=\"noopener noreferrer\">Ia8066</a>)</li>\n<li>Fix <code>Scaffold</code>'s keyboard navigation order. (<a href=\"https://android-review.googlesource.com/#/q/I77194c764667a8299eb6348c62aea118295ecb33\" target=\"_blank\" rel=\"noopener noreferrer\">I77194</a>, <a href=\"https://issuetracker.google.com/issues/462577176\" target=\"_blank\" rel=\"noopener noreferrer\">b/462577176</a>)</li>\n<li>Remove requirement for <code>compileSdk 37</code> (<a href=\"https://android-review.googlesource.com/#/q/If78b4fbdec15e6b1d6ad34a487ae10b2e2494325\" target=\"_blank\" rel=\"noopener noreferrer\">If78b4</a>)</li>\n<li>Add a11y support for ScrollField component. More specifically, ScrollField now implements selectable and animates to the selected item on click with selected/unselected announcements in Talkback. (<a href=\"https://android-review.googlesource.com/#/q/I7bdb7b4570771b82ddc36eed830c9a797c2b825b\" target=\"_blank\" rel=\"noopener noreferrer\">I7bdb7</a>)</li>\n<li>Fix bug where there is extra bottom padding if the nav suite scaffold's content has ime padding set. (<a href=\"https://android-review.googlesource.com/#/q/I86d9d14f60eb60390e6edf946b9b8c00be8878ac\" target=\"_blank\" rel=\"noopener noreferrer\">I86d9d</a>, <a href=\"https://issuetracker.google.com/issues/389467593\" target=\"_blank\" rel=\"noopener noreferrer\">b/389467593</a>)</li>\n</ul>"
       }
     },
     "androidx.compose.runtime": {
@@ -6448,6 +6502,18 @@
         "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.11.3",
         "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/f024db30e2eb34d643af9804ac0650840a49a05c..b3fb8849de357e09c2efc963c36a1012543ca411/compose/runtime",
         "release_notes_html": ""
+      },
+      "1.12.0-beta02": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.12.0-beta02",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/40b1610b08564489b3f6a426cd8833f8615bfc68..aa883d8aa3e51057610bdf6e76ff9753350fa02c/compose/runtime",
+        "release_notes_html": "<p><strong>Bug Fixes</strong></p>\n<ul>\n<li>Fixed an <code>ArrayIndexOutOfBoundsException</code> in the <code>LinkComposer</code>\nwhen using nested <code>MovableContent</code>. (<a href=\"https://android-review.googlesource.com/#/q/I85daf75aa5dd28409289dcee04ad49a808e0da3e\" target=\"_blank\" rel=\"noopener noreferrer\">I85daf</a>)</li>\n</ul>"
+      },
+      "1.11.4": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.11.4",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/b3fb8849de357e09c2efc963c36a1012543ca411..854220f44ea8ea80fee824a6c5a045f39bede289/compose/runtime",
+        "release_notes_html": ""
       }
     },
     "androidx.compose.ui": {
@@ -7697,6 +7763,18 @@
         "release_date": "2026-06-17",
         "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.11.3",
         "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/f024db30e2eb34d643af9804ac0650840a49a05c..b3fb8849de357e09c2efc963c36a1012543ca411/compose/ui",
+        "release_notes_html": ""
+      },
+      "1.12.0-beta02": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.12.0-beta02",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/40b1610b08564489b3f6a426cd8833f8615bfc68..aa883d8aa3e51057610bdf6e76ff9753350fa02c/compose/ui",
+        "release_notes_html": ""
+      },
+      "1.11.4": {
+        "release_date": "2026-07-01",
+        "release_notes_url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.11.4",
+        "commits_url": "https://android.googlesource.com/platform/frameworks/support/+log/b3fb8849de357e09c2efc963c36a1012543ca411..854220f44ea8ea80fee824a6c5a045f39bede289/compose/ui",
         "release_notes_html": ""
       }
     },
