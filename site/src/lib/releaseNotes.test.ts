@@ -105,6 +105,51 @@ describe('mergeReleaseSections', () => {
     expect(merged[0].items[0].kind).toBe('p')
   })
 
+  it('treats a markdown "### Heading" paragraph as a section heading', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.12.0',
+        '<p>### Hardware-Accelerated Mesh Gradients (ui) </p><p>Painter API is new.</p>'
+      ),
+    ])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].heading).toBe('Hardware-Accelerated Mesh Gradients (ui)')
+    expect(merged[0].items.map(i => i.html)).toEqual(['Painter API is new.'])
+  })
+
+  it('keeps text that follows a "### Heading" in the same paragraph as an item', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.12.0',
+        '<p>### 6. Espresso Integration for Hybrid UIs (ui-test)<br/>\nScope Compose interactions to the View hierarchy.</p>'
+      ),
+    ])
+    expect(merged).toHaveLength(1)
+    expect(merged[0].heading).toBe('6. Espresso Integration for Hybrid UIs (ui-test)')
+    expect(merged[0].items.map(i => i.html)).toEqual([
+      'Scope Compose interactions to the View hierarchy.',
+    ])
+  })
+
+  it('drops code blocks that hold nothing but a ────── separator', () => {
+    const merged = mergeReleaseSections([
+      release(
+        '1.12.0',
+        '<p>Intro.</p><pre><code>────── \n</code></pre><p>Outro.</p>'
+      ),
+    ])
+    expect(merged[0].items.map(i => i.html)).toEqual(['Intro.', 'Outro.'])
+  })
+
+  it('strips a trailing ────── separator line from a real code block', () => {
+    const merged = mergeReleaseSections([
+      release('1.12.0', '<pre><code>val a = 1\n──────\n</code></pre>'),
+    ])
+    expect(merged[0].items).toHaveLength(1)
+    expect(merged[0].items[0].html).not.toContain('─')
+    expect(merged[0].items[0].html).toContain('val a = 1')
+  })
+
   it('skips releases with empty html', () => {
     const merged = mergeReleaseSections([
       release('1.10.0-beta02', ''),

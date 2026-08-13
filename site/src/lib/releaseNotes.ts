@@ -35,6 +35,46 @@ function asSectionHeading(el: Element): string | null {
   return null
 }
 
+const MD_HEADING_RE = /^\s*#{1,6}\s+\S/
+
+// Some AndroidX release notes are published as raw markdown wrapped in <p> tags,
+// so "### Heading" arrives as literal paragraph text rather than an <h4>.
+function asMarkdownHeading(el: Element): { heading: string; restHtml: string } | null {
+  if (el.tagName.toLowerCase() !== 'p') return null
+  const text = el.textContent ?? ''
+  if (!MD_HEADING_RE.test(text)) return null
+
+  const heading = text.split('\n')[0].replace(/^\s*#{1,6}\s+/, '').trim()
+  if (!heading) return null
+
+  const html = el.innerHTML
+  const breakAt = html.search(/<br\s*\/?>|\n/i)
+  const restHtml =
+    breakAt === -1 ? '' : html.slice(breakAt).replace(/^(?:<br\s*\/?>|\s)+/i, '').trim()
+  return { heading, restHtml }
+}
+
+const SEPARATOR_LINE_RE = /^[─━—]+$/
+
+// The same markdown-in-HTML notes separate their sections with a "──────" rule,
+// which reaches us as a code block of its own or as a trailing line inside one.
+function stripSeparators(root: Element): void {
+  for (const pre of Array.from(root.querySelectorAll('pre'))) {
+    const text = pre.textContent ?? ''
+    if (!/[─━—]/.test(text)) continue
+    const cleaned = text
+      .split('\n')
+      .filter(line => !SEPARATOR_LINE_RE.test(line.trim()))
+      .join('\n')
+    if (!cleaned.trim()) {
+      pre.remove()
+      continue
+    }
+    const target = pre.querySelector('code') ?? pre
+    target.textContent = cleaned.replace(/\n+$/, '\n')
+  }
+}
+
 function extractItems(el: Element, fromVersion: string): MergedItem[] {
   const tag = el.tagName.toLowerCase()
   if (tag === 'ul' || tag === 'ol') {
@@ -146,9 +186,22 @@ export function mergeReleaseSections(releases: LibraryRelease[]): MergedSection[
       'text/html'
     )
     const root = doc.body
+    stripSeparators(root)
     let currentHeading = ''
 
     for (const child of Array.from(root.children)) {
+      const markdownHeading = asMarkdownHeading(child)
+      if (markdownHeading !== null) {
+        currentHeading = markdownHeading.heading
+        if (markdownHeading.restHtml) {
+          getSection(currentHeading).items.push({
+            html: markdownHeading.restHtml,
+            kind: 'p',
+            fromVersion: tag,
+          })
+        }
+        continue
+      }
       const heading = asSectionHeading(child)
       if (heading !== null) {
         currentHeading = heading
