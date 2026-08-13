@@ -385,8 +385,19 @@
     border: 1px solid var(--color-border);
     border-radius: 4px;
     padding: 10px 12px;
+    margin: 8px 0;
     overflow-x: auto;
+    font-family: 'Roboto Mono', 'Google Sans Mono', monospace;
     font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .release-body :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
   }
 
   .no-changes-inline {
